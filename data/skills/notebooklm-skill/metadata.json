@@ -1,0 +1,28 @@
+{
+  "name": "notebooklm-skill",
+  "slug": "notebooklm-skill",
+  "source": "github_search",
+  "owner": "PleasePrompto",
+  "repo_name": "notebooklm-skill",
+  "repository_url": "https://github.com/PleasePrompto/notebooklm-skill",
+  "skill_path": null,
+  "github_metadata": {
+    "stars": 1394,
+    "description": "Use this skill to enable Claude Code to communicate directly with your Google NotebookLM notebooks. Query your uploaded documents and get source-grounded, citation-backed answers from Gemini. Features browser automation, library management, persistent authentication, and answers exclusively from your own knowledge base.",
+    "default_branch": "master",
+    "pushed_at": "2025-11-21 17:42:12+00:00",
+    "created_at": "2025-10-19 05:36:13+00:00",
+    "language": "Python",
+    "license": "MIT",
+    "open_issues": 7,
+    "forks": 150
+  },
+  "skill_md": {
+    "found": true,
+    "path": "SKILL.md",
+    "branch": "master",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 14:26:05.121220+00:00",
+  "fetch_error": null
+}

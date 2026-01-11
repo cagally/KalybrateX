@@ -7,7 +7,7 @@
   "repository_url": "https://github.com/anthropics/skills",
   "skill_path": "skills/mcp-builder",
   "github_metadata": {
-    "stars": 37459,
+    "stars": 37502,
     "description": "Public repository for Agent Skills",
     "default_branch": "main",
     "pushed_at": "2025-12-20 18:09:45+00:00",
@@ -15,7 +15,7 @@
     "language": "Python",
     "license": null,
     "open_issues": 137,
-    "forks": 3397
+    "forks": 3403
   },
   "skill_md": {
     "found": true,
@@ -23,6 +23,6 @@
     "branch": "main",
     "content": null
   },
-  "discovered_at": "2026-01-11 13:02:53.314277+00:00",
+  "discovered_at": "2026-01-11 14:25:29.272424+00:00",
   "fetch_error": null
 }

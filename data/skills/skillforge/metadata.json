@@ -1,0 +1,28 @@
+{
+  "name": "SkillForge",
+  "slug": "skillforge",
+  "source": "github_search",
+  "owner": "tripleyak",
+  "repo_name": "SkillForge",
+  "repository_url": "https://github.com/tripleyak/SkillForge",
+  "skill_path": null,
+  "github_metadata": {
+    "stars": 229,
+    "description": "The ultimate meta-skill for generating best-in-class Claude Code skills.",
+    "default_branch": "main",
+    "pushed_at": "2025-12-31 03:29:26+00:00",
+    "created_at": "2025-12-30 01:02:27+00:00",
+    "language": "Python",
+    "license": "MIT",
+    "open_issues": 1,
+    "forks": 24
+  },
+  "skill_md": {
+    "found": true,
+    "path": "SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 14:26:42.313792+00:00",
+  "fetch_error": null
+}

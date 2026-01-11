@@ -1,0 +1,28 @@
+{
+  "name": "skill-homeassistant",
+  "slug": "skill-homeassistant",
+  "source": "github_search",
+  "owner": "komal-SkyNET",
+  "repo_name": "claude-skill-homeassistant",
+  "repository_url": "https://github.com/komal-SkyNET/claude-skill-homeassistant",
+  "skill_path": null,
+  "github_metadata": {
+    "stars": 197,
+    "description": "Claude Code skill to supercharge and manage all Home Assistant workflows",
+    "default_branch": "main",
+    "pushed_at": "2025-11-29 10:57:05+00:00",
+    "created_at": "2025-11-29 00:45:14+00:00",
+    "language": null,
+    "license": "MIT",
+    "open_issues": 0,
+    "forks": 17
+  },
+  "skill_md": {
+    "found": true,
+    "path": "SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 14:26:44.883603+00:00",
+  "fetch_error": null
+}

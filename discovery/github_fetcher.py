@@ -16,6 +16,18 @@ from .models import (
     SkillSource, GitHubMetadata, SkillMdInfo, DiscoveredSkill, DiscoveryResult
 )
 
+# Re-export GitHubMetadata for use in discover_github_search_skills
+__all__ = [
+    "GitHubFetcher",
+    "parse_repo_url",
+    "construct_raw_url",
+    "extract_skill_name",
+    "generate_slug",
+    "parse_github_api_response",
+    "SKILL_MD_PATHS",
+    "BRANCHES",
+]
+
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -406,7 +418,7 @@ class GitHubFetcher:
         limit: Optional[int] = None
     ) -> list[DiscoveredSkill]:
         """
-        Discover skills from the awesome-claude-skills curated list.
+        Discover skills from the awesome-claude-skills curated lists.
 
         Args:
             limit: Maximum number of skills to return
@@ -415,113 +427,268 @@ class GitHubFetcher:
             List of discovered skills
         """
         skills = []
+        seen_repos = set()  # Avoid duplicates
 
-        # Fetch the awesome-claude-skills README
+        # Fetch from multiple awesome lists (correct URLs)
         awesome_repos = [
-            ("anthropics", "awesome-claude-skills"),
-            ("wong2", "awesome-claude-code"),  # Alternative list
+            ("travisvn", "awesome-claude-skills"),
+            ("ComposioHQ", "awesome-claude-skills"),
         ]
 
-        readme_content = None
-        for owner, repo in awesome_repos:
-            url = construct_raw_url(owner, repo, "main", "README.md")
+        for list_owner, list_repo in awesome_repos:
+            url = construct_raw_url(list_owner, list_repo, "main", "README.md")
 
             try:
                 with httpx.Client() as client:
                     response = client.get(url, timeout=30.0)
-                    if response.status_code == 200:
-                        readme_content = response.text
-                        logger.info(f"Found awesome list: {owner}/{repo}")
+                    if response.status_code != 200:
+                        logger.warning(f"Could not fetch {list_owner}/{list_repo}: {response.status_code}")
+                        continue
+
+                    readme_content = response.text
+                    logger.info(f"Found awesome list: {list_owner}/{list_repo}")
+
+                    # Parse GitHub repo URLs from the README
+                    # Look for patterns like: [name](https://github.com/owner/repo)
+                    url_pattern = r"\[([^\]]+)\]\((https://github\.com/[^/]+/[^/)#\s]+)"
+                    matches = re.findall(url_pattern, readme_content)
+
+                    for name, repo_url in matches:
+                        # Clean up the URL
+                        repo_url = repo_url.rstrip(")")
+
+                        parsed = parse_repo_url(repo_url)
+                        if not parsed:
+                            continue
+
+                        owner, repo = parsed
+                        repo_key = f"{owner}/{repo}".lower()
+
+                        # Skip already seen repos
+                        if repo_key in seen_repos:
+                            continue
+                        seen_repos.add(repo_key)
+
+                        # Skip the skills monorepo (handled separately)
+                        if owner == "anthropics" and repo == "skills":
+                            continue
+
+                        # Skip awesome lists themselves
+                        if "awesome" in repo.lower():
+                            continue
+
+                        # Fetch metadata
+                        metadata = self.get_repo_metadata(owner, repo)
+                        if not metadata:
+                            logger.warning(f"Skipping {owner}/{repo} - failed to fetch metadata")
+                            continue
+
+                        # Fetch SKILL.md
+                        skill_md = self.fetch_skill_md(owner, repo)
+
+                        # Only include if it has SKILL.md
+                        if not skill_md.found:
+                            logger.debug(f"Skipping {owner}/{repo} - no SKILL.md found")
+                            continue
+
+                        # Extract skill name
+                        skill_name = extract_skill_name(owner, repo, None)
+
+                        skill = DiscoveredSkill(
+                            name=skill_name,
+                            slug=generate_slug(skill_name),
+                            source=SkillSource.AWESOME_LIST,
+                            owner=owner,
+                            repo_name=repo,
+                            repository_url=repo_url,
+                            skill_path=None,
+                            github_metadata=metadata,
+                            skill_md=skill_md,
+                            discovered_at=datetime.now(timezone.utc),
+                        )
+                        skills.append(skill)
+                        logger.info(f"Discovered awesome-list skill: {skill_name} ({metadata.stars} stars)")
+
+                        # Check limit
+                        if limit and len(skills) >= limit:
+                            return skills
+
+            except httpx.HTTPError as e:
+                logger.error(f"HTTP error fetching {list_owner}/{list_repo}: {e}")
+                continue
+
+        return skills
+
+    def discover_github_search_skills(
+        self,
+        limit: Optional[int] = None,
+        min_stars: int = 100
+    ) -> list[DiscoveredSkill]:
+        """
+        Discover skills by searching GitHub for repos with 'claude skill' in name/description.
+        Sorted by stars descending.
+
+        Args:
+            limit: Maximum number of skills to return
+            min_stars: Minimum stars required (default 100)
+
+        Returns:
+            List of discovered skills (sorted by stars)
+        """
+        skills = []
+        seen_repos = set()
+
+        # Search GitHub for claude skill repos
+        search_url = f"{GITHUB_API_BASE}/search/repositories"
+        params = {
+            "q": "claude skill in:name,description",
+            "sort": "stars",
+            "order": "desc",
+            "per_page": 100,  # Max per page
+        }
+
+        try:
+            with httpx.Client() as client:
+                response = client.get(
+                    search_url,
+                    params=params,
+                    headers=self._headers,
+                    timeout=30.0
+                )
+                self.update_rate_limit(dict(response.headers))
+
+                if response.status_code != 200:
+                    logger.error(f"GitHub search failed: {response.status_code}")
+                    return skills
+
+                data = response.json()
+                logger.info(f"GitHub search found {data.get('total_count', 0)} repos")
+
+                for item in data.get("items", []):
+                    owner = item["owner"]["login"]
+                    repo = item["name"]
+                    stars = item["stargazers_count"]
+                    repo_key = f"{owner}/{repo}".lower()
+
+                    # Skip if below min stars
+                    if stars < min_stars:
+                        continue
+
+                    # Skip already seen
+                    if repo_key in seen_repos:
+                        continue
+                    seen_repos.add(repo_key)
+
+                    # Skip awesome lists and official skills repo
+                    if "awesome" in repo.lower():
+                        continue
+                    if owner == "anthropics" and repo == "skills":
+                        continue
+
+                    # Try to fetch SKILL.md
+                    skill_md = self.fetch_skill_md(owner, repo)
+                    if not skill_md.found:
+                        logger.debug(f"Skipping {owner}/{repo} - no SKILL.md")
+                        continue
+
+                    # Parse metadata from search result
+                    metadata = GitHubMetadata(
+                        stars=stars,
+                        description=item.get("description"),
+                        default_branch=item.get("default_branch", "main"),
+                        pushed_at=datetime.fromisoformat(item["pushed_at"].replace("Z", "+00:00")),
+                        created_at=datetime.fromisoformat(item["created_at"].replace("Z", "+00:00")),
+                        language=item.get("language"),
+                        license=item.get("license", {}).get("spdx_id") if item.get("license") else None,
+                        open_issues=item.get("open_issues_count", 0),
+                        forks=item.get("forks_count", 0),
+                    )
+
+                    skill_name = extract_skill_name(owner, repo, None)
+
+                    skill = DiscoveredSkill(
+                        name=skill_name,
+                        slug=generate_slug(skill_name),
+                        source=SkillSource.GITHUB_SEARCH,
+                        owner=owner,
+                        repo_name=repo,
+                        repository_url=f"https://github.com/{owner}/{repo}",
+                        skill_path=None,
+                        github_metadata=metadata,
+                        skill_md=skill_md,
+                        discovered_at=datetime.now(timezone.utc),
+                    )
+                    skills.append(skill)
+                    logger.info(f"Discovered via GitHub search: {skill_name} ({stars} stars)")
+
+                    if limit and len(skills) >= limit:
                         break
-            except httpx.HTTPError:
-                continue
 
-        if not readme_content:
-            logger.warning("Could not fetch any awesome-claude-skills list")
-            return skills
-
-        # Parse GitHub repo URLs from the README
-        # Look for patterns like: [name](https://github.com/owner/repo)
-        url_pattern = r"\[([^\]]+)\]\((https://github\.com/[^/]+/[^/)]+)\)"
-        matches = re.findall(url_pattern, readme_content)
-
-        # Apply limit
-        if limit:
-            matches = matches[:limit]
-
-        # Process each repo
-        for name, repo_url in matches:
-            parsed = parse_repo_url(repo_url)
-            if not parsed:
-                continue
-
-            owner, repo = parsed
-
-            # Skip the skills monorepo (handled separately)
-            if owner == "anthropics" and repo == "skills":
-                continue
-
-            # Fetch metadata
-            metadata = self.get_repo_metadata(owner, repo)
-            if not metadata:
-                logger.warning(f"Skipping {owner}/{repo} - failed to fetch metadata")
-                continue
-
-            # Fetch SKILL.md
-            skill_md = self.fetch_skill_md(owner, repo)
-
-            # Extract skill name
-            skill_name = extract_skill_name(owner, repo, None)
-
-            skill = DiscoveredSkill(
-                name=skill_name,
-                slug=generate_slug(skill_name),
-                source=SkillSource.AWESOME_LIST,
-                owner=owner,
-                repo_name=repo,
-                repository_url=repo_url,
-                skill_path=None,
-                github_metadata=metadata,
-                skill_md=skill_md,
-                discovered_at=datetime.now(timezone.utc),
-            )
-            skills.append(skill)
-
-            logger.info(f"Discovered awesome-list skill: {skill_name}")
+        except httpx.HTTPError as e:
+            logger.error(f"HTTP error in GitHub search: {e}")
 
         return skills
 
     def run_discovery(
         self,
         sources: Optional[list[str]] = None,
-        limit: Optional[int] = None
+        limit: Optional[int] = None,
+        top_n: Optional[int] = None,
+        min_stars: int = 50
     ) -> DiscoveryResult:
         """
         Run full discovery from all sources.
 
         Args:
             sources: List of sources to check (defaults to all)
-            limit: Maximum skills per source
+            limit: Maximum skills per source (before deduplication)
+            top_n: Return only the top N skills by stars (after combining all sources)
+            min_stars: Minimum stars for github_search source (default 50)
 
         Returns:
-            DiscoveryResult with all discovered skills
+            DiscoveryResult with all discovered skills (sorted by stars)
         """
         all_skills = []
         sources_checked = []
+        seen_repos = set()  # Track repos to avoid duplicates across sources
 
         if sources is None:
-            sources = ["anthropic_official", "awesome_list"]
+            sources = ["anthropic_official", "awesome_list", "github_search"]
 
         # Discover from each source
         if "anthropic_official" in sources:
             sources_checked.append("anthropic_official")
             official_skills = self.discover_official_skills(limit=limit)
-            all_skills.extend(official_skills)
+            for skill in official_skills:
+                repo_key = f"{skill.owner}/{skill.repo_name}:{skill.skill_path}".lower()
+                if repo_key not in seen_repos:
+                    seen_repos.add(repo_key)
+                    all_skills.append(skill)
 
         if "awesome_list" in sources:
             sources_checked.append("awesome_list")
             awesome_skills = self.discover_awesome_list_skills(limit=limit)
-            all_skills.extend(awesome_skills)
+            for skill in awesome_skills:
+                repo_key = f"{skill.owner}/{skill.repo_name}".lower()
+                if repo_key not in seen_repos:
+                    seen_repos.add(repo_key)
+                    all_skills.append(skill)
+
+        if "github_search" in sources:
+            sources_checked.append("github_search")
+            search_skills = self.discover_github_search_skills(limit=limit, min_stars=min_stars)
+            for skill in search_skills:
+                repo_key = f"{skill.owner}/{skill.repo_name}".lower()
+                if repo_key not in seen_repos:
+                    seen_repos.add(repo_key)
+                    all_skills.append(skill)
+
+        # Sort all skills by stars (descending)
+        all_skills.sort(key=lambda s: s.github_metadata.stars, reverse=True)
+
+        # Apply top_n filter if specified
+        if top_n and len(all_skills) > top_n:
+            all_skills = all_skills[:top_n]
 
         # Calculate totals
         total_with_skill_md = sum(

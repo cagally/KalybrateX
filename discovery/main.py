@@ -137,7 +137,9 @@ def run_discovery(
     skills_dir: Path,
     limit: Optional[int] = None,
     force: bool = False,
-    sources: Optional[list[str]] = None
+    sources: Optional[list[str]] = None,
+    top_n: Optional[int] = None,
+    min_stars: int = 50
 ) -> DiscoveryResult:
     """
     Run the discovery process.
@@ -148,6 +150,8 @@ def run_discovery(
         limit: Maximum skills per source
         force: Re-fetch even if skill exists
         sources: List of sources to check
+        top_n: Return only top N skills by stars
+        min_stars: Minimum stars for github_search
 
     Returns:
         DiscoveryResult with discovered skills
@@ -164,7 +168,12 @@ def run_discovery(
     fetcher = GitHubFetcher(token=token)
 
     logger.info("Starting discovery...")
-    result = fetcher.run_discovery(sources=sources, limit=limit)
+    result = fetcher.run_discovery(
+        sources=sources,
+        limit=limit,
+        top_n=top_n,
+        min_stars=min_stars
+    )
 
     # Merge with existing skills (new ones take precedence)
     if existing_skills and not force:
@@ -172,6 +181,13 @@ def run_discovery(
             # Keep existing skill if not re-discovered
             if not any(s.slug == slug for s in result.skills):
                 result.skills.append(skill)
+
+        # Re-sort by stars after merge
+        result.skills.sort(key=lambda s: s.github_metadata.stars, reverse=True)
+
+        # Re-apply top_n if specified
+        if top_n and len(result.skills) > top_n:
+            result.skills = result.skills[:top_n]
 
         # Update totals
         result.total_skills = len(result.skills)
@@ -267,9 +283,23 @@ def main() -> int:
 
     parser.add_argument(
         "--source",
-        choices=["anthropic_official", "awesome_list"],
+        choices=["anthropic_official", "awesome_list", "github_search"],
         action="append",
         help="Specific source(s) to check (can be repeated)"
+    )
+
+    parser.add_argument(
+        "--top",
+        type=int,
+        default=None,
+        help="Return only top N skills by stars (e.g., --top 20)"
+    )
+
+    parser.add_argument(
+        "--min-stars",
+        type=int,
+        default=50,
+        help="Minimum stars for github_search source (default: 50)"
     )
 
     parser.add_argument(
@@ -323,7 +353,9 @@ def main() -> int:
             skills_dir=skills_dir,
             limit=args.limit,
             force=args.force,
-            sources=sources
+            sources=sources,
+            top_n=args.top,
+            min_stars=args.min_stars
         )
 
         # Print summary

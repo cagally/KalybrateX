@@ -14,6 +14,7 @@ class SkillSource(str, Enum):
     """Source where a skill was discovered."""
     ANTHROPIC_OFFICIAL = "anthropic_official"
     AWESOME_LIST = "awesome_list"
+    GITHUB_SEARCH = "github_search"
 
 
 class GitHubMetadata(BaseModel):
