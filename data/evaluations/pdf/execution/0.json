@@ -10,7 +10,7 @@
     "executed": true,
     "execution_success": true,
     "execution_error": null,
-    "execution_time_ms": 131,
+    "execution_time_ms": 155,
     "output_files_created": [
       "test.pdf"
     ],
@@ -22,7 +22,7 @@
         "valid_format": true
       }
     },
-    "verified_at": "2026-01-11T16:45:24.272286Z"
+    "verified_at": "2026-01-11T17:48:32.415910Z"
   },
   "skill_verification": {
     "skill_name": "pdf",
@@ -33,7 +33,7 @@
     "executed": true,
     "execution_success": true,
     "execution_error": null,
-    "execution_time_ms": 132,
+    "execution_time_ms": 144,
     "output_files_created": [
       "test.pdf"
     ],
@@ -45,7 +45,7 @@
         "valid_format": true
       }
     },
-    "verified_at": "2026-01-11T16:45:24.407547Z"
+    "verified_at": "2026-01-11T17:48:32.564161Z"
   },
   "execution_verdict": "tie",
   "verdict_reasoning": "Both produced valid output"

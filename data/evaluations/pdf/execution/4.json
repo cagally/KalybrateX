@@ -14,7 +14,7 @@
     "output_files_created": [],
     "output_valid": false,
     "output_properties": {},
-    "verified_at": "2026-01-11T16:46:17.899751Z"
+    "verified_at": "2026-01-11T17:49:35.671859Z"
   },
   "skill_verification": {
     "skill_name": "pdf",
@@ -25,7 +25,7 @@
     "executed": true,
     "execution_success": true,
     "execution_error": null,
-    "execution_time_ms": 126,
+    "execution_time_ms": 142,
     "output_files_created": [
       "output.pdf"
     ],
@@ -37,7 +37,7 @@
         "valid_format": true
       }
     },
-    "verified_at": "2026-01-11T16:46:18.029272Z"
+    "verified_at": "2026-01-11T17:49:35.817844Z"
   },
   "execution_verdict": "skill",
   "verdict_reasoning": "Skill produced valid output, baseline did not"

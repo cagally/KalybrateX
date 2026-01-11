@@ -2,57 +2,57 @@
   "skill_name": "pdf",
   "prompts": [
     {
-      "prompt": "I need to combine these 5 PDF reports into a single document",
+      "prompt": "I have a 50-page PDF document and I need to extract just pages 15-20 into a separate file",
       "difficulty": "simple",
-      "capability_tested": "pdf_merge"
+      "capability_tested": "pdf_split_specific_pages"
     },
     {
-      "prompt": "Can you help me extract all the text from this 20-page PDF contract so I can search through it?",
+      "prompt": "Can you help me get all the text out of this PDF so I can copy it into a Word document?",
       "difficulty": "simple",
       "capability_tested": "text_extraction"
     },
     {
-      "prompt": "I have a PDF with financial data tables that I need to get into Excel format",
+      "prompt": "I need to combine three PDF files - my resume, cover letter, and portfolio - into one document for job applications",
+      "difficulty": "simple",
+      "capability_tested": "pdf_merge"
+    },
+    {
+      "prompt": "This PDF has several data tables that I need to convert to Excel format for analysis",
       "difficulty": "medium",
       "capability_tested": "table_extraction"
     },
     {
-      "prompt": "This PDF has 200 pages and I only need pages 45-67. How can I extract just those pages?",
-      "difficulty": "simple",
-      "capability_tested": "pdf_splitting"
-    },
-    {
-      "prompt": "I need to create a professional-looking PDF report from scratch with multiple pages, headers, and formatted text",
-      "difficulty": "medium",
-      "capability_tested": "pdf_creation"
-    },
-    {
-      "prompt": "I have a scanned PDF document that I need to convert to editable text, but it's just images right now",
+      "prompt": "I have a scanned PDF invoice that I need to extract the text from, but it's an image-based PDF",
       "difficulty": "medium",
       "capability_tested": "ocr_text_extraction"
     },
     {
-      "prompt": "I need to add password protection to this confidential PDF before sending it to clients",
-      "difficulty": "simple",
-      "capability_tested": "pdf_encryption"
-    },
-    {
-      "prompt": "I have 50 PDF invoices and need to extract all the tables from each one, then combine the data into a master spreadsheet",
-      "difficulty": "complex",
-      "capability_tested": "batch_table_extraction"
-    },
-    {
-      "prompt": "I need to add our company watermark to every page of this 100-page PDF document while preserving the original content",
+      "prompt": "I want to create a professional-looking PDF report with multiple pages, headings, and formatted text from my Python script",
       "difficulty": "medium",
-      "capability_tested": "watermark_application"
+      "capability_tested": "pdf_creation"
     },
     {
-      "prompt": "I have a batch of PDFs where some pages are rotated wrong, and I need to automatically detect and fix the orientation, then merge them all into categories based on their metadata",
+      "prompt": "My company needs me to add a confidential watermark to all pages of this 100-page contract PDF",
+      "difficulty": "medium",
+      "capability_tested": "watermark_addition"
+    },
+    {
+      "prompt": "I have a batch of 50 PDF files that need to be processed - extract all tables from each one and combine them into a single Excel workbook with separate sheets",
+      "difficulty": "complex",
+      "capability_tested": "batch_processing_table_extraction"
+    },
+    {
+      "prompt": "I need to split a large PDF into individual files for each page, rotate every other page 90 degrees, add password protection to sensitive pages, and then merge specific pages back together based on a list",
       "difficulty": "complex",
       "capability_tested": "advanced_pdf_manipulation"
+    },
+    {
+      "prompt": "Can you help me extract all the images from this PDF, get the metadata like author and creation date, extract text while preserving the layout, and create a summary report of everything found?",
+      "difficulty": "complex",
+      "capability_tested": "comprehensive_pdf_analysis"
     }
   ],
-  "generated_at": "2026-01-11T16:40:09.138405Z",
+  "generated_at": "2026-01-11T17:42:39.025777Z",
   "model_used": "claude-sonnet-4-20250514",
-  "tokens_used": 3168
+  "tokens_used": 3217
 }

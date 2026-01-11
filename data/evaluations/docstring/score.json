@@ -1,14 +1,16 @@
 {
   "skill_name": "docstring",
   "wins": 8,
-  "losses": 2,
+  "losses": 1,
   "ties": 0,
-  "win_rate": 80.0,
+  "win_rate": 88.89,
   "grade": "A",
   "security_grade": "secure",
   "security_issues_count": 0,
-  "avg_tokens_per_use": 3794.6,
-  "cost_per_use_usd": 0.00474325,
-  "total_comparisons": 10,
-  "scored_at": "2026-01-11T16:54:19.528845Z"
+  "avg_tokens_per_use": 3934.1111111111113,
+  "cost_per_use_usd": 0.00491763888888889,
+  "avg_baseline_tokens": 788.8888888888889,
+  "baseline_cost_usd": 0.0009861111111111112,
+  "total_comparisons": 9,
+  "scored_at": "2026-01-11T17:55:51.029973Z"
 }

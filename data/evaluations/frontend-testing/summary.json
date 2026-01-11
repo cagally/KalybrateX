@@ -1,26 +1,26 @@
 {
   "skill_name": "frontend-testing",
-  "quality_grade": "A",
-  "quality_win_rate": 80.0,
+  "quality_grade": "B",
+  "quality_win_rate": 66.67,
   "security_grade": "secure",
   "security_issues_count": 0,
   "total_comparisons": 10,
   "prompt_count": 10,
   "verdict_breakdown": {
-    "skill_wins": 8,
-    "baseline_wins": 2,
-    "ties": 0
+    "skill_wins": 6,
+    "baseline_wins": 3,
+    "ties": 1
   },
-  "avg_tokens_per_use": 3956.6,
-  "cost_per_use_usd": 0.0049457500000000005,
-  "evaluated_at": "2026-01-11T16:55:39.296764+00:00",
+  "avg_tokens_per_use": 3999.4,
+  "cost_per_use_usd": 0.00499925,
+  "evaluated_at": "2026-01-11T17:57:32.377611+00:00",
   "models_used": {
     "prompt_generation": "claude-sonnet-4-20250514",
     "security_analysis": "claude-sonnet-4-20250514"
   },
-  "final_grade": "A",
-  "combined_score": 80.0,
+  "final_grade": "B",
+  "combined_score": 66.67,
   "category": "advisory",
-  "grade": "A",
-  "win_rate": 80.0
+  "grade": "B",
+  "win_rate": 66.67
 }

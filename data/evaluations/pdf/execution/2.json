@@ -8,21 +8,13 @@
     "code_language": "python",
     "code_blocks_count": 2,
     "executed": true,
-    "execution_success": true,
+    "execution_success": false,
     "execution_error": null,
-    "execution_time_ms": 91,
-    "output_files_created": [
-      "report.pdf"
-    ],
-    "output_valid": true,
-    "output_properties": {
-      "report.pdf": {
-        "exists": true,
-        "pages": 3,
-        "valid_format": true
-      }
-    },
-    "verified_at": "2026-01-11T16:45:48.331498Z"
+    "execution_time_ms": 35,
+    "output_files_created": [],
+    "output_valid": false,
+    "output_properties": {},
+    "verified_at": "2026-01-11T17:49:03.689837Z"
   },
   "skill_verification": {
     "skill_name": "pdf",
@@ -33,7 +25,7 @@
     "executed": true,
     "execution_success": true,
     "execution_error": null,
-    "execution_time_ms": 129,
+    "execution_time_ms": 154,
     "output_files_created": [
       "report.pdf"
     ],
@@ -45,8 +37,8 @@
         "valid_format": true
       }
     },
-    "verified_at": "2026-01-11T16:45:48.462243Z"
+    "verified_at": "2026-01-11T17:49:03.846426Z"
   },
-  "execution_verdict": "tie",
-  "verdict_reasoning": "Both produced valid output"
+  "execution_verdict": "skill",
+  "verdict_reasoning": "Skill produced valid output, baseline did not"
 }

@@ -2,57 +2,57 @@
   "skill_name": "fact-check",
   "prompts": [
     {
-      "prompt": "Can you check if this JavaScript code example actually produces the output shown in the comments? I'm seeing `console.log(typeof null)` with a comment saying it returns 'object' but I want to make sure that's correct.",
+      "prompt": "Can you check if the code examples in this JavaScript closure article actually work correctly? I'm seeing some outputs that don't match what's written in the comments.",
       "difficulty": "simple",
       "capability_tested": "code_example_verification"
     },
     {
-      "prompt": "I wrote a tutorial about JavaScript arrays and included several MDN links. Could you verify that all the links are still working and point to the right documentation?",
+      "prompt": "I wrote a blog post about JavaScript promises and want to make sure all my MDN links are working and point to the right pages before I publish it.",
       "difficulty": "simple",
       "capability_tested": "mdn_link_verification"
     },
     {
-      "prompt": "There's a claim in my JavaScript guide that 'Promises always resolve asynchronously' - can you check if this is actually true according to the ECMAScript specification?",
+      "prompt": "Help me verify that this explanation of typeof behavior is actually correct according to the ECMAScript specification. I want to make sure I'm not spreading misinformation.",
       "difficulty": "medium",
-      "capability_tested": "ecmascript_spec_compliance"
+      "capability_tested": "ecmascript_compliance_checking"
     },
     {
-      "prompt": "I have a JavaScript concept page with about 15 external resource links to articles and videos. Can you go through them and make sure they're all accessible and actually cover JavaScript (not other languages)?",
-      "difficulty": "simple",
+      "prompt": "I'm about to publish a JavaScript tutorial and need someone to check that all the external resources I'm linking to are still accessible and actually cover what I say they cover.",
+      "difficulty": "medium",
       "capability_tested": "external_resource_verification"
     },
     {
-      "prompt": "My JavaScript tutorial has this statement: 'async/await is always better than Promises for handling asynchronous operations.' Can you fact-check whether this claim is accurate or if it needs to be more nuanced?",
+      "prompt": "Can you run through this article about JavaScript event loops and flag any technical claims that might be inaccurate or misleading? I'm worried about perpetuating common misconceptions.",
       "difficulty": "medium",
       "capability_tested": "technical_claims_audit"
     },
     {
-      "prompt": "I need to verify an entire JavaScript concept page about closures before publishing. Can you check all the code examples, verify they produce the right outputs, test the MDN links, and make sure there aren't any common misconceptions being taught as facts?",
+      "prompt": "I need to fact-check this comprehensive guide on JavaScript hoisting - verify the code examples work, check that MDN references are correct, and make sure I'm not teaching any outdated patterns.",
       "difficulty": "complex",
       "capability_tested": "comprehensive_fact_checking"
     },
     {
-      "prompt": "There are several code blocks in my JavaScript guide showing array methods. Can you verify that the return values and side effects mentioned in the comments are all correct?",
-      "difficulty": "medium",
-      "capability_tested": "code_behavior_verification"
+      "prompt": "Before I submit this PR for the JavaScript concepts repository, can you run the tests and make sure my new content about async/await doesn't contain any factual errors?",
+      "difficulty": "simple",
+      "capability_tested": "test_integration"
     },
     {
-      "prompt": "I'm teaching about JavaScript's `==` vs `===` operators and want to make sure I'm not spreading any misconceptions. Can you check my explanations against authoritative sources?",
+      "prompt": "I'm reviewing a community contribution about JavaScript type coercion and need help verifying that all the comparison examples produce the outputs they claim, plus checking if any statements contradict the ECMAScript spec.",
+      "difficulty": "complex",
+      "capability_tested": "multi_phase_verification"
+    },
+    {
+      "prompt": "Can you check this JavaScript article for common misconceptions like 'objects are passed by reference' or '=== is always faster than =='? I want to make sure I'm teaching accurate information.",
       "difficulty": "medium",
       "capability_tested": "misconception_detection"
     },
     {
-      "prompt": "Can you run through my JavaScript fundamentals page and check if there are any performance claims that need benchmarks or browser-specific behaviors that should specify which browsers they apply to?",
+      "prompt": "I need a complete accuracy audit of this JavaScript fundamentals page - code verification, link checking, spec compliance, resource validation, and a detailed report of any issues found with recommended fixes.",
       "difficulty": "complex",
-      "capability_tested": "performance_and_browser_claims_audit"
-    },
-    {
-      "prompt": "I have a complete JavaScript concept tutorial ready to publish, but I want a thorough fact-check first. Can you verify all code examples, check external links, audit technical claims, run any available tests, and give me a detailed report of any issues found?",
-      "difficulty": "complex",
-      "capability_tested": "full_five_phase_verification"
+      "capability_tested": "full_methodology_application"
     }
   ],
-  "generated_at": "2026-01-11T16:49:03.692922Z",
+  "generated_at": "2026-01-11T17:57:57.740592Z",
   "model_used": "claude-sonnet-4-20250514",
-  "tokens_used": 6655
+  "tokens_used": 6590
 }

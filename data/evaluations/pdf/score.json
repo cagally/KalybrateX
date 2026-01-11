@@ -1,14 +1,16 @@
 {
   "skill_name": "pdf",
-  "wins": 10,
-  "losses": 0,
+  "wins": 9,
+  "losses": 1,
   "ties": 0,
-  "win_rate": 100.0,
+  "win_rate": 90.0,
   "grade": "A",
   "security_grade": "secure",
   "security_issues_count": 0,
-  "avg_tokens_per_use": 3462.0,
-  "cost_per_use_usd": 0.004327500000000001,
+  "avg_tokens_per_use": 3632.6,
+  "cost_per_use_usd": 0.0045407500000000005,
+  "avg_baseline_tokens": 461.3,
+  "baseline_cost_usd": 0.0005766250000000001,
   "total_comparisons": 10,
-  "scored_at": "2026-01-11T16:46:25.147761Z"
+  "scored_at": "2026-01-11T17:49:40.773243Z"
 }

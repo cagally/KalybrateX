@@ -1,19 +1,19 @@
 {
   "skill_name": "pdf",
   "quality_grade": "A",
-  "quality_win_rate": 100.0,
+  "quality_win_rate": 90.0,
   "security_grade": "secure",
   "security_issues_count": 0,
   "total_comparisons": 10,
   "prompt_count": 10,
   "verdict_breakdown": {
-    "skill_wins": 10,
-    "baseline_wins": 0,
+    "skill_wins": 9,
+    "baseline_wins": 1,
     "ties": 0
   },
-  "avg_tokens_per_use": 3462.0,
-  "cost_per_use_usd": 0.004327500000000001,
-  "evaluated_at": "2026-01-11T16:46:25.148816+00:00",
+  "avg_tokens_per_use": 3632.6,
+  "cost_per_use_usd": 0.0045407500000000005,
+  "evaluated_at": "2026-01-11T17:49:40.774522+00:00",
   "models_used": {
     "prompt_generation": "claude-sonnet-4-20250514",
     "security_analysis": "claude-sonnet-4-20250514"
@@ -22,13 +22,13 @@
   "execution_win_rate": 100.0,
   "execution_prompts_tested": 5,
   "execution_breakdown": {
-    "wins": 1,
+    "wins": 2,
     "losses": 0,
-    "ties": 4
+    "ties": 3
   },
   "final_grade": "A",
-  "combined_score": 100.0,
+  "combined_score": 94.0,
   "category": "file_artifact",
   "grade": "A",
-  "win_rate": 100.0
+  "win_rate": 94.0
 }

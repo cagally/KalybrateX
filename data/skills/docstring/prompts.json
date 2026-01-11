@@ -2,57 +2,57 @@
   "skill_name": "docstring",
   "prompts": [
     {
-      "prompt": "I wrote a PyTorch function that applies dropout to tensors, but I need to add a proper docstring following PyTorch conventions. Can you help me write one?",
+      "prompt": "I need to write a docstring for a simple PyTorch function that applies ReLU activation. Can you help me format it properly?",
       "difficulty": "simple",
       "capability_tested": "basic_docstring_structure"
     },
     {
-      "prompt": "I have this tensor method that reshapes input, but I'm not sure how to document the math notation for tensor shapes in the docstring. What's the right way to do this?",
+      "prompt": "How do I document the parameters in a PyTorch function docstring? I have a conv2d function with input, weight, bias, stride, and padding parameters.",
       "difficulty": "simple",
-      "capability_tested": "math_notation_for_shapes"
+      "capability_tested": "args_section_formatting"
     },
     {
-      "prompt": "I need to write documentation for a PyTorch function that has both regular args and keyword-only args with defaults. How should I format the signature line and Args section?",
-      "difficulty": "medium",
-      "capability_tested": "function_signature_and_args_documentation"
-    },
-    {
-      "prompt": "I'm documenting a custom loss function that references other PyTorch classes like nn.CrossEntropyLoss. How do I properly cross-reference these in the docstring?",
-      "difficulty": "medium",
-      "capability_tested": "cross_references_and_linking"
-    },
-    {
-      "prompt": "I have a PyTorch function that implements a mathematical operation with a complex formula. I need help writing the docstring with proper math notation and examples section.",
-      "difficulty": "medium",
-      "capability_tested": "mathematical_formulas_and_examples"
-    },
-    {
-      "prompt": "I'm writing docstrings for several related functions - one is an in-place variant ending with underscore, another is an alias. How should I document these differently?",
-      "difficulty": "medium",
-      "capability_tested": "in_place_variants_and_aliases"
-    },
-    {
-      "prompt": "I need to document a C-bound PyTorch function using add_docstr, and it needs warnings about numerical stability, cross-references to related nn.Module classes, and proper examples. Can you show me the complete structure?",
-      "difficulty": "complex",
-      "capability_tested": "c_bound_functions_with_comprehensive_documentation"
-    },
-    {
-      "prompt": "I'm documenting a complex PyTorch transformation function that takes multiple tensor inputs of different shapes, has several optional parameters with specific types, and needs to include both inline and block mathematical formulas. Help me structure this properly.",
-      "difficulty": "complex",
-      "capability_tested": "complex_parameter_documentation_with_math"
-    },
-    {
-      "prompt": "I need to write docstrings for a family of PyTorch functions where some arguments are reused across multiple functions. How do I set up reusable argument definitions and use template insertion for common notes?",
-      "difficulty": "complex",
-      "capability_tested": "reusable_arguments_and_template_insertion"
-    },
-    {
-      "prompt": "Can you help me add an Examples section to my PyTorch function docstring? I want to show both basic usage and advanced cases with different tensor shapes.",
+      "prompt": "I'm writing documentation for a PyTorch tensor method and need to include some mathematical formulas. What's the right way to format math equations in the docstring?",
       "difficulty": "simple",
-      "capability_tested": "examples_section_formatting"
+      "capability_tested": "mathematical_formulas"
+    },
+    {
+      "prompt": "Can you show me how to write a proper docstring for a PyTorch function that includes cross-references to related classes and methods? I want to link to torch.nn.Conv2d and some tensor methods.",
+      "difficulty": "medium",
+      "capability_tested": "cross_references"
+    },
+    {
+      "prompt": "I need to document a PyTorch function that has both regular arguments and keyword-only arguments with default values. How should I structure the docstring to show the function signature and document all the parameters correctly?",
+      "difficulty": "medium",
+      "capability_tested": "function_signature_and_args"
+    },
+    {
+      "prompt": "I'm working on a PyTorch function docstring that needs examples showing how to use the function with different tensor shapes. What's the standard format for the Examples section?",
+      "difficulty": "medium",
+      "capability_tested": "examples_section"
+    },
+    {
+      "prompt": "How do I write docstrings for in-place PyTorch operations and alias functions? I have both an abs_() method and an absolute() alias that I need to document.",
+      "difficulty": "medium",
+      "capability_tested": "inplace_and_alias_variants"
+    },
+    {
+      "prompt": "I need to write a comprehensive docstring for a complex PyTorch neural network function that includes mathematical formulas, tensor shape documentation, cross-references to multiple classes, warning notes about numerical stability, and examples with different use cases. Can you help me structure this properly following PyTorch conventions?",
+      "difficulty": "complex",
+      "capability_tested": "comprehensive_docstring_structure"
+    },
+    {
+      "prompt": "I'm documenting a C-bound PyTorch function using add_docstr and need to include reusable argument definitions for common parameters like dtype and device, plus I want to insert template notes about reproducibility. How should I structure this?",
+      "difficulty": "complex",
+      "capability_tested": "c_bound_functions_and_templates"
+    },
+    {
+      "prompt": "I need to create docstrings for a family of related PyTorch functions (softmax, log_softmax, gumbel_softmax) where I want to maintain consistency in parameter documentation, include proper tensor shape notation using LaTeX math, add warning notes about numerical properties, link to research papers, and ensure all cross-references work correctly. What's the best approach?",
+      "difficulty": "complex",
+      "capability_tested": "consistent_documentation_family"
     }
   ],
-  "generated_at": "2026-01-11T16:49:01.327238Z",
+  "generated_at": "2026-01-11T17:50:30.297284Z",
   "model_used": "claude-sonnet-4-20250514",
-  "tokens_used": 4143
+  "tokens_used": 4182
 }

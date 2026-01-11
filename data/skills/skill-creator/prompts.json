@@ -2,57 +2,57 @@
   "skill_name": "skill-creator",
   "prompts": [
     {
-      "prompt": "I want to create a custom skill for my team to help with financial report generation. Can you walk me through how to get started?",
+      "prompt": "I want to create a new skill that helps me manage my personal finance tracking, but I'm not sure how to structure it or what to include",
       "difficulty": "simple",
-      "capability_tested": "basic_skill_creation_guidance"
+      "capability_tested": "basic_skill_planning_guidance"
     },
     {
-      "prompt": "I need to build something that helps Claude work with our company's specific API documentation and workflows, but I'm not sure what structure to use.",
+      "prompt": "Can you help me build a skill for my team that automates our code review process? We use GitHub and have specific checklists we follow",
       "difficulty": "medium",
-      "capability_tested": "skill_planning_and_structure"
+      "capability_tested": "workflow_skill_creation_with_tools"
     },
     {
-      "prompt": "I have a bunch of Python scripts I keep rewriting for data processing tasks. How can I package these so Claude can reuse them efficiently?",
+      "prompt": "I need to make a skill that converts different document formats, but I'm not sure whether to put the conversion logic in scripts or just write instructions",
       "difficulty": "medium",
-      "capability_tested": "script_organization_and_bundling"
+      "capability_tested": "degree_of_freedom_guidance"
     },
     {
-      "prompt": "Can you help me create a specialized tool that combines our brand guidelines, template files, and design workflows into something Claude can use for marketing materials?",
-      "difficulty": "complex",
-      "capability_tested": "multi_resource_skill_design"
-    },
-    {
-      "prompt": "I wrote up some instructions for Claude to handle our customer support process, but it's getting really long and Claude seems to struggle with it. How can I make it more effective?",
-      "difficulty": "medium",
-      "capability_tested": "skill_optimization_and_context_management"
-    },
-    {
-      "prompt": "I need to turn my domain expertise in legal contract analysis into something Claude can use. What's the best way to structure all this knowledge?",
-      "difficulty": "medium",
-      "capability_tested": "domain_knowledge_structuring"
-    },
-    {
-      "prompt": "My skill works great for simple cases but fails on complex scenarios. The instructions are too vague in some places and too rigid in others. How do I fix this?",
-      "difficulty": "complex",
-      "capability_tested": "balancing_flexibility_and_constraints"
-    },
-    {
-      "prompt": "I want to create something that helps Claude work with our database schemas, but the documentation is huge. What's the smartest way to organize this?",
-      "difficulty": "complex",
-      "capability_tested": "progressive_disclosure_and_large_references"
-    },
-    {
-      "prompt": "I built a custom tool for Claude but I'm not sure if I should put certain information in the main instructions or separate reference files. How do I decide?",
+      "prompt": "Help me create a skill that my marketing team can use to generate social media content following our brand guidelines",
       "difficulty": "simple",
-      "capability_tested": "content_organization_principles"
+      "capability_tested": "domain_specific_skill_creation"
     },
     {
-      "prompt": "I have a working prototype that helps Claude with our procurement workflows, but I need to package it properly and test it with my team. What's the right process?",
+      "prompt": "I have a working skill but it's getting too long and cluttered - the main file is over 800 lines and covers like 6 different workflows. How should I reorganize it?",
+      "difficulty": "complex",
+      "capability_tested": "progressive_disclosure_and_skill_refactoring"
+    },
+    {
+      "prompt": "I want to build a skill for database management that works with MySQL, PostgreSQL, and MongoDB, but I don't want to load all the documentation at once",
+      "difficulty": "complex",
+      "capability_tested": "multi_variant_skill_architecture"
+    },
+    {
+      "prompt": "My skill keeps getting triggered when it shouldn't be. Users ask about general writing help and it activates my technical documentation skill instead",
+      "difficulty": "medium",
+      "capability_tested": "skill_triggering_and_description_optimization"
+    },
+    {
+      "prompt": "I need to create a skill that includes our company's API documentation, database schemas, and some Python scripts for data processing - what's the best way to organize all this?",
+      "difficulty": "medium",
+      "capability_tested": "bundled_resources_organization"
+    },
+    {
+      "prompt": "Can you walk me through creating a skill from scratch? I want to help my design team with Figma file management and asset organization",
       "difficulty": "simple",
-      "capability_tested": "skill_packaging_and_validation"
+      "capability_tested": "end_to_end_skill_creation_process"
+    },
+    {
+      "prompt": "I built a skill but when I try to package it, I get validation errors about the frontmatter and file structure. The error messages mention YAML issues and missing descriptions, but I'm not sure how to fix them",
+      "difficulty": "complex",
+      "capability_tested": "skill_validation_and_packaging_troubleshooting"
     }
   ],
-  "generated_at": "2026-01-11T16:49:00.620823Z",
+  "generated_at": "2026-01-11T17:50:29.543119Z",
   "model_used": "claude-sonnet-4-20250514",
-  "tokens_used": 5128
+  "tokens_used": 5148
 }

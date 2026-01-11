@@ -1,14 +1,16 @@
 {
   "skill_name": "frontend-testing",
-  "wins": 8,
-  "losses": 2,
-  "ties": 0,
-  "win_rate": 80.0,
-  "grade": "A",
+  "wins": 6,
+  "losses": 3,
+  "ties": 1,
+  "win_rate": 66.67,
+  "grade": "B",
   "security_grade": "secure",
   "security_issues_count": 0,
-  "avg_tokens_per_use": 3956.6,
-  "cost_per_use_usd": 0.0049457500000000005,
+  "avg_tokens_per_use": 3999.4,
+  "cost_per_use_usd": 0.00499925,
+  "avg_baseline_tokens": 1276.2,
+  "baseline_cost_usd": 0.00159525,
   "total_comparisons": 10,
-  "scored_at": "2026-01-11T16:55:39.296521Z"
+  "scored_at": "2026-01-11T17:57:32.377352Z"
 }
