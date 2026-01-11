@@ -45,3 +45,33 @@ class PromptGenerationResult(BaseModel):
     generated_at: datetime = Field(description="When these prompts were generated")
     model_used: str = Field(description="The Claude model used for generation")
     tokens_used: int = Field(description="Total tokens used (input + output)")
+
+
+# =============================================================================
+# Quality Evaluator Models
+# =============================================================================
+
+class Verdict(str, Enum):
+    """Verdict from A/B comparison judging."""
+    SKILL_WINS = "skill"
+    BASELINE_WINS = "baseline"
+    TIE = "tie"
+
+
+class ComparisonResult(BaseModel):
+    """Result of an A/B comparison between baseline and skill responses."""
+    prompt: str = Field(description="The user prompt that was evaluated")
+    baseline_response: str = Field(description="Response generated without skill")
+    skill_response: str = Field(description="Response generated with skill")
+    verdict: Verdict = Field(description="Which response won the comparison")
+    reasoning: str = Field(description="Judge's reasoning for the verdict")
+    baseline_tokens: int = Field(description="Total tokens used for baseline (input + output)")
+    skill_tokens: int = Field(description="Total tokens used for skill (input + output)")
+    position_a: Literal["baseline", "skill"] = Field(
+        description="Which response was shown first (position A) to the judge"
+    )
+    position_b: Literal["baseline", "skill"] = Field(
+        description="Which response was shown second (position B) to the judge"
+    )
+    judge_model: str = Field(description="The Claude model used for judging")
+    judged_at: datetime = Field(description="When the comparison was judged")
