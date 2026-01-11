@@ -4,7 +4,7 @@ Pydantic models for the Evaluator phase of KalybrateX.
 These models represent prompts, evaluations, and scoring data.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import Literal, Optional
 from pydantic import BaseModel, Field, field_validator
@@ -221,7 +221,10 @@ class VerificationResult(BaseModel):
     )
 
     # Metadata
-    verified_at: datetime = Field(description="When verification was performed")
+    verified_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        description="When verification was performed"
+    )
 
 
 class ExecutionComparisonResult(BaseModel):

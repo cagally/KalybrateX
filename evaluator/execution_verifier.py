@@ -21,6 +21,7 @@ from typing import Optional
 
 from evaluator.code_extractor import extract_code, ExtractedCode
 from evaluator.skill_categories import SkillCategory, get_skill_category
+from evaluator.models import VerificationResult
 
 
 @dataclass
@@ -33,32 +34,6 @@ class ExecutionResult:
     execution_time_ms: int
     output_files: list[str]
     error: Optional[str] = None
-
-
-@dataclass
-class VerificationResult:
-    """Result of verifying execution output."""
-    skill_name: str
-    prompt: str
-
-    # Code extraction
-    code_extracted: bool
-    code_language: str
-    code_blocks_count: int
-
-    # Execution
-    executed: bool
-    execution_success: bool
-    execution_error: Optional[str]
-    execution_time_ms: int
-
-    # Output validation
-    output_files_created: list[str]
-    output_valid: bool
-    output_properties: dict = field(default_factory=dict)
-
-    # Metadata
-    verified_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 # Docker image for execution - NEUTRAL, no pre-installed packages

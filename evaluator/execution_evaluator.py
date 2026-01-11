@@ -23,13 +23,13 @@ from evaluator.code_extractor import extract_code
 from evaluator.execution_verifier import (
     verify_response,
     is_docker_available,
-    VerificationResult,
 )
 from evaluator.models import (
     ExecutionComparisonResult,
     ExecutionScore,
     SkillCategory,
     Verdict,
+    VerificationResult,
 )
 from evaluator.prompt_templates import get_execution_prompts, ExecutionPrompt
 from evaluator.skill_categories import get_skill_category, requires_execution
