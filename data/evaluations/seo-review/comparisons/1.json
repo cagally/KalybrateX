@@ -1,0 +1,13 @@
+{
+  "prompt": "I wrote a page about JavaScript promises but I'm not sure if the meta description is the right length and includes the right keywords",
+  "baseline_response": "I'd be happy to help you review your meta description. Could you share the meta description you've written? I can then check if it:\n\n1. Fits the recommended length (typically 150-160 characters)\n2. Includes relevant keywords\n3. Accurately summarizes the page content\n3. Is compelling enough to encourage clicks\n\nWould you like to share the meta description?",
+  "skill_response": "I'll help you evaluate your meta description using the SEO Audit methodology. Could you share the current meta description for your Promises page? I'll analyze it for:\n\n1. Character count (ideal: 150-160 characters)\n2. Keyword presence\n3. Action word\n4. Specific value promise\n\nWhen reviewing, I'll use these key criteria:\n- Contains \"Promises\" and \"JavaScript\"\n- Starts with an action word (Learn, Discover, Understand)\n- Describes what readers will specifically learn\n- Reads naturally\n- Fits 150-160 character sweet spot\n\nPlease paste your current meta description, and I'll provide a detailed breakdown and potential improvements.",
+  "verdict": "skill",
+  "reasoning": "Response A is more comprehensive and valuable. It demonstrates deeper expertise by referencing a specific 'SEO Audit methodology' and provides more detailed evaluation criteria including specific requirements like starting with action words, describing specific learning outcomes, and natural readability. It also gives concrete examples of what to look for (action words like 'Learn, Discover, Understand') and emphasizes the importance of specific value promises. Response B covers the basics but lacks the depth and structured approach that would be more helpful to someone seeking professional-level feedback on their meta description.",
+  "baseline_tokens": 117,
+  "skill_tokens": 9936,
+  "position_a": "skill",
+  "position_b": "baseline",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T16:49:27.744604Z"
+}

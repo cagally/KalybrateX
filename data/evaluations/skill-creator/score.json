@@ -1,0 +1,14 @@
+{
+  "skill_name": "skill-creator",
+  "wins": 10,
+  "losses": 0,
+  "ties": 0,
+  "win_rate": 100.0,
+  "grade": "A",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 4571.4,
+  "cost_per_use_usd": 0.00571425,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T16:52:58.630548Z"
+}

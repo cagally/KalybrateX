@@ -1,0 +1,9 @@
+{
+  "skill_name": "frontend-testing",
+  "grade": "secure",
+  "issues": [],
+  "analysis": "This SKILL.md file is safe from a security perspective. It defines a testing skill for the Dify frontend that focuses entirely on generating Vitest and React Testing Library tests. The skill contains no external URLs, file system operations outside normal testing patterns, credential access attempts, dynamic code execution, or suspicious dependencies. All referenced paths are standard frontend testing locations (web/testing/, web/__tests__/), and the mocking patterns shown are legitimate testing practices for isolating components during testing. The skill operates within the normal boundaries of a frontend testing framework without any data exfiltration or system compromise risks.",
+  "analyzed_at": "2026-01-11T16:55:39.296073Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3425
+}

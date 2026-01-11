@@ -1,0 +1,58 @@
+{
+  "skill_name": "docstring",
+  "prompts": [
+    {
+      "prompt": "I wrote a PyTorch function that applies dropout to tensors, but I need to add a proper docstring following PyTorch conventions. Can you help me write one?",
+      "difficulty": "simple",
+      "capability_tested": "basic_docstring_structure"
+    },
+    {
+      "prompt": "I have this tensor method that reshapes input, but I'm not sure how to document the math notation for tensor shapes in the docstring. What's the right way to do this?",
+      "difficulty": "simple",
+      "capability_tested": "math_notation_for_shapes"
+    },
+    {
+      "prompt": "I need to write documentation for a PyTorch function that has both regular args and keyword-only args with defaults. How should I format the signature line and Args section?",
+      "difficulty": "medium",
+      "capability_tested": "function_signature_and_args_documentation"
+    },
+    {
+      "prompt": "I'm documenting a custom loss function that references other PyTorch classes like nn.CrossEntropyLoss. How do I properly cross-reference these in the docstring?",
+      "difficulty": "medium",
+      "capability_tested": "cross_references_and_linking"
+    },
+    {
+      "prompt": "I have a PyTorch function that implements a mathematical operation with a complex formula. I need help writing the docstring with proper math notation and examples section.",
+      "difficulty": "medium",
+      "capability_tested": "mathematical_formulas_and_examples"
+    },
+    {
+      "prompt": "I'm writing docstrings for several related functions - one is an in-place variant ending with underscore, another is an alias. How should I document these differently?",
+      "difficulty": "medium",
+      "capability_tested": "in_place_variants_and_aliases"
+    },
+    {
+      "prompt": "I need to document a C-bound PyTorch function using add_docstr, and it needs warnings about numerical stability, cross-references to related nn.Module classes, and proper examples. Can you show me the complete structure?",
+      "difficulty": "complex",
+      "capability_tested": "c_bound_functions_with_comprehensive_documentation"
+    },
+    {
+      "prompt": "I'm documenting a complex PyTorch transformation function that takes multiple tensor inputs of different shapes, has several optional parameters with specific types, and needs to include both inline and block mathematical formulas. Help me structure this properly.",
+      "difficulty": "complex",
+      "capability_tested": "complex_parameter_documentation_with_math"
+    },
+    {
+      "prompt": "I need to write docstrings for a family of PyTorch functions where some arguments are reused across multiple functions. How do I set up reusable argument definitions and use template insertion for common notes?",
+      "difficulty": "complex",
+      "capability_tested": "reusable_arguments_and_template_insertion"
+    },
+    {
+      "prompt": "Can you help me add an Examples section to my PyTorch function docstring? I want to show both basic usage and advanced cases with different tensor shapes.",
+      "difficulty": "simple",
+      "capability_tested": "examples_section_formatting"
+    }
+  ],
+  "generated_at": "2026-01-11T16:49:01.327238Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 4143
+}

@@ -1,0 +1,58 @@
+{
+  "skill_name": "frontend-testing",
+  "prompts": [
+    {
+      "prompt": "Can you help me write some tests for this React button component? I just need basic rendering and click functionality tested.",
+      "difficulty": "simple",
+      "capability_tested": "basic_component_testing"
+    },
+    {
+      "prompt": "I'm getting low test coverage on my custom hook that manages form state. Could you write some unit tests to improve the coverage?",
+      "difficulty": "simple",
+      "capability_tested": "hook_testing"
+    },
+    {
+      "prompt": "Need to write tests for a utility function that formats dates. It should handle edge cases like null values and invalid dates.",
+      "difficulty": "simple",
+      "capability_tested": "utility_function_testing"
+    },
+    {
+      "prompt": "I have a component that makes API calls and shows loading states. How do I test the different states - loading, success, and error?",
+      "difficulty": "medium",
+      "capability_tested": "async_testing_with_api_mocking"
+    },
+    {
+      "prompt": "My component uses React Router and I need to test navigation behavior. It should redirect users after form submission.",
+      "difficulty": "medium",
+      "capability_tested": "routing_and_navigation_testing"
+    },
+    {
+      "prompt": "I've got a form component with validation that needs testing. It should show error messages for invalid inputs and call onSubmit when valid.",
+      "difficulty": "medium",
+      "capability_tested": "form_validation_testing"
+    },
+    {
+      "prompt": "Can you review my existing test file and tell me what's missing? I want to make sure I'm covering all the edge cases properly.",
+      "difficulty": "medium",
+      "capability_tested": "test_review_and_completeness"
+    },
+    {
+      "prompt": "I need comprehensive tests for an entire directory of components - there's a main component with several child components and some hooks. What's the best approach?",
+      "difficulty": "complex",
+      "capability_tested": "directory_level_testing_workflow"
+    },
+    {
+      "prompt": "My component is really complex with multiple contexts, API calls, and nested child components. I'm not sure how to structure the tests or what to mock vs test together.",
+      "difficulty": "complex",
+      "capability_tested": "integration_testing_strategy"
+    },
+    {
+      "prompt": "I'm working on the Dify frontend and need to write Vitest tests for a workflow configuration component that uses React Testing Library. It has drag-and-drop functionality and context providers.",
+      "difficulty": "complex",
+      "capability_tested": "dify_specific_component_testing"
+    }
+  ],
+  "generated_at": "2026-01-11T16:48:58.808930Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3849
+}

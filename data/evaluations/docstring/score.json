@@ -1,0 +1,14 @@
+{
+  "skill_name": "docstring",
+  "wins": 8,
+  "losses": 2,
+  "ties": 0,
+  "win_rate": 80.0,
+  "grade": "A",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 3794.6,
+  "cost_per_use_usd": 0.00474325,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T16:54:19.528845Z"
+}

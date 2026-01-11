@@ -1,0 +1,34 @@
+{
+  "skill_name": "skill-creator",
+  "quality_grade": "A",
+  "quality_win_rate": 100.0,
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "total_comparisons": 10,
+  "prompt_count": 10,
+  "verdict_breakdown": {
+    "skill_wins": 10,
+    "baseline_wins": 0,
+    "ties": 0
+  },
+  "avg_tokens_per_use": 4571.4,
+  "cost_per_use_usd": 0.00571425,
+  "evaluated_at": "2026-01-11T16:52:58.631050+00:00",
+  "models_used": {
+    "prompt_generation": "claude-sonnet-4-20250514",
+    "security_analysis": "claude-sonnet-4-20250514"
+  },
+  "execution_grade": "C",
+  "execution_win_rate": 50.0,
+  "execution_prompts_tested": 4,
+  "execution_breakdown": {
+    "wins": 1,
+    "losses": 1,
+    "ties": 2
+  },
+  "final_grade": "A",
+  "combined_score": 80.0,
+  "category": "configuration",
+  "grade": "A",
+  "win_rate": 80.0
+}

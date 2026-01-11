@@ -1,0 +1,44 @@
+{
+  "prompt": "Convert this JSON data to a YAML file named 'output.yaml':\n\n{\"name\": \"Alice\", \"age\": 30, \"city\": \"New York\", \"skills\": [\"Python\", \"SQL\"]}\n\nThe YAML should preserve all the data.",
+  "tier": 2,
+  "baseline_verification": {
+    "skill_name": "skill-creator_baseline",
+    "prompt": "Convert this JSON data to a YAML file named 'output.yaml':\n\n{\"name\": \"Alice\", \"age\": 30, \"city\": \"New York\", \"skills\": [\"Python\", \"SQL\"]}\n\nThe YAML should preserve all the data.",
+    "code_extracted": true,
+    "code_language": "bash",
+    "code_blocks_count": 2,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 11,
+    "output_files_created": [
+      "output.yaml"
+    ],
+    "output_valid": true,
+    "output_properties": {
+      "output.yaml": {
+        "exists": true,
+        "valid_yaml": true,
+        "type": "dict"
+      }
+    },
+    "verified_at": "2026-01-11T16:52:43.632481Z"
+  },
+  "skill_verification": {
+    "skill_name": "skill-creator",
+    "prompt": "Convert this JSON data to a YAML file named 'output.yaml':\n\n{\"name\": \"Alice\", \"age\": 30, \"city\": \"New York\", \"skills\": [\"Python\", \"SQL\"]}\n\nThe YAML should preserve all the data.",
+    "code_extracted": false,
+    "code_language": "yaml",
+    "code_blocks_count": 1,
+    "executed": false,
+    "execution_success": false,
+    "execution_error": "No executable code found",
+    "execution_time_ms": 0,
+    "output_files_created": [],
+    "output_valid": false,
+    "output_properties": {},
+    "verified_at": "2026-01-11T16:52:43.632816Z"
+  },
+  "execution_verdict": "baseline",
+  "verdict_reasoning": "Baseline produced valid output, skill did not"
+}

@@ -1,0 +1,58 @@
+{
+  "skill_name": "seo-review",
+  "prompts": [
+    {
+      "prompt": "Can you check if my JavaScript closures page has a good title tag? I want to make sure it's optimized for search engines",
+      "difficulty": "simple",
+      "capability_tested": "title_tag_optimization"
+    },
+    {
+      "prompt": "I wrote a page about JavaScript promises but I'm not sure if the meta description is the right length and includes the right keywords",
+      "difficulty": "simple",
+      "capability_tested": "meta_description_analysis"
+    },
+    {
+      "prompt": "My event loop concept page isn't ranking well on Google. Can you do a full SEO audit and tell me what needs to be fixed?",
+      "difficulty": "complex",
+      "capability_tested": "comprehensive_seo_audit"
+    },
+    {
+      "prompt": "I want to make sure my async/await tutorial can win featured snippets on Google. What should I check for?",
+      "difficulty": "medium",
+      "capability_tested": "featured_snippet_optimization"
+    },
+    {
+      "prompt": "Can you help me figure out the best keywords to target for my JavaScript prototypes page?",
+      "difficulty": "simple",
+      "capability_tested": "keyword_identification"
+    },
+    {
+      "prompt": "My DOM manipulation guide has lots of content but I think the internal linking structure is messy. Can you audit the links and suggest improvements?",
+      "difficulty": "medium",
+      "capability_tested": "internal_linking_audit"
+    },
+    {
+      "prompt": "I just finished writing a comprehensive guide on JavaScript scope but before I publish it, I want to make sure it's fully optimized for search. Can you do a complete SEO review with specific recommendations?",
+      "difficulty": "complex",
+      "capability_tested": "complete_seo_audit_with_recommendations"
+    },
+    {
+      "prompt": "I think my JavaScript recursion page might be stuffing keywords too much. Can you check if the keyword placement looks natural?",
+      "difficulty": "medium",
+      "capability_tested": "keyword_placement_analysis"
+    },
+    {
+      "prompt": "My higher-order functions page seems to have some technical SEO issues - I think there might be multiple H1 tags or something wrong with the URL structure",
+      "difficulty": "medium",
+      "capability_tested": "technical_seo_analysis"
+    },
+    {
+      "prompt": "I have a JavaScript type coercion tutorial that's underperforming in search results. Can you audit the content structure and tell me if it follows SEO best practices for educational content?",
+      "difficulty": "complex",
+      "capability_tested": "content_structure_optimization"
+    }
+  ],
+  "generated_at": "2026-01-11T16:49:00.554199Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 10783
+}

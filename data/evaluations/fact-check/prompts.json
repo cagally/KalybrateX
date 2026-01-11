@@ -1,0 +1,58 @@
+{
+  "skill_name": "fact-check",
+  "prompts": [
+    {
+      "prompt": "Can you check if this JavaScript code example actually produces the output shown in the comments? I'm seeing `console.log(typeof null)` with a comment saying it returns 'object' but I want to make sure that's correct.",
+      "difficulty": "simple",
+      "capability_tested": "code_example_verification"
+    },
+    {
+      "prompt": "I wrote a tutorial about JavaScript arrays and included several MDN links. Could you verify that all the links are still working and point to the right documentation?",
+      "difficulty": "simple",
+      "capability_tested": "mdn_link_verification"
+    },
+    {
+      "prompt": "There's a claim in my JavaScript guide that 'Promises always resolve asynchronously' - can you check if this is actually true according to the ECMAScript specification?",
+      "difficulty": "medium",
+      "capability_tested": "ecmascript_spec_compliance"
+    },
+    {
+      "prompt": "I have a JavaScript concept page with about 15 external resource links to articles and videos. Can you go through them and make sure they're all accessible and actually cover JavaScript (not other languages)?",
+      "difficulty": "simple",
+      "capability_tested": "external_resource_verification"
+    },
+    {
+      "prompt": "My JavaScript tutorial has this statement: 'async/await is always better than Promises for handling asynchronous operations.' Can you fact-check whether this claim is accurate or if it needs to be more nuanced?",
+      "difficulty": "medium",
+      "capability_tested": "technical_claims_audit"
+    },
+    {
+      "prompt": "I need to verify an entire JavaScript concept page about closures before publishing. Can you check all the code examples, verify they produce the right outputs, test the MDN links, and make sure there aren't any common misconceptions being taught as facts?",
+      "difficulty": "complex",
+      "capability_tested": "comprehensive_fact_checking"
+    },
+    {
+      "prompt": "There are several code blocks in my JavaScript guide showing array methods. Can you verify that the return values and side effects mentioned in the comments are all correct?",
+      "difficulty": "medium",
+      "capability_tested": "code_behavior_verification"
+    },
+    {
+      "prompt": "I'm teaching about JavaScript's `==` vs `===` operators and want to make sure I'm not spreading any misconceptions. Can you check my explanations against authoritative sources?",
+      "difficulty": "medium",
+      "capability_tested": "misconception_detection"
+    },
+    {
+      "prompt": "Can you run through my JavaScript fundamentals page and check if there are any performance claims that need benchmarks or browser-specific behaviors that should specify which browsers they apply to?",
+      "difficulty": "complex",
+      "capability_tested": "performance_and_browser_claims_audit"
+    },
+    {
+      "prompt": "I have a complete JavaScript concept tutorial ready to publish, but I want a thorough fact-check first. Can you verify all code examples, check external links, audit technical claims, run any available tests, and give me a detailed report of any issues found?",
+      "difficulty": "complex",
+      "capability_tested": "full_five_phase_verification"
+    }
+  ],
+  "generated_at": "2026-01-11T16:49:03.692922Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 6655
+}

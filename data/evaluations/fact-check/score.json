@@ -1,0 +1,14 @@
+{
+  "skill_name": "fact-check",
+  "wins": 10,
+  "losses": 0,
+  "ties": 0,
+  "win_rate": 100.0,
+  "grade": "A",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 5969.8,
+  "cost_per_use_usd": 0.007462250000000001,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T16:52:16.705514Z"
+}

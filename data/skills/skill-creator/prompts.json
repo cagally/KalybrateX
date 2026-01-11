@@ -1,0 +1,58 @@
+{
+  "skill_name": "skill-creator",
+  "prompts": [
+    {
+      "prompt": "I want to create a custom skill for my team to help with financial report generation. Can you walk me through how to get started?",
+      "difficulty": "simple",
+      "capability_tested": "basic_skill_creation_guidance"
+    },
+    {
+      "prompt": "I need to build something that helps Claude work with our company's specific API documentation and workflows, but I'm not sure what structure to use.",
+      "difficulty": "medium",
+      "capability_tested": "skill_planning_and_structure"
+    },
+    {
+      "prompt": "I have a bunch of Python scripts I keep rewriting for data processing tasks. How can I package these so Claude can reuse them efficiently?",
+      "difficulty": "medium",
+      "capability_tested": "script_organization_and_bundling"
+    },
+    {
+      "prompt": "Can you help me create a specialized tool that combines our brand guidelines, template files, and design workflows into something Claude can use for marketing materials?",
+      "difficulty": "complex",
+      "capability_tested": "multi_resource_skill_design"
+    },
+    {
+      "prompt": "I wrote up some instructions for Claude to handle our customer support process, but it's getting really long and Claude seems to struggle with it. How can I make it more effective?",
+      "difficulty": "medium",
+      "capability_tested": "skill_optimization_and_context_management"
+    },
+    {
+      "prompt": "I need to turn my domain expertise in legal contract analysis into something Claude can use. What's the best way to structure all this knowledge?",
+      "difficulty": "medium",
+      "capability_tested": "domain_knowledge_structuring"
+    },
+    {
+      "prompt": "My skill works great for simple cases but fails on complex scenarios. The instructions are too vague in some places and too rigid in others. How do I fix this?",
+      "difficulty": "complex",
+      "capability_tested": "balancing_flexibility_and_constraints"
+    },
+    {
+      "prompt": "I want to create something that helps Claude work with our database schemas, but the documentation is huge. What's the smartest way to organize this?",
+      "difficulty": "complex",
+      "capability_tested": "progressive_disclosure_and_large_references"
+    },
+    {
+      "prompt": "I built a custom tool for Claude but I'm not sure if I should put certain information in the main instructions or separate reference files. How do I decide?",
+      "difficulty": "simple",
+      "capability_tested": "content_organization_principles"
+    },
+    {
+      "prompt": "I have a working prototype that helps Claude with our procurement workflows, but I need to package it properly and test it with my team. What's the right process?",
+      "difficulty": "simple",
+      "capability_tested": "skill_packaging_and_validation"
+    }
+  ],
+  "generated_at": "2026-01-11T16:49:00.620823Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 5128
+}

@@ -1,0 +1,13 @@
+{
+  "prompt": "I have a complete JavaScript concept tutorial ready to publish, but I want a thorough fact-check first. Can you verify all code examples, check external links, audit technical claims, run any available tests, and give me a detailed report of any issues found?",
+  "baseline_response": "I apologize, but I don't see any tutorial or code examples in your message. In order to fact-check and verify your JavaScript tutorial, you would need to actually share the content with me. Could you paste the tutorial text, code samples, or attach the document you'd like me to review? I'm happy to help you verify technical accuracy, check code examples, and provide detailed feedback.",
+  "skill_response": "I can help you with that! However, I noticed that you didn't actually include the specific concept document or test files in your message. To perform a comprehensive fact-check, I would need:\n\n1. The full markdown/MDX document for the JavaScript concept\n2. Any associated test files in the `/tests/` directory\n3. Links to external resources mentioned in the document\n\nCould you share those details? The more complete the information, the more thorough the fact-check can be. \n\nIf you'd like, I can walk you through the fact-checking process step-by-step using the verification methodology outlined in the skill description. Would you prefer that, or would you like to provide the specific document first?\n\nThe main steps I'll take during the fact-check will include:\n- Verifying every code example's output\n- Checking MDN and specification compliance\n- Validating external resource links\n- Running project tests\n- Auditing technical claims\n- Identifying any misconceptions or inaccuracies\n\nWould you like to proceed by sharing the document?",
+  "verdict": "skill",
+  "reasoning": "Response A is significantly more helpful and comprehensive. While both responses correctly identify that no tutorial content was provided, Response A goes much further by outlining a detailed fact-checking methodology with specific steps (verifying code examples, checking MDN compliance, validating links, running tests, auditing claims). It also provides clear guidance on what materials would be needed and offers to walk through the process step-by-step. Response A demonstrates deeper expertise in technical review processes and gives the user a clear understanding of what to expect. Response B is accurate but minimal, simply asking for the content without providing any additional value or insight into the fact-checking process.",
+  "baseline_tokens": 144,
+  "skill_tokens": 5789,
+  "position_a": "skill",
+  "position_b": "baseline",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T16:52:10.996141Z"
+}
