@@ -11,9 +11,9 @@
     "baseline_wins": 0,
     "ties": 0
   },
-  "avg_tokens_per_use": 3302.4,
-  "cost_per_use_usd": 0.004128000000000001,
-  "evaluated_at": "2026-01-11T13:55:59.529427+00:00",
+  "avg_tokens_per_use": 3381.8,
+  "cost_per_use_usd": 0.004227250000000001,
+  "evaluated_at": "2026-01-11T16:29:37.784745+00:00",
   "models_used": {
     "prompt_generation": "claude-sonnet-4-20250514",
     "security_analysis": "claude-sonnet-4-20250514"
