@@ -1,0 +1,28 @@
+{
+  "name": "marketplace-manager",
+  "slug": "marketplace-manager",
+  "source": "skillsmp",
+  "owner": "jeremylongshore",
+  "repo_name": "claude-code-plugins-plus-skills",
+  "repository_url": "https://github.com/jeremylongshore/claude-code-plugins-plus-skills",
+  "skill_path": "backups/skill-structure-cleanup-20251108-073936/plugins/examples/skills-powerkit/skills/marketplace-manager",
+  "github_metadata": {
+    "stars": 942,
+    "description": "Hundreds of Claude Code plugins with embedded AI skills. Learn via interactive Jupyter tutorials.",
+    "default_branch": "main",
+    "pushed_at": "2026-01-11 01:39:29+00:00",
+    "created_at": "2025-10-10 01:01:00+00:00",
+    "language": "Python",
+    "license": "NOASSERTION",
+    "open_issues": 9,
+    "forks": 114
+  },
+  "skill_md": {
+    "found": true,
+    "path": "backups/skill-structure-cleanup-20251108-073936/plugins/examples/skills-powerkit/skills/marketplace-manager/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 14:46:31.252168+00:00",
+  "fetch_error": null
+}

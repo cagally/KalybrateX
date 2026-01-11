@@ -1,0 +1,28 @@
+{
+  "name": "shioaji",
+  "slug": "shioaji",
+  "source": "skillsmp",
+  "owner": "Sinotrade",
+  "repo_name": "Shioaji",
+  "repository_url": "https://github.com/Sinotrade/Shioaji",
+  "skill_path": "skills/shioaji",
+  "github_metadata": {
+    "stars": 220,
+    "description": "Shioaji all new cross platform api for trading ( \u8de8\u5e73\u53f0\u8b49\u5238\u4ea4\u6613API )",
+    "default_branch": "master",
+    "pushed_at": "2026-01-08 02:10:39+00:00",
+    "created_at": "2018-11-21 06:27:12+00:00",
+    "language": "Dockerfile",
+    "license": null,
+    "open_issues": 12,
+    "forks": 18
+  },
+  "skill_md": {
+    "found": true,
+    "path": "skills/shioaji/SKILL.md",
+    "branch": "master",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 14:46:31.660962+00:00",
+  "fetch_error": null
+}

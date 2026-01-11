@@ -15,6 +15,7 @@ import httpx
 from .models import (
     SkillSource, GitHubMetadata, SkillMdInfo, DiscoveredSkill, DiscoveryResult
 )
+from .skillsmp_scraper import SkillsMPScraper
 
 # Re-export GitHubMetadata for use in discover_github_search_skills
 __all__ = [
@@ -629,6 +630,110 @@ class GitHubFetcher:
 
         return skills
 
+    def discover_skillsmp_skills(
+        self,
+        limit: int = 25,
+        marketplace_only: bool = True
+    ) -> list[DiscoveredSkill]:
+        """
+        Discover skills from SkillsMP (skillsmp.com).
+
+        Uses Playwright to bypass Cloudflare and fetch from their API.
+        Gets skills sorted by stars that have marketplace.json.
+
+        Args:
+            limit: Maximum number of skills to fetch
+            marketplace_only: Only fetch skills with marketplace.json
+
+        Returns:
+            List of discovered skills (sorted by stars)
+        """
+        skills = []
+        seen_repos = set()
+
+        try:
+            scraper = SkillsMPScraper()
+            skillsmp_skills = scraper.fetch_skills(
+                limit=limit,
+                marketplace_only=marketplace_only,
+                sort_by="stars"
+            )
+
+            for smp_skill in skillsmp_skills:
+                # Parse the GitHub URL to get owner/repo
+                if not smp_skill.github_url:
+                    logger.warning(f"No GitHub URL for {smp_skill.name}")
+                    continue
+
+                # Parse the tree URL format:
+                # https://github.com/owner/repo/tree/branch/path/to/skill
+                github_url = smp_skill.github_url
+
+                # Extract owner and repo from GitHub URL
+                match = re.match(
+                    r"https://github\.com/([^/]+)/([^/]+)(?:/tree/[^/]+/(.+))?",
+                    github_url
+                )
+                if not match:
+                    logger.warning(f"Could not parse GitHub URL: {github_url}")
+                    continue
+
+                owner = match.group(1)
+                repo = match.group(2)
+                skill_path = match.group(3)  # Path within repo (optional)
+
+                # Create unique key to avoid duplicates
+                # Use skill name + repo as key to dedupe multiple backup versions
+                repo_key = f"{owner}/{repo}:{smp_skill.name}".lower()
+                if repo_key in seen_repos:
+                    logger.debug(f"Skipping duplicate: {smp_skill.name} from {owner}/{repo}")
+                    continue
+                seen_repos.add(repo_key)
+
+                # Fetch repo metadata from GitHub
+                metadata = self.get_repo_metadata(owner, repo)
+                if not metadata:
+                    # Use data from SkillsMP if GitHub fetch fails
+                    metadata = GitHubMetadata(
+                        stars=smp_skill.stars or 0,
+                        description=smp_skill.description,
+                        default_branch="main",
+                        pushed_at=datetime.now(timezone.utc),
+                        created_at=datetime.now(timezone.utc),
+                        language=None,
+                        license=None,
+                        open_issues=0,
+                        forks=0,
+                    )
+
+                # Fetch SKILL.md content
+                skill_md = self.fetch_skill_md(owner, repo, skill_path)
+
+                # Only include if SKILL.md exists
+                if not skill_md.found:
+                    logger.debug(f"Skipping {owner}/{repo} - no SKILL.md at {skill_path}")
+                    continue
+
+                skill = DiscoveredSkill(
+                    name=smp_skill.name,
+                    slug=generate_slug(smp_skill.name),
+                    source=SkillSource.SKILLSMP,
+                    owner=owner,
+                    repo_name=repo,
+                    repository_url=f"https://github.com/{owner}/{repo}",
+                    skill_path=skill_path,
+                    github_metadata=metadata,
+                    skill_md=skill_md,
+                    discovered_at=datetime.now(timezone.utc),
+                )
+                skills.append(skill)
+                logger.info(f"Discovered via SkillsMP: {smp_skill.name} ({metadata.stars} stars)")
+
+        except Exception as e:
+            logger.error(f"Error discovering from SkillsMP: {e}")
+
+        return skills
+
     def run_discovery(
         self,
         sources: Optional[list[str]] = None,
@@ -653,9 +758,18 @@ class GitHubFetcher:
         seen_repos = set()  # Track repos to avoid duplicates across sources
 
         if sources is None:
-            sources = ["anthropic_official", "awesome_list", "github_search"]
+            sources = ["skillsmp", "anthropic_official", "awesome_list", "github_search"]
 
         # Discover from each source
+        if "skillsmp" in sources:
+            sources_checked.append("skillsmp")
+            skillsmp_skills = self.discover_skillsmp_skills(limit=limit or 25)
+            for skill in skillsmp_skills:
+                repo_key = f"{skill.owner}/{skill.repo_name}:{skill.skill_path or ''}".lower()
+                if repo_key not in seen_repos:
+                    seen_repos.add(repo_key)
+                    all_skills.append(skill)
+
         if "anthropic_official" in sources:
             sources_checked.append("anthropic_official")
             official_skills = self.discover_official_skills(limit=limit)

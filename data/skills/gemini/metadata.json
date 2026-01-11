@@ -1,11 +1,11 @@
 {
-  "name": "codex",
-  "slug": "codex",
+  "name": "gemini",
+  "slug": "gemini",
   "source": "skillsmp",
   "owner": "Lucklyric",
   "repo_name": "cc-dev-tools",
   "repository_url": "https://github.com/Lucklyric/cc-dev-tools",
-  "skill_path": "plugins/codex/skills/codex",
+  "skill_path": "plugins/gemini/skills/gemini",
   "github_metadata": {
     "stars": 26,
     "description": null,
@@ -19,10 +19,10 @@
   },
   "skill_md": {
     "found": true,
-    "path": "plugins/codex/skills/codex/SKILL.md",
+    "path": "plugins/gemini/skills/gemini/SKILL.md",
     "branch": "main",
     "content": null
   },
-  "discovered_at": "2026-01-11 14:46:35.384536+00:00",
+  "discovered_at": "2026-01-11 14:46:35.684844+00:00",
   "fetch_error": null
 }

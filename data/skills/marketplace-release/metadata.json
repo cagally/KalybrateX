@@ -1,0 +1,28 @@
+{
+  "name": "marketplace-release",
+  "slug": "marketplace-release",
+  "source": "skillsmp",
+  "owner": "aiskillstore",
+  "repo_name": "marketplace",
+  "repository_url": "https://github.com/aiskillstore/marketplace",
+  "skill_path": "plugins/emasoft/marketplace-release",
+  "github_metadata": {
+    "stars": 38,
+    "description": "Security-audited skills for Claude, Codex & Claude Code. One-click install, quality verified.",
+    "default_branch": "main",
+    "pushed_at": "2026-01-11 14:45:54+00:00",
+    "created_at": "2025-12-20 12:00:04+00:00",
+    "language": "Ruby",
+    "license": null,
+    "open_issues": 1,
+    "forks": 0
+  },
+  "skill_md": {
+    "found": true,
+    "path": "plugins/emasoft/marketplace-release/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 14:46:34.284566+00:00",
+  "fetch_error": null
+}
