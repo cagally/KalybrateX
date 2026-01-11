@@ -487,17 +487,30 @@ def print_leaderboard(leaderboard_path: Path = LEADERBOARD_FILE) -> None:
         print("\nLeaderboard is empty.")
         return
 
-    print(f"\n{'='*120}")
+    print(f"\n{'='*140}")
     print(f"KalybrateX Leaderboard")
-    print(f"{'='*120}")
+    print(f"{'='*140}")
     print(f"Generated: {data.get('generated_at', 'unknown')}")
     print(f"Total Skills: {data.get('total_skills', 0)}")
     print()
-    print(f"{'Rank':<5} {'Skill':<20} {'Grade':<6} {'Win%':<8} {'Sec':<8} {'Skill Tok':<10} {'Base Tok':<10} {'Skill $':<10} {'Base $':<10} {'Stars':<8}")
-    print("-" * 120)
+    print(f"{'Rank':<5} {'Skill':<18} {'Quality':<9} {'Exec':<8} {'Combined':<10} {'Security':<10} {'Skill $':<10} {'Skill Tok':<10} {'Base Tok':<10} {'Stars':<10}")
+    print("-" * 140)
 
     for i, rating in enumerate(ratings, 1):
-        win_rate = f"{rating['win_rate']}%" if rating['win_rate'] is not None else "N/A"
+        # Quality grade/win rate
+        quality_grade = rating.get('quality_grade', rating.get('grade', 'N/A'))
+        quality_rate = rating.get('quality_win_rate', rating.get('win_rate'))
+        quality_str = f"{quality_grade}({quality_rate:.0f}%)" if quality_rate is not None else quality_grade
+
+        # Execution grade/win rate
+        exec_grade = rating.get('execution_grade')
+        exec_rate = rating.get('execution_win_rate')
+        exec_str = f"{exec_grade}({exec_rate:.0f}%)" if exec_grade and exec_rate is not None else "N/A"
+
+        # Combined score
+        combined = rating.get('combined_score', rating.get('win_rate'))
+        final_grade = rating.get('final_grade', rating.get('grade', 'N/A'))
+        combined_str = f"{final_grade}({combined:.0f}%)" if combined is not None else "N/A"
 
         # Skill tokens/cost
         skill_tokens = rating.get('avg_tokens_per_use', 0)
@@ -505,36 +518,24 @@ def print_leaderboard(leaderboard_path: Path = LEADERBOARD_FILE) -> None:
         skill_cost = rating.get('cost_per_use_usd', 0)
         skill_cost_str = f"${skill_cost:.4f}" if skill_cost else "N/A"
 
-        # Baseline tokens/cost
+        # Baseline tokens
         base_tokens = rating.get('avg_baseline_tokens', 0)
         base_tokens_str = f"{int(base_tokens)}" if base_tokens else "N/A"
-        base_cost = rating.get('baseline_cost_usd', 0)
-        base_cost_str = f"${base_cost:.4f}" if base_cost else "N/A"
 
         stars = rating.get('github_stars', 0)
         stars_str = f"{stars:,}" if stars else "N/A"
 
         # Main row
         print(
-            f"{i:<5} {rating['skill_name']:<20} {rating['grade']:<6} "
-            f"{win_rate:<8} {rating['security_grade']:<8} "
-            f"{skill_tokens_str:<10} {base_tokens_str:<10} {skill_cost_str:<10} {base_cost_str:<10} {stars_str:<8}"
+            f"{i:<5} {rating['skill_name']:<18} {quality_str:<9} "
+            f"{exec_str:<8} {combined_str:<10} {rating['security_grade']:<10} "
+            f"{skill_cost_str:<10} {skill_tokens_str:<10} {base_tokens_str:<10} {stars_str:<10}"
         )
 
-        # Description (if available)
-        desc = rating.get('description', '')
-        if desc:
-            # Truncate to fit
-            if len(desc) > 110:
-                desc = desc[:107] + "..."
-            print(f"      {desc}")
-
-        # GitHub URL (if available)
+        # GitHub URL (on second line)
         github_url = rating.get('github_url', '')
         if github_url:
             print(f"      {github_url}")
-
-        print()  # Blank line between skills
 
     print()
 
