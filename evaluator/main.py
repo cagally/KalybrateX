@@ -86,6 +86,7 @@ def evaluate_skill(
     skill_name: str,
     force: bool = False,
     skip_security: bool = False,
+    skip_execution: bool = False,
     skills_dir: Path = DEFAULT_SKILLS_DIR,
     evaluations_dir: Path = DEFAULT_EVALUATIONS_DIR,
 ) -> Optional["SkillScore"]:
@@ -95,16 +96,18 @@ def evaluate_skill(
     This is the main orchestration function that:
     1. Loads SKILL.md from data/skills/{name}/SKILL.md
     2. Generates prompts (or loads cached)
-    3. Runs A/B comparisons for each prompt
-    4. Runs security check (unless skipped)
-    5. Calculates score
-    6. Saves all evidence via DataLogger
-    7. Returns SkillScore
+    3. Runs A/B comparisons for each prompt (quality evaluation)
+    4. Runs execution verification (unless skipped or not applicable)
+    5. Runs security check (unless skipped)
+    6. Calculates combined score (quality + execution)
+    7. Saves all evidence via DataLogger
+    8. Returns SkillScore
 
     Args:
         skill_name: Name of the skill to evaluate
         force: If True, re-evaluate even if already done
         skip_security: If True, skip security analysis
+        skip_execution: If True, skip execution verification
         skills_dir: Directory containing skills
         evaluations_dir: Directory to save evaluation results
 
@@ -121,14 +124,17 @@ def evaluate_skill(
         SkillNotFoundError,
     )
     from evaluator.quality_evaluator import QualityEvaluator
+    from evaluator.execution_evaluator import ExecutionEvaluator
     from evaluator.security_checker import SecurityChecker
     from evaluator.scorer import Scorer
     from evaluator.data_logger import DataLogger
+    from evaluator.skill_categories import requires_execution, get_skill_category
     from evaluator.models import (
         SecurityResult,
         SecurityGrade,
         SkillScore,
         ComparisonResult,
+        ExecutionScore,
     )
 
     skill_dir = skills_dir / skill_name
@@ -148,14 +154,19 @@ def evaluate_skill(
     print(f"{'='*60}")
 
     try:
+        # Determine number of steps based on what we're running
+        total_steps = 7
+        if skip_execution or not requires_execution(skill_name):
+            total_steps = 6
+
         # 1. Load SKILL.md
-        print(f"  [1/6] Loading SKILL.md...")
+        print(f"  [1/{total_steps}] Loading SKILL.md...")
         skill_content = load_skill_md(skill_dir)
         logger.save_skill_md(skill_name, skill_content)
         print(f"        Loaded {len(skill_content)} characters")
 
         # 2. Generate prompts (or load cached)
-        print(f"  [2/6] Generating prompts...")
+        print(f"  [2/{total_steps}] Generating prompts...")
         if check_cache_exists(skill_dir) and not force:
             print(f"        Using cached prompts")
             prompts_result = load_cached_prompts(skill_dir)
@@ -167,8 +178,8 @@ def evaluate_skill(
 
         logger.save_prompts(skill_name, prompts_result)
 
-        # 3. Run A/B comparisons
-        print(f"  [3/6] Running A/B comparisons...")
+        # 3. Run A/B comparisons (quality evaluation)
+        print(f"  [3/{total_steps}] Running A/B comparisons...")
         evaluator = QualityEvaluator()
         comparisons: List[ComparisonResult] = []
 
@@ -194,8 +205,49 @@ def evaluate_skill(
             print(f"  [ERROR] No comparisons completed - cannot score")
             return None
 
-        # 4. Security check (unless skipped)
-        print(f"  [4/6] Running security analysis...")
+        # 4. Execution verification (unless skipped or not applicable)
+        execution_score: Optional[ExecutionScore] = None
+        step_num = 4
+
+        if skip_execution:
+            print(f"  [4/{total_steps}] Execution verification...")
+            print(f"        Skipped (--skip-execution)")
+            step_num = 4
+        elif not requires_execution(skill_name):
+            category = get_skill_category(skill_name)
+            print(f"  [4/{total_steps}] Execution verification...")
+            print(f"        N/A for {category.value} skills (quality-only evaluation)")
+            step_num = 4
+        else:
+            print(f"  [4/{total_steps}] Running execution verification...")
+            try:
+                exec_evaluator = ExecutionEvaluator()
+                exec_comparisons, execution_score = exec_evaluator.evaluate(
+                    skill_content,
+                    skill_name,
+                    num_prompts=8,
+                )
+
+                # Show execution results
+                for i, exec_comp in enumerate(exec_comparisons):
+                    verdict_symbol = {
+                        "skill": "+",
+                        "baseline": "-",
+                        "tie": "="
+                    }.get(exec_comp.execution_verdict.value, "?")
+                    skill_valid = "✓" if exec_comp.skill_verification.output_valid else "✗"
+                    print(f"        [{i+1}/{len(exec_comparisons)}] {verdict_symbol} skill:{skill_valid} - {exec_comp.verdict_reasoning[:40]}...")
+
+                if execution_score:
+                    print(f"        Execution Grade: {execution_score.execution_grade} ({execution_score.execution_win_rate}% win rate)")
+            except Exception as e:
+                print(f"        [ERROR] Execution verification failed: {e}")
+                # Continue without execution score
+
+            step_num = 5
+
+        # 5. Security check (unless skipped)
+        print(f"  [{step_num}/{total_steps}] Running security analysis...")
         if skip_security:
             print(f"        Skipped (--skip-security)")
             security_result = SecurityResult(
@@ -213,23 +265,39 @@ def evaluate_skill(
             print(f"        Grade: {security_result.grade.value}, Issues: {len(security_result.issues)}")
 
         logger.save_security(skill_name, security_result)
+        step_num += 1
 
-        # 5. Calculate score
-        print(f"  [5/6] Calculating score...")
+        # Calculate score (quality + execution combined)
+        print(f"  [{step_num}/{total_steps}] Calculating score...")
         scorer = Scorer()
         score = scorer.score(skill_name, comparisons, security_result)
-        logger.save_score(skill_name, score)
-        print(f"        Grade: {score.grade} ({score.win_rate}% win rate)")
 
-        # 6. Save summary
-        print(f"  [6/6] Saving summary...")
+        # Calculate combined score if execution was run
+        combined_score = scorer.score_combined(
+            skill_name, comparisons, security_result, execution_score
+        )
+
+        logger.save_score(skill_name, score)
+        print(f"        Quality Grade: {score.grade} ({score.win_rate}% win rate)")
+        if execution_score and execution_score.execution_win_rate is not None:
+            print(f"        Execution Grade: {execution_score.execution_grade} ({execution_score.execution_win_rate}% win rate)")
+            print(f"        Combined Grade: {combined_score.final_grade} ({combined_score.combined_score}% combined)")
+        step_num += 1
+
+        # Save summary
+        print(f"  [{step_num}/{total_steps}] Saving summary...")
         logger.save_summary(skill_name, score, prompts_result, comparisons, security_result)
         print(f"        Saved to data/evaluations/{skill_name}/")
 
         # Print summary
         print(f"\n  Result: {skill_name}")
-        print(f"    Grade: {score.grade}")
-        print(f"    Win Rate: {score.win_rate}%")
+        print(f"    Quality Grade: {score.grade}")
+        print(f"    Quality Win Rate: {score.win_rate}%")
+        if execution_score and execution_score.execution_win_rate is not None:
+            print(f"    Execution Grade: {execution_score.execution_grade}")
+            print(f"    Execution Win Rate: {execution_score.execution_win_rate}%")
+            print(f"    Combined Grade: {combined_score.final_grade}")
+            print(f"    Combined Score: {combined_score.combined_score}%")
         print(f"    Wins: {score.wins}, Losses: {score.losses}, Ties: {score.ties}")
         print(f"    Security: {score.security_grade.value}")
         print(f"    Cost/use: ${score.cost_per_use_usd:.6f}")
@@ -398,6 +466,12 @@ Examples:
     )
 
     parser.add_argument(
+        "--skip-execution",
+        action="store_true",
+        help="Skip execution verification"
+    )
+
+    parser.add_argument(
         "--leaderboard", "-b",
         action="store_true",
         help="Show current leaderboard"
@@ -433,6 +507,7 @@ Examples:
             args.skill,
             force=args.force,
             skip_security=args.skip_security,
+            skip_execution=args.skip_execution,
         )
 
         if score:
@@ -458,6 +533,7 @@ Examples:
                     skill_name,
                     force=args.force,
                     skip_security=args.skip_security,
+                    skip_execution=args.skip_execution,
                 )
                 if score:
                     scores.append(score)

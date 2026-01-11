@@ -24,11 +24,15 @@ from datetime import datetime, timezone
 from typing import Optional, Tuple
 
 from evaluator.models import (
+    CombinedScore,
     ComparisonResult,
+    ExecutionScore,
     SecurityResult,
+    SkillCategory,
     SkillScore,
     Verdict,
 )
+from evaluator.skill_categories import get_skill_category, requires_execution
 
 
 # =============================================================================
@@ -217,5 +221,72 @@ class Scorer:
             avg_tokens_per_use=avg_tokens,
             cost_per_use_usd=cost_usd,
             total_comparisons=len(comparisons),
+            scored_at=datetime.now(timezone.utc),
+        )
+
+    def score_combined(
+        self,
+        skill_name: str,
+        comparisons: list[ComparisonResult],
+        security_result: SecurityResult,
+        execution_score: Optional[ExecutionScore] = None,
+    ) -> CombinedScore:
+        """
+        Calculate combined quality + execution score.
+
+        For skills that support execution verification, the final score
+        is a weighted combination:
+        - 60% quality (A/B comparison)
+        - 40% execution (code actually works)
+
+        For advisory skills (no execution), only quality is used.
+
+        Args:
+            skill_name: Name of the skill
+            comparisons: List of A/B comparison results
+            security_result: Security analysis result
+            execution_score: Optional execution verification score
+
+        Returns:
+            CombinedScore with all metrics
+        """
+        # Calculate quality score
+        quality_score = self.score(skill_name, comparisons, security_result)
+        category = get_skill_category(skill_name)
+
+        # If no execution score or not applicable, use quality only
+        if execution_score is None or not requires_execution(skill_name):
+            combined = quality_score.win_rate or 0.0
+            return CombinedScore(
+                skill_name=skill_name,
+                category=category,
+                quality_win_rate=quality_score.win_rate,
+                quality_grade=quality_score.grade,
+                execution_win_rate=None,
+                execution_grade=None,
+                combined_score=combined,
+                final_grade=quality_score.grade,
+                security_grade=security_result.grade,
+                scored_at=datetime.now(timezone.utc),
+            )
+
+        # Calculate weighted combined score
+        # 60% quality + 40% execution
+        quality_rate = quality_score.win_rate or 0.0
+        execution_rate = execution_score.execution_win_rate or 0.0
+
+        combined = (0.6 * quality_rate) + (0.4 * execution_rate)
+        final_grade = self.calculate_grade(combined)
+
+        return CombinedScore(
+            skill_name=skill_name,
+            category=category,
+            quality_win_rate=quality_score.win_rate,
+            quality_grade=quality_score.grade,
+            execution_win_rate=execution_score.execution_win_rate,
+            execution_grade=execution_score.execution_grade,
+            combined_score=round(combined, 2),
+            final_grade=final_grade,
+            security_grade=security_result.grade,
             scored_at=datetime.now(timezone.utc),
         )

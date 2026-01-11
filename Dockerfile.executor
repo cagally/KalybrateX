@@ -1,0 +1,30 @@
+# KalybrateX Execution Environment
+#
+# NEUTRAL ENVIRONMENT: This image intentionally has NO pre-installed packages.
+# The model being evaluated must install its own dependencies via pip.
+# This tests whether the skill teaches complete, working workflows.
+#
+# Build: docker build -f Dockerfile.executor -t kalybratex-executor .
+# Run:   docker run --rm -v $(pwd)/workspace:/workspace kalybratex-executor python script.py
+
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /workspace
+
+# Install only basic build tools needed for pip to compile packages
+# NO application-specific packages (pypdf, openpyxl, etc.)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libc-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip to latest
+RUN pip install --no-cache-dir --upgrade pip
+
+# Create non-root user for security
+RUN useradd -m -s /bin/bash executor
+USER executor
+
+# Default command
+CMD ["python", "script.py"]

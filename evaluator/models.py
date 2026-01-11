@@ -153,3 +153,179 @@ class SkillScore(BaseModel):
         ge=0, description="Total number of A/B comparisons performed"
     )
     scored_at: datetime = Field(description="When this score was calculated")
+
+
+# =============================================================================
+# Execution Verification Models
+# =============================================================================
+
+class SkillCategory(str, Enum):
+    """Category determining verification method for a skill."""
+    FILE_ARTIFACT = "file_artifact"      # pdf, xlsx, docx - produce files
+    CODE_GENERATION = "code_generation"  # produce runnable code
+    CONFIGURATION = "configuration"      # produce config files (YAML, JSON)
+    ADVISORY = "advisory"                # text/guidance only
+
+
+class ExecutionPrompt(BaseModel):
+    """A prompt designed to produce executable, verifiable output."""
+    prompt: str = Field(description="The execution prompt")
+    tier: Literal[1, 2] = Field(description="Prompt tier: 1=synthetic, 2=transform")
+    expected_files: list[str] = Field(description="List of expected output filenames")
+    expected_properties: dict = Field(
+        default_factory=dict,
+        description="Expected properties per file for verification"
+    )
+    capability_tested: str = Field(description="Which capability this prompt tests")
+
+
+class ExecutionResult(BaseModel):
+    """Result of executing code in sandbox."""
+    executed: bool = Field(description="Whether execution was attempted")
+    exit_code: int = Field(description="Process exit code (-1 if not executed)")
+    stdout: str = Field(default="", description="Standard output")
+    stderr: str = Field(default="", description="Standard error")
+    execution_time_ms: int = Field(ge=0, description="Execution time in milliseconds")
+    output_files: list[str] = Field(
+        default_factory=list,
+        description="List of files created during execution"
+    )
+    error: Optional[str] = Field(default=None, description="Error message if execution failed")
+
+
+class VerificationResult(BaseModel):
+    """Result of verifying execution output."""
+    skill_name: str = Field(description="Name of the skill being verified")
+    prompt: str = Field(description="The prompt that was executed")
+
+    # Code extraction
+    code_extracted: bool = Field(description="Whether executable code was found")
+    code_language: str = Field(description="Detected programming language")
+    code_blocks_count: int = Field(ge=0, description="Number of code blocks found")
+
+    # Execution
+    executed: bool = Field(description="Whether code was executed")
+    execution_success: bool = Field(description="Whether execution completed without errors")
+    execution_error: Optional[str] = Field(default=None, description="Error message if any")
+    execution_time_ms: int = Field(ge=0, description="Execution time in milliseconds")
+
+    # Output validation
+    output_files_created: list[str] = Field(
+        default_factory=list,
+        description="Files created during execution"
+    )
+    output_valid: bool = Field(description="Whether output met expected criteria")
+    output_properties: dict = Field(
+        default_factory=dict,
+        description="Actual properties of output files"
+    )
+
+    # Metadata
+    verified_at: datetime = Field(description="When verification was performed")
+
+
+class ExecutionComparisonResult(BaseModel):
+    """Result of comparing execution between baseline and skill responses."""
+    prompt: str = Field(description="The execution prompt")
+    tier: int = Field(description="Prompt tier (1 or 2)")
+
+    # Baseline execution
+    baseline_verification: VerificationResult = Field(
+        description="Verification result for baseline response"
+    )
+
+    # Skill execution
+    skill_verification: VerificationResult = Field(
+        description="Verification result for skill response"
+    )
+
+    # Comparison verdict
+    execution_verdict: Verdict = Field(
+        description="Which response produced better executable output"
+    )
+    verdict_reasoning: str = Field(
+        description="Explanation for the execution verdict"
+    )
+
+
+class ExecutionScore(BaseModel):
+    """Execution verification score for a skill."""
+    skill_name: str = Field(description="Name of the skill")
+    category: SkillCategory = Field(description="Skill category")
+
+    # Execution metrics
+    prompts_tested: int = Field(ge=0, description="Number of execution prompts tested")
+    code_extracted_count: int = Field(ge=0, description="Prompts where code was extracted")
+    executions_attempted: int = Field(ge=0, description="Execution attempts made")
+    executions_succeeded: int = Field(ge=0, description="Executions that completed without error")
+    outputs_valid: int = Field(ge=0, description="Outputs that met expected criteria")
+
+    # Win/loss tracking (vs baseline)
+    execution_wins: int = Field(ge=0, description="Times skill beat baseline in execution")
+    execution_losses: int = Field(ge=0, description="Times baseline beat skill in execution")
+    execution_ties: int = Field(ge=0, description="Times both had equal execution results")
+
+    # Calculated rates
+    extraction_rate: float = Field(
+        ge=0, le=100,
+        description="Percentage of prompts where code was extracted"
+    )
+    execution_success_rate: float = Field(
+        ge=0, le=100,
+        description="Percentage of executions that succeeded"
+    )
+    validation_rate: float = Field(
+        ge=0, le=100,
+        description="Percentage of successful executions with valid output"
+    )
+    execution_win_rate: Optional[float] = Field(
+        default=None,
+        description="Win rate vs baseline (0-100), None if no comparisons"
+    )
+
+    # Grade
+    execution_grade: Literal["A", "B", "C", "D", "F"] = Field(
+        description="Letter grade based on execution win rate"
+    )
+
+    # Metadata
+    scored_at: datetime = Field(description="When this score was calculated")
+
+
+class CombinedScore(BaseModel):
+    """Combined quality + execution score for a skill."""
+    skill_name: str = Field(description="Name of the skill")
+    category: SkillCategory = Field(description="Skill category")
+
+    # Quality metrics (from A/B comparison)
+    quality_win_rate: Optional[float] = Field(
+        description="Quality win rate (0-100)"
+    )
+    quality_grade: Literal["A", "B", "C", "D", "F"] = Field(
+        description="Quality letter grade"
+    )
+
+    # Execution metrics (from execution verification)
+    execution_win_rate: Optional[float] = Field(
+        default=None,
+        description="Execution win rate (0-100), None if not applicable"
+    )
+    execution_grade: Optional[Literal["A", "B", "C", "D", "F"]] = Field(
+        default=None,
+        description="Execution letter grade, None if not applicable"
+    )
+
+    # Combined
+    combined_score: float = Field(
+        ge=0, le=100,
+        description="Weighted combined score"
+    )
+    final_grade: Literal["A", "B", "C", "D", "F"] = Field(
+        description="Final letter grade"
+    )
+
+    # Security
+    security_grade: SecurityGrade = Field(description="Security grade")
+
+    # Metadata
+    scored_at: datetime = Field(description="When this score was calculated")
