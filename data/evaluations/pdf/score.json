@@ -1,0 +1,14 @@
+{
+  "skill_name": "pdf",
+  "wins": 10,
+  "losses": 0,
+  "ties": 0,
+  "win_rate": 100.0,
+  "grade": "A",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 3302.4,
+  "cost_per_use_usd": 0.004128000000000001,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T13:55:59.528378Z"
+}

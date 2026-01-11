@@ -5,6 +5,10 @@ from evaluator.models import (
     PromptGenerationResult,
     Verdict,
     ComparisonResult,
+    SecurityResult,
+    SecurityGrade,
+    SecurityIssue,
+    SkillScore,
 )
 from evaluator.prompt_generator import (
     PromptGenerator,
@@ -29,6 +33,17 @@ from evaluator.quality_evaluator import (
     build_judge_prompt,
     parse_judge_response,
 )
+from evaluator.security_checker import (
+    SecurityChecker,
+    SecurityCheckerError,
+)
+from evaluator.scorer import (
+    Scorer,
+    ScorerError,
+)
+from evaluator.data_logger import (
+    DataLogger,
+)
 
 __all__ = [
     # Models
@@ -36,6 +51,10 @@ __all__ = [
     "PromptGenerationResult",
     "Verdict",
     "ComparisonResult",
+    "SecurityResult",
+    "SecurityGrade",
+    "SecurityIssue",
+    "SkillScore",
     # Prompt Generator
     "PromptGenerator",
     "PromptGeneratorError",
@@ -57,4 +76,12 @@ __all__ = [
     "get_claude_code_context",
     "build_judge_prompt",
     "parse_judge_response",
+    # Security Checker
+    "SecurityChecker",
+    "SecurityCheckerError",
+    # Scorer
+    "Scorer",
+    "ScorerError",
+    # Data Logger
+    "DataLogger",
 ]

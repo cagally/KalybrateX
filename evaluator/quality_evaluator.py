@@ -51,7 +51,7 @@ class JudgeParseError(QualityEvaluatorError):
 # =============================================================================
 
 # Use Haiku for execution (cost efficient)
-DEFAULT_EXECUTION_MODEL = "claude-haiku-4-20250514"
+DEFAULT_EXECUTION_MODEL = "claude-3-5-haiku-20241022"
 # Use Sonnet for judging (needs nuance)
 DEFAULT_JUDGE_MODEL = "claude-sonnet-4-20250514"
 
