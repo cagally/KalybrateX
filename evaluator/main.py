@@ -440,20 +440,24 @@ def print_leaderboard(leaderboard_path: Path = LEADERBOARD_FILE) -> None:
         print("\nLeaderboard is empty.")
         return
 
-    print(f"\n{'='*70}")
+    print(f"\n{'='*95}")
     print(f"KalybrateX Leaderboard")
-    print(f"{'='*70}")
+    print(f"{'='*95}")
     print(f"Generated: {data.get('generated_at', 'unknown')}")
     print(f"Total Skills: {data.get('total_skills', 0)}")
     print()
-    print(f"{'Rank':<6} {'Skill':<25} {'Grade':<6} {'Win Rate':<10} {'Security':<10}")
-    print("-" * 70)
+    print(f"{'Rank':<6} {'Skill':<22} {'Grade':<6} {'Win Rate':<10} {'Security':<10} {'Tokens':<10} {'Cost/Use':<12}")
+    print("-" * 95)
 
     for i, rating in enumerate(ratings, 1):
         win_rate = f"{rating['win_rate']}%" if rating['win_rate'] is not None else "N/A"
+        tokens = rating.get('avg_tokens_per_use', 0)
+        tokens_str = f"{int(tokens)}" if tokens else "N/A"
+        cost = rating.get('cost_per_use_usd', 0)
+        cost_str = f"${cost:.4f}" if cost else "N/A"
         print(
-            f"{i:<6} {rating['skill_name']:<25} {rating['grade']:<6} "
-            f"{win_rate:<10} {rating['security_grade']:<10}"
+            f"{i:<6} {rating['skill_name']:<22} {rating['grade']:<6} "
+            f"{win_rate:<10} {rating['security_grade']:<10} {tokens_str:<10} {cost_str:<12}"
         )
 
     print()
