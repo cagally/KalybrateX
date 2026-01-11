@@ -140,12 +140,20 @@ class SkillScore(BaseModel):
         ge=0, description="Number of security issues identified"
     )
 
-    # Cost
+    # Cost - with skill
     avg_tokens_per_use: float = Field(
-        ge=0, description="Average output tokens per use"
+        ge=0, description="Average output tokens per use (with skill)"
     )
     cost_per_use_usd: float = Field(
-        ge=0, description="Estimated cost per use in USD"
+        ge=0, description="Estimated cost per use in USD (with skill)"
+    )
+
+    # Cost - baseline (without skill)
+    avg_baseline_tokens: float = Field(
+        ge=0, description="Average output tokens per use (without skill)"
+    )
+    baseline_cost_usd: float = Field(
+        ge=0, description="Estimated cost per use in USD (without skill)"
     )
 
     # Metadata

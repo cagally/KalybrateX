@@ -327,19 +327,23 @@ def update_leaderboard(
     scores: List["SkillScore"],
     leaderboard_path: Path = LEADERBOARD_FILE,
     evaluations_dir: Path = DEFAULT_EVALUATIONS_DIR,
+    skills_dir: Path = DEFAULT_SKILLS_DIR,
 ) -> None:
     """
     Update the leaderboard with new scores.
 
     Reads combined_score.json and execution_score.json if available
-    to include execution verification results.
+    to include execution verification results. Also reads skill metadata
+    for GitHub URL and description.
 
     Args:
         scores: List of SkillScore objects
         leaderboard_path: Path to leaderboard.json
         evaluations_dir: Directory containing evaluation results
+        skills_dir: Directory containing skill metadata
     """
     from evaluator.models import SkillScore
+    import re
 
     # Load existing leaderboard if it exists
     existing_ratings = {}
@@ -364,9 +368,52 @@ def update_leaderboard(
             "security_issues_count": score.security_issues_count,
             "avg_tokens_per_use": score.avg_tokens_per_use,
             "cost_per_use_usd": score.cost_per_use_usd,
+            "avg_baseline_tokens": score.avg_baseline_tokens,
+            "baseline_cost_usd": score.baseline_cost_usd,
             "total_comparisons": score.total_comparisons,
             "scored_at": score.scored_at.isoformat(),
         }
+
+        # Try to load skill metadata for GitHub URL and description
+        metadata_file = skills_dir / score.skill_name / "metadata.json"
+        if metadata_file.exists():
+            try:
+                metadata = json.loads(metadata_file.read_text(encoding="utf-8"))
+                repo_url = metadata.get("repository_url", "")
+                skill_md = metadata.get("skill_md", {})
+                branch = skill_md.get("branch", "main")
+                path = skill_md.get("path", "")
+
+                # Construct GitHub URL to SKILL.md
+                if repo_url and path:
+                    rating["github_url"] = f"{repo_url}/blob/{branch}/{path}"
+
+                # Get stars
+                github_meta = metadata.get("github_metadata", {})
+                rating["github_stars"] = github_meta.get("stars", 0)
+
+            except (json.JSONDecodeError, KeyError):
+                pass
+
+        # Try to extract description from SKILL.md frontmatter
+        skill_md_file = evaluations_dir / score.skill_name / "skill.md"
+        if skill_md_file.exists():
+            try:
+                content = skill_md_file.read_text(encoding="utf-8")
+                # Parse YAML frontmatter
+                if content.startswith("---"):
+                    end = content.find("---", 3)
+                    if end != -1:
+                        frontmatter = content[3:end]
+                        # Extract description
+                        desc_match = re.search(r'description:\s*(.+?)(?:\n[a-z]|\n---|\Z)', frontmatter, re.DOTALL)
+                        if desc_match:
+                            desc = desc_match.group(1).strip()
+                            # Clean up multiline descriptions
+                            desc = ' '.join(desc.split())
+                            rating["description"] = desc[:200]  # Limit length
+            except Exception:
+                pass
 
         # Try to load execution and combined scores
         combined_file = evaluations_dir / score.skill_name / "combined_score.json"
@@ -440,25 +487,54 @@ def print_leaderboard(leaderboard_path: Path = LEADERBOARD_FILE) -> None:
         print("\nLeaderboard is empty.")
         return
 
-    print(f"\n{'='*95}")
+    print(f"\n{'='*120}")
     print(f"KalybrateX Leaderboard")
-    print(f"{'='*95}")
+    print(f"{'='*120}")
     print(f"Generated: {data.get('generated_at', 'unknown')}")
     print(f"Total Skills: {data.get('total_skills', 0)}")
     print()
-    print(f"{'Rank':<6} {'Skill':<22} {'Grade':<6} {'Win Rate':<10} {'Security':<10} {'Tokens':<10} {'Cost/Use':<12}")
-    print("-" * 95)
+    print(f"{'Rank':<5} {'Skill':<20} {'Grade':<6} {'Win%':<8} {'Sec':<8} {'Skill Tok':<10} {'Base Tok':<10} {'Skill $':<10} {'Base $':<10} {'Stars':<8}")
+    print("-" * 120)
 
     for i, rating in enumerate(ratings, 1):
         win_rate = f"{rating['win_rate']}%" if rating['win_rate'] is not None else "N/A"
-        tokens = rating.get('avg_tokens_per_use', 0)
-        tokens_str = f"{int(tokens)}" if tokens else "N/A"
-        cost = rating.get('cost_per_use_usd', 0)
-        cost_str = f"${cost:.4f}" if cost else "N/A"
+
+        # Skill tokens/cost
+        skill_tokens = rating.get('avg_tokens_per_use', 0)
+        skill_tokens_str = f"{int(skill_tokens)}" if skill_tokens else "N/A"
+        skill_cost = rating.get('cost_per_use_usd', 0)
+        skill_cost_str = f"${skill_cost:.4f}" if skill_cost else "N/A"
+
+        # Baseline tokens/cost
+        base_tokens = rating.get('avg_baseline_tokens', 0)
+        base_tokens_str = f"{int(base_tokens)}" if base_tokens else "N/A"
+        base_cost = rating.get('baseline_cost_usd', 0)
+        base_cost_str = f"${base_cost:.4f}" if base_cost else "N/A"
+
+        stars = rating.get('github_stars', 0)
+        stars_str = f"{stars:,}" if stars else "N/A"
+
+        # Main row
         print(
-            f"{i:<6} {rating['skill_name']:<22} {rating['grade']:<6} "
-            f"{win_rate:<10} {rating['security_grade']:<10} {tokens_str:<10} {cost_str:<12}"
+            f"{i:<5} {rating['skill_name']:<20} {rating['grade']:<6} "
+            f"{win_rate:<8} {rating['security_grade']:<8} "
+            f"{skill_tokens_str:<10} {base_tokens_str:<10} {skill_cost_str:<10} {base_cost_str:<10} {stars_str:<8}"
         )
+
+        # Description (if available)
+        desc = rating.get('description', '')
+        if desc:
+            # Truncate to fit
+            if len(desc) > 110:
+                desc = desc[:107] + "..."
+            print(f"      {desc}")
+
+        # GitHub URL (if available)
+        github_url = rating.get('github_url', '')
+        if github_url:
+            print(f"      {github_url}")
+
+        print()  # Blank line between skills
 
     print()
 

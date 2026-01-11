@@ -148,18 +148,17 @@ class Scorer:
 
     def calculate_cost(
         self, comparisons: list[ComparisonResult]
-    ) -> Tuple[float, float]:
+    ) -> Tuple[float, float, float, float]:
         """
-        Calculate average tokens and cost per use.
+        Calculate average tokens and cost per use for both skill and baseline.
 
-        Uses skill_tokens from each comparison (which represents output tokens
-        from the skill-enhanced response) to estimate cost.
+        Uses skill_tokens and baseline_tokens from each comparison.
 
         Args:
             comparisons: List of A/B comparison results
 
         Returns:
-            Tuple of (avg_tokens_per_use, cost_per_use_usd)
+            Tuple of (avg_skill_tokens, skill_cost_usd, avg_baseline_tokens, baseline_cost_usd)
 
         Raises:
             ScorerError: If no comparisons provided
@@ -168,12 +167,16 @@ class Scorer:
             raise ScorerError("No comparisons provided - cannot calculate cost")
 
         total_skill_tokens = sum(c.skill_tokens for c in comparisons)
-        avg_tokens = total_skill_tokens / len(comparisons)
+        total_baseline_tokens = sum(c.baseline_tokens for c in comparisons)
+
+        avg_skill_tokens = total_skill_tokens / len(comparisons)
+        avg_baseline_tokens = total_baseline_tokens / len(comparisons)
 
         # Cost is based on output tokens at Haiku pricing
-        cost_usd = avg_tokens * HAIKU_OUTPUT_PRICE
+        skill_cost_usd = avg_skill_tokens * HAIKU_OUTPUT_PRICE
+        baseline_cost_usd = avg_baseline_tokens * HAIKU_OUTPUT_PRICE
 
-        return avg_tokens, cost_usd
+        return avg_skill_tokens, skill_cost_usd, avg_baseline_tokens, baseline_cost_usd
 
     def score(
         self,
@@ -205,8 +208,8 @@ class Scorer:
         wins, losses, ties, win_rate = self.calculate_win_rate(comparisons)
         grade = self.calculate_grade(win_rate)
 
-        # Calculate cost metrics
-        avg_tokens, cost_usd = self.calculate_cost(comparisons)
+        # Calculate cost metrics (skill and baseline)
+        avg_skill_tokens, skill_cost, avg_baseline_tokens, baseline_cost = self.calculate_cost(comparisons)
 
         # Build final score
         return SkillScore(
@@ -218,8 +221,10 @@ class Scorer:
             grade=grade,
             security_grade=security_result.grade,
             security_issues_count=len(security_result.issues),
-            avg_tokens_per_use=avg_tokens,
-            cost_per_use_usd=cost_usd,
+            avg_tokens_per_use=avg_skill_tokens,
+            cost_per_use_usd=skill_cost,
+            avg_baseline_tokens=avg_baseline_tokens,
+            baseline_cost_usd=baseline_cost,
             total_comparisons=len(comparisons),
             scored_at=datetime.now(timezone.utc),
         )
