@@ -1,0 +1,26 @@
+{
+  "skill_name": "mcp-builder",
+  "quality_grade": "A",
+  "quality_win_rate": 100.0,
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "total_comparisons": 10,
+  "prompt_count": 10,
+  "verdict_breakdown": {
+    "skill_wins": 10,
+    "baseline_wins": 0,
+    "ties": 0
+  },
+  "avg_tokens_per_use": 3519.1,
+  "cost_per_use_usd": 0.004398875,
+  "evaluated_at": "2026-01-11T18:20:27.315510+00:00",
+  "models_used": {
+    "prompt_generation": "claude-sonnet-4-20250514",
+    "security_analysis": "claude-sonnet-4-20250514"
+  },
+  "final_grade": "B",
+  "combined_score": 60.0,
+  "category": "code_generation",
+  "grade": "B",
+  "win_rate": 60.0
+}

@@ -1,0 +1,16 @@
+{
+  "skill_name": "pr-creator",
+  "wins": 5,
+  "losses": 5,
+  "ties": 0,
+  "win_rate": 50.0,
+  "grade": "C",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 906.1,
+  "cost_per_use_usd": 0.0011326250000000002,
+  "avg_baseline_tokens": 297.1,
+  "baseline_cost_usd": 0.00037137500000000007,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T18:35:54.844228Z"
+}

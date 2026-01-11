@@ -1,0 +1,12 @@
+{
+  "skill_name": "xlsx",
+  "category": "file_artifact",
+  "quality_win_rate": 80.0,
+  "quality_grade": "A",
+  "execution_win_rate": 0.0,
+  "execution_grade": "F",
+  "combined_score": 48.0,
+  "final_grade": "C",
+  "security_grade": "secure",
+  "scored_at": "2026-01-11T18:27:03.913740Z"
+}

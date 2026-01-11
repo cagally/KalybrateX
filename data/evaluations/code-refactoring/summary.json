@@ -1,0 +1,26 @@
+{
+  "skill_name": "code-refactoring",
+  "quality_grade": "B",
+  "quality_win_rate": 60.0,
+  "security_grade": "warning",
+  "security_issues_count": 2,
+  "total_comparisons": 10,
+  "prompt_count": 10,
+  "verdict_breakdown": {
+    "skill_wins": 6,
+    "baseline_wins": 4,
+    "ties": 0
+  },
+  "avg_tokens_per_use": 1036.6,
+  "cost_per_use_usd": 0.00129575,
+  "evaluated_at": "2026-01-11T18:49:37.029275+00:00",
+  "models_used": {
+    "prompt_generation": "claude-sonnet-4-20250514",
+    "security_analysis": "claude-sonnet-4-20250514"
+  },
+  "final_grade": "B",
+  "combined_score": 60.0,
+  "category": "advisory",
+  "grade": "B",
+  "win_rate": 60.0
+}

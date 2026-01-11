@@ -1,0 +1,16 @@
+{
+  "skill_name": "test-writer",
+  "wins": 10,
+  "losses": 0,
+  "ties": 0,
+  "win_rate": 100.0,
+  "grade": "A",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 7865.2,
+  "cost_per_use_usd": 0.0098315,
+  "avg_baseline_tokens": 1023.7,
+  "baseline_cost_usd": 0.0012796250000000002,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T18:44:29.645174Z"
+}

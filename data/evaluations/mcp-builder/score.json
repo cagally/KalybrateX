@@ -1,0 +1,16 @@
+{
+  "skill_name": "mcp-builder",
+  "wins": 10,
+  "losses": 0,
+  "ties": 0,
+  "win_rate": 100.0,
+  "grade": "A",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 3519.1,
+  "cost_per_use_usd": 0.004398875,
+  "avg_baseline_tokens": 943.5,
+  "baseline_cost_usd": 0.001179375,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T18:20:27.314105Z"
+}

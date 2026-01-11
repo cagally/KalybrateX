@@ -1,0 +1,26 @@
+{
+  "skill_name": "typescript-write",
+  "quality_grade": "C",
+  "quality_win_rate": 50.0,
+  "security_grade": "warning",
+  "security_issues_count": 1,
+  "total_comparisons": 10,
+  "prompt_count": 10,
+  "verdict_breakdown": {
+    "skill_wins": 5,
+    "baseline_wins": 5,
+    "ties": 0
+  },
+  "avg_tokens_per_use": 896.6,
+  "cost_per_use_usd": 0.0011207500000000002,
+  "evaluated_at": "2026-01-11T19:01:23.580899+00:00",
+  "models_used": {
+    "prompt_generation": "claude-sonnet-4-20250514",
+    "security_analysis": "claude-sonnet-4-20250514"
+  },
+  "final_grade": "C",
+  "combined_score": 50.0,
+  "category": "advisory",
+  "grade": "C",
+  "win_rate": 50.0
+}

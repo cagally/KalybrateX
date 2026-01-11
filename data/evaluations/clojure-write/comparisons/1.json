@@ -1,0 +1,13 @@
+{
+  "prompt": "I'm getting syntax errors in my Clojure file with mismatched parentheses. Can you help me fix the bracket issues and make sure the code is readable?",
+  "baseline_response": "Sure! Could you share the specific Clojure code that's giving you syntax errors? I'll help you balance the parentheses and improve the readability. If you can paste the code, I can:\n\n1. Check for mismatched parentheses\n2. Ensure proper nesting\n3. Suggest formatting improvements\n4. Help debug any specific syntax issues\n\nJust paste the code, and I'll help you clean it up.",
+  "skill_response": "I'll help you debug and fix parenthesis mismatches. Here are some key steps:\n\n1. Parenthesis Matching Techniques\n```clojure\n;; Good: Balanced parentheses\n(defn my-function [arg1 arg2]\n  (let [result (+ arg1 arg2)]\n    (println \"Result:\" result)\n    result))\n\n;; Bad: Unbalanced parentheses \n(defn my-function [arg1 arg2]  ; Missing closing parenthesis\n  (let [result (+ arg1 arg2)   ; Unbalanced let block\n    (println \"Result:\" result) ; Incorrect nesting\n    result)                    ; Mismatched closing parentheses\n```\n\n2. Structural Editing Tips\n- Use an editor with Clojure structural editing (Paredit, Parinfer)\n- Count opening and closing parentheses \n- Ensure each opening parenthesis has a matching closing one\n\n3. Common Parenthesis Errors to Check\n- Nested function calls\n- Let bindings\n- Macro expansions\n- Anonymous function definitions\n\n4. Debugging Steps\n```clojure\n;; Use -check-readable to validate syntax\n./bin/mage -check-readable your_file.clj\n\n;; Manually review indentation and brackets\n```\n\nWould you like me to look at your specific code and help you fix the parenthesis issues?",
+  "verdict": "skill",
+  "reasoning": "Response A is significantly more helpful and comprehensive. It provides immediate value by demonstrating concrete examples of correct vs incorrect parenthesis usage, offers specific debugging techniques, suggests practical tools (Paredit, Parinfer), and includes actionable steps like using -check-readable for syntax validation. Response B, while polite, only asks for code without providing any guidance or educational value. A user with parenthesis issues gets immediate help from Response A even without sharing their code, making it far more useful and actionable.",
+  "baseline_tokens": 140,
+  "skill_tokens": 1205,
+  "position_a": "skill",
+  "position_b": "baseline",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T19:02:21.552404Z"
+}

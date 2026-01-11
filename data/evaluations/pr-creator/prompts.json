@@ -1,0 +1,58 @@
+{
+  "skill_name": "pr-creator",
+  "prompts": [
+    {
+      "prompt": "I need to create a pull request for the bug fix I just committed",
+      "difficulty": "simple",
+      "capability_tested": "basic_pr_creation"
+    },
+    {
+      "prompt": "Can you help me open a PR? I added a new feature to the authentication module",
+      "difficulty": "simple",
+      "capability_tested": "feature_pr_creation"
+    },
+    {
+      "prompt": "I want to submit my changes as a pull request but I'm not sure what information to include",
+      "difficulty": "medium",
+      "capability_tested": "template_identification_and_usage"
+    },
+    {
+      "prompt": "Help me create a pull request that follows our team's standards - I fixed issue #247 related to database connection timeouts",
+      "difficulty": "medium",
+      "capability_tested": "issue_linking_and_template_compliance"
+    },
+    {
+      "prompt": "I need to open a PR for my performance improvements but I see there are multiple PR templates in the .github folder - which one should I use?",
+      "difficulty": "medium",
+      "capability_tested": "multiple_template_selection"
+    },
+    {
+      "prompt": "Create a pull request for my UI changes - I updated the dashboard layout and fixed some responsive design issues",
+      "difficulty": "medium",
+      "capability_tested": "pr_description_drafting"
+    },
+    {
+      "prompt": "I've been working on three different components and made commits for accessibility improvements, API refactoring, and documentation updates - can you help me create a proper pull request?",
+      "difficulty": "complex",
+      "capability_tested": "complex_multi_change_pr_creation"
+    },
+    {
+      "prompt": "My team requires conventional commit format and has strict PR templates with checklists - I need help creating a PR for the security vulnerability fix that addresses issues #89, #102, and #156",
+      "difficulty": "complex",
+      "capability_tested": "conventional_commits_and_multiple_issue_linking"
+    },
+    {
+      "prompt": "I want to submit a pull request but I need to make sure all the checklist items are properly marked and the description follows our repository guidelines exactly",
+      "difficulty": "complex",
+      "capability_tested": "checklist_completion_and_strict_compliance"
+    },
+    {
+      "prompt": "Set up a pull request for my work - I need the title to follow conventional commits, link to the related epic, and make sure I haven't missed any required sections in our PR template",
+      "difficulty": "simple",
+      "capability_tested": "title_formatting_and_template_adherence"
+    }
+  ],
+  "generated_at": "2026-01-11T18:32:38.614649Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1563
+}

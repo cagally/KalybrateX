@@ -1,0 +1,58 @@
+{
+  "skill_name": "code-refactoring",
+  "prompts": [
+    {
+      "prompt": "My Go CLI tool has a main function that's gotten way too long and complicated. Can you help me break it down into smaller, more manageable pieces?",
+      "difficulty": "simple",
+      "capability_tested": "basic_function_refactoring"
+    },
+    {
+      "prompt": "I have a Go service with some really messy code that has high cyclomatic complexity. I need to clean it up but I'm worried about breaking things. Can you help me refactor it safely?",
+      "difficulty": "medium",
+      "capability_tested": "complexity_reduction_with_safety"
+    },
+    {
+      "prompt": "There's this Go package in my codebase that everyone avoids touching because it's so convoluted. I need to refactor it, measure the improvements, and make sure I don't break anything in the process.",
+      "difficulty": "complex",
+      "capability_tested": "full_refactoring_with_metrics_and_validation"
+    },
+    {
+      "prompt": "I want to improve the test coverage of my Go package while also cleaning up some ugly code. Can you help me do both at the same time?",
+      "difficulty": "medium",
+      "capability_tested": "refactoring_with_coverage_improvement"
+    },
+    {
+      "prompt": "My Go MCP tool has some functions that are doing way too many things. How can I split them up properly?",
+      "difficulty": "simple",
+      "capability_tested": "function_decomposition"
+    },
+    {
+      "prompt": "I need to refactor a critical Go service but I want to track metrics before and after to prove the improvements. Can you help me set up proper measurement and do the refactoring?",
+      "difficulty": "complex",
+      "capability_tested": "metrics_driven_refactoring"
+    },
+    {
+      "prompt": "There's a particular hotspot in my Go code that's causing performance issues. I need to refactor it but want to make sure I'm following best practices.",
+      "difficulty": "medium",
+      "capability_tested": "hotspot_refactoring_with_patterns"
+    },
+    {
+      "prompt": "Can you help me clean up this messy Go function? It's doing too many different things and is hard to understand.",
+      "difficulty": "simple",
+      "capability_tested": "basic_code_cleanup"
+    },
+    {
+      "prompt": "I want to refactor my entire Go CLI application incrementally, with proper documentation of each step and validation that everything still works correctly.",
+      "difficulty": "complex",
+      "capability_tested": "incremental_refactoring_with_documentation"
+    },
+    {
+      "prompt": "My Go code has gotten really complex over time. I need to simplify it while making sure I don't lose any functionality and ideally improve test coverage too.",
+      "difficulty": "medium",
+      "capability_tested": "complexity_reduction_with_testing"
+    }
+  ],
+  "generated_at": "2026-01-11T18:44:53.682472Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1560
+}

@@ -1,0 +1,16 @@
+{
+  "skill_name": "write-unit-tests",
+  "wins": 7,
+  "losses": 3,
+  "ties": 0,
+  "win_rate": 70.0,
+  "grade": "B",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 4783.1,
+  "cost_per_use_usd": 0.005978875000000001,
+  "avg_baseline_tokens": 1434.9,
+  "baseline_cost_usd": 0.0017936250000000003,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T19:16:15.569629Z"
+}

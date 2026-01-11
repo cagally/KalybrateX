@@ -1,0 +1,12 @@
+{
+  "skill_name": "docx",
+  "category": "file_artifact",
+  "quality_win_rate": 50.0,
+  "quality_grade": "C",
+  "execution_win_rate": 33.33,
+  "execution_grade": "D",
+  "combined_score": 43.33,
+  "final_grade": "C",
+  "security_grade": "secure",
+  "scored_at": "2026-01-11T18:32:13.043481Z"
+}

@@ -1,0 +1,9 @@
+{
+  "skill_name": "write-unit-tests",
+  "grade": "secure",
+  "issues": [],
+  "analysis": "This SKILL.md file is safe and poses no security risks. It contains only documentation and code examples for writing unit tests for the tldraw SDK using Vitest. The content consists entirely of testing patterns, TypeScript code examples, and development guidelines. There are no external URLs, file system operations outside of normal test patterns, credential access attempts, dynamic code execution, or suspicious dependencies. All code examples are standard testing practices using legitimate testing frameworks and utilities. The file serves as a helpful reference for developers writing tests and does not introduce any security vulnerabilities.",
+  "analyzed_at": "2026-01-11T19:16:15.568714Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3710
+}

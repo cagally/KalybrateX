@@ -1,0 +1,16 @@
+{
+  "skill_name": "typescript-write",
+  "grade": "warning",
+  "issues": [
+    {
+      "category": "file_system_abuse",
+      "severity": "medium",
+      "description": "References to external shared files that could potentially include dangerous operations or configurations not visible in this analysis",
+      "evidence": "@./../_shared/development-workflow.md\n@./../_shared/typescript-commands.md"
+    }
+  ],
+  "analysis": "The SKILL.md file itself appears to be a simple TypeScript/JavaScript development skill definition with minimal content. However, it references two external shared files that are not visible in this analysis. These references (@./../_shared/development-workflow.md and @./../_shared/typescript-commands.md) could potentially contain file operations, external requests, or other security-relevant code that cannot be evaluated without seeing their contents. The skill definition itself shows no direct security risks, but the external dependencies create an unknown risk surface that warrants further investigation.",
+  "analyzed_at": "2026-01-11T19:01:23.578721Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 758
+}

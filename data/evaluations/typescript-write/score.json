@@ -1,0 +1,16 @@
+{
+  "skill_name": "typescript-write",
+  "wins": 5,
+  "losses": 5,
+  "ties": 0,
+  "win_rate": 50.0,
+  "grade": "C",
+  "security_grade": "warning",
+  "security_issues_count": 1,
+  "avg_tokens_per_use": 896.6,
+  "cost_per_use_usd": 0.0011207500000000002,
+  "avg_baseline_tokens": 979.4,
+  "baseline_cost_usd": 0.00122425,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T19:01:23.580333Z"
+}

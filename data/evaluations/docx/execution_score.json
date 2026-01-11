@@ -1,0 +1,18 @@
+{
+  "skill_name": "docx",
+  "category": "file_artifact",
+  "prompts_tested": 5,
+  "code_extracted_count": 5,
+  "executions_attempted": 5,
+  "executions_succeeded": 3,
+  "outputs_valid": 2,
+  "execution_wins": 1,
+  "execution_losses": 2,
+  "execution_ties": 2,
+  "extraction_rate": 100.0,
+  "execution_success_rate": 60.0,
+  "validation_rate": 66.67,
+  "execution_win_rate": 33.33,
+  "execution_grade": "D",
+  "scored_at": "2026-01-11T18:32:06.837062Z"
+}

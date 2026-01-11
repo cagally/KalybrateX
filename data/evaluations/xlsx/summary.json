@@ -1,0 +1,34 @@
+{
+  "skill_name": "xlsx",
+  "quality_grade": "A",
+  "quality_win_rate": 80.0,
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "total_comparisons": 10,
+  "prompt_count": 10,
+  "verdict_breakdown": {
+    "skill_wins": 8,
+    "baseline_wins": 2,
+    "ties": 0
+  },
+  "avg_tokens_per_use": 4416.4,
+  "cost_per_use_usd": 0.0055205,
+  "evaluated_at": "2026-01-11T18:27:03.915020+00:00",
+  "models_used": {
+    "prompt_generation": "claude-sonnet-4-20250514",
+    "security_analysis": "claude-sonnet-4-20250514"
+  },
+  "execution_grade": "F",
+  "execution_win_rate": 0.0,
+  "execution_prompts_tested": 4,
+  "execution_breakdown": {
+    "wins": 0,
+    "losses": 1,
+    "ties": 3
+  },
+  "final_grade": "C",
+  "combined_score": 48.0,
+  "category": "file_artifact",
+  "grade": "C",
+  "win_rate": 48.0
+}

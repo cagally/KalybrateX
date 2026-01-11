@@ -1,0 +1,18 @@
+{
+  "skill_name": "xlsx",
+  "category": "file_artifact",
+  "prompts_tested": 4,
+  "code_extracted_count": 4,
+  "executions_attempted": 4,
+  "executions_succeeded": 3,
+  "outputs_valid": 3,
+  "execution_wins": 0,
+  "execution_losses": 1,
+  "execution_ties": 3,
+  "extraction_rate": 100.0,
+  "execution_success_rate": 75.0,
+  "validation_rate": 100.0,
+  "execution_win_rate": 0.0,
+  "execution_grade": "F",
+  "scored_at": "2026-01-11T18:26:58.344911Z"
+}

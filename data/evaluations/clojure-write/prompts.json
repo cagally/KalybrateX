@@ -1,0 +1,58 @@
+{
+  "skill_name": "clojure-write",
+  "prompts": [
+    {
+      "prompt": "I need to create a simple function that takes a list of numbers and returns only the even ones. Can you help me write and test this in Clojure?",
+      "difficulty": "simple",
+      "capability_tested": "basic function creation and REPL testing"
+    },
+    {
+      "prompt": "I'm getting syntax errors in my Clojure file with mismatched parentheses. Can you help me fix the bracket issues and make sure the code is readable?",
+      "difficulty": "simple",
+      "capability_tested": "syntax error fixing and code readability verification"
+    },
+    {
+      "prompt": "I want to write a function that transforms a map by updating specific keys, but I'm not sure about the best Clojure way to do this. Can you guide me through it?",
+      "difficulty": "simple",
+      "capability_tested": "basic data transformation with Clojure idioms"
+    },
+    {
+      "prompt": "I need to build a namespace that handles user authentication with functions for login validation and session management. Can you help me structure this properly?",
+      "difficulty": "medium",
+      "capability_tested": "namespace organization and multi-function development"
+    },
+    {
+      "prompt": "I'm trying to refactor this messy Clojure code that has nested conditionals and repeated logic. How can I break it down into smaller, more functional pieces?",
+      "difficulty": "medium",
+      "capability_tested": "code refactoring and functional decomposition"
+    },
+    {
+      "prompt": "I want to create a data processing pipeline that reads JSON, transforms it, and outputs CSV. Can you help me build this step by step using REPL-driven development?",
+      "difficulty": "medium",
+      "capability_tested": "REPL-driven workflow for complex data processing"
+    },
+    {
+      "prompt": "I need to test my Clojure functions with various edge cases before integrating them. How should I approach this systematically in the REPL?",
+      "difficulty": "medium",
+      "capability_tested": "systematic REPL testing and validation"
+    },
+    {
+      "prompt": "I'm building a ClojureScript web application with multiple interconnected components. Can you help me design the architecture and implement it using proper functional programming principles?",
+      "difficulty": "complex",
+      "capability_tested": "complex application architecture and ClojureScript development"
+    },
+    {
+      "prompt": "I have a large Clojure codebase that needs to be refactored for better performance and maintainability. The functions are tightly coupled and hard to test. Can you help me redesign this using bottom-up development?",
+      "difficulty": "complex",
+      "capability_tested": "large-scale refactoring and architectural redesign"
+    },
+    {
+      "prompt": "I need to implement a complex algorithm that involves recursion, memoization, and handles multiple data structures. Can you guide me through building this incrementally with proper testing at each step?",
+      "difficulty": "complex",
+      "capability_tested": "advanced algorithm implementation with incremental development"
+    }
+  ],
+  "generated_at": "2026-01-11T19:01:47.198491Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1961
+}

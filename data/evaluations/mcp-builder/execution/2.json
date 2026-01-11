@@ -1,0 +1,58 @@
+{
+  "prompt": "Create a Python script 'process.py' that:\n1. Reads this data: [{\"id\": 1, \"value\": 10}, {\"id\": 2, \"value\": 20}, {\"id\": 3, \"value\": 30}]\n2. Calculates the sum of all 'value' fields\n3. Saves the result to 'result.json' as {\"total\": <sum>}\n\nExecute the script to create result.json.",
+  "tier": 2,
+  "baseline_verification": {
+    "skill_name": "mcp-builder_baseline",
+    "prompt": "Create a Python script 'process.py' that:\n1. Reads this data: [{\"id\": 1, \"value\": 10}, {\"id\": 2, \"value\": 20}, {\"id\": 3, \"value\": 30}]\n2. Calculates the sum of all 'value' fields\n3. Saves the result to 'result.json' as {\"total\": <sum>}\n\nExecute the script to create result.json.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 2,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 60,
+    "output_files_created": [
+      "result.json"
+    ],
+    "output_valid": false,
+    "output_properties": {
+      "process.py": {
+        "exists": false
+      },
+      "result.json": {
+        "exists": true,
+        "valid_json": true,
+        "type": "dict"
+      }
+    },
+    "verified_at": "2026-01-11T18:20:21.843896Z"
+  },
+  "skill_verification": {
+    "skill_name": "mcp-builder",
+    "prompt": "Create a Python script 'process.py' that:\n1. Reads this data: [{\"id\": 1, \"value\": 10}, {\"id\": 2, \"value\": 20}, {\"id\": 3, \"value\": 30}]\n2. Calculates the sum of all 'value' fields\n3. Saves the result to 'result.json' as {\"total\": <sum>}\n\nExecute the script to create result.json.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 3,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 59,
+    "output_files_created": [
+      "result.json"
+    ],
+    "output_valid": false,
+    "output_properties": {
+      "process.py": {
+        "exists": false
+      },
+      "result.json": {
+        "exists": true,
+        "valid_json": true,
+        "type": "dict"
+      }
+    },
+    "verified_at": "2026-01-11T18:20:21.904784Z"
+  },
+  "execution_verdict": "tie",
+  "verdict_reasoning": "Both failed equally"
+}

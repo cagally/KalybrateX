@@ -1,0 +1,13 @@
+{
+  "prompt": "I'm getting TypeScript errors about missing type definitions for this API response object. Can you help me create proper interfaces?",
+  "baseline_response": "I'll help you create TypeScript interfaces for the API response. However, I noticed that you didn't include the actual response object or code in your message. Could you please share:\n\n1. A sample of the API response JSON\n2. The specific TypeScript errors you're seeing\n3. Any context about the API or the data structure\n\nOnce you provide those details, I can help you create precise, type-safe interfaces that will resolve your TypeScript errors. Here's an example of how I might help:\n\n```typescript\n// If this was your API response\ninterface ApiResponse {\n  id: number;\n  name: string;\n  details: {\n    createdAt: string;\n    status: string;\n  };\n  items: Array<{\n    itemId: number;\n    quantity: number;\n  }>;\n}\n```\n\nCould you share more specifics about your specific use case?",
+  "skill_response": "I'll help you create TypeScript interfaces for API response objects. I'll need some context about the specific API and response structure. Could you share:\n\n1. A sample of the raw JSON response\n2. The context of where this API is being used\n3. Any specific requirements for the interface\n\nWould you like me to show you a general pattern for creating type-safe API response interfaces?\n\nHere's a typical approach:\n\n```typescript\n// API Response Interface Pattern\ninterface ApiResponse<T> {\n  data: T;\n  status: number;\n  message?: string;\n}\n\n// Specific Model Interface\ninterface UserModel {\n  id: number;\n  name: string;\n  email: string;\n}\n\n// Typed API Response\ntype UserApiResponse = ApiResponse<UserModel>;\n```\n\nWould you like me to elaborate on this pattern or help you with a specific response structure?",
+  "verdict": "skill",
+  "reasoning": "Response B is better because it provides a more structured and comprehensive approach to TypeScript interfaces. While both responses correctly ask for more context, Response B offers a superior generic API response pattern with ApiResponse<T> that demonstrates proper TypeScript generics usage. The example shows better TypeScript practices with a reusable generic interface pattern that separates concerns between the API wrapper structure and the data model. Response B also provides a clearer progression from general pattern to specific implementation with the typed UserApiResponse example, making it more educational and actionable for TypeScript developers.",
+  "baseline_tokens": 231,
+  "skill_tokens": 304,
+  "position_a": "baseline",
+  "position_b": "skill",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T18:57:30.606928Z"
+}

@@ -1,0 +1,58 @@
+{
+  "skill_name": "typescript-write",
+  "prompts": [
+    {
+      "prompt": "Can you help me write a simple TypeScript function that takes an array of numbers and returns the sum?",
+      "difficulty": "simple",
+      "capability_tested": "basic_typescript_function_creation"
+    },
+    {
+      "prompt": "I need to create a React component in TypeScript that displays a user's profile information with proper type definitions",
+      "difficulty": "medium",
+      "capability_tested": "react_typescript_component_development"
+    },
+    {
+      "prompt": "My JavaScript code is getting messy - can you help me refactor this legacy function to use modern ES6+ syntax and proper error handling?",
+      "difficulty": "medium",
+      "capability_tested": "code_refactoring_modernization"
+    },
+    {
+      "prompt": "I'm getting TypeScript errors about missing type definitions for this API response object. Can you help me create proper interfaces?",
+      "difficulty": "simple",
+      "capability_tested": "typescript_interface_creation"
+    },
+    {
+      "prompt": "I need to build a complete TypeScript utility class for handling data validation with custom error types and async methods",
+      "difficulty": "complex",
+      "capability_tested": "advanced_typescript_class_design"
+    },
+    {
+      "prompt": "Can you write a JavaScript function that debounces API calls and handles loading states?",
+      "difficulty": "medium",
+      "capability_tested": "async_javascript_patterns"
+    },
+    {
+      "prompt": "Help me create a TypeScript generic function that can work with different data types while maintaining type safety",
+      "difficulty": "complex",
+      "capability_tested": "typescript_generics_implementation"
+    },
+    {
+      "prompt": "I need a simple JavaScript event listener that updates the DOM when a button is clicked",
+      "difficulty": "simple",
+      "capability_tested": "basic_dom_manipulation"
+    },
+    {
+      "prompt": "Can you help me set up proper TypeScript configuration and write code that follows industry best practices for a new project?",
+      "difficulty": "complex",
+      "capability_tested": "typescript_project_setup_and_standards"
+    },
+    {
+      "prompt": "I want to convert this old jQuery code to modern vanilla JavaScript with proper TypeScript types",
+      "difficulty": "medium",
+      "capability_tested": "legacy_code_migration"
+    }
+  ],
+  "generated_at": "2026-01-11T18:55:57.670713Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1038
+}

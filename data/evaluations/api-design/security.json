@@ -1,0 +1,9 @@
+{
+  "skill_name": "api-design",
+  "grade": "secure",
+  "issues": [],
+  "analysis": "This SKILL.md file appears to be safe from a security perspective. It describes a methodology for API design and contains no executable code or security-risky patterns. The content is purely documentation about design principles, patterns, and best practices for API development. The allowed-tools (Read, Write, Edit, Bash, Grep, Glob) are standard file system operations without any indication of misuse. There are no external URLs, webhook endpoints, credential access attempts, dynamic code execution patterns, or suspicious dependencies. The file focuses entirely on theoretical API design methodology with validation metrics and transferability analysis.",
+  "analyzed_at": "2026-01-11T18:55:37.074112Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3125
+}

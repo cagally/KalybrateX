@@ -1,0 +1,58 @@
+{
+  "skill_name": "test-writer",
+  "prompts": [
+    {
+      "prompt": "I just wrote a new JavaScript concept page about closures with several code examples. Can you create Vitest tests to make sure all the examples actually work correctly?",
+      "difficulty": "simple",
+      "capability_tested": "basic_test_generation_from_concept_page"
+    },
+    {
+      "prompt": "My documentation page has some DOM manipulation examples that use document.createElement and event listeners. I need tests for these but I'm not sure how to set up the DOM testing environment properly.",
+      "difficulty": "medium",
+      "capability_tested": "dom_test_creation_with_jsdom_setup"
+    },
+    {
+      "prompt": "I have a concept page about async/await with Promise examples, some that resolve and some that reject. Help me write comprehensive tests that cover all the async patterns shown in the documentation.",
+      "difficulty": "medium",
+      "capability_tested": "async_promise_testing_patterns"
+    },
+    {
+      "prompt": "Can you look at this concept page about primitive types and write tests for the typeof examples? There are console.log statements with expected outputs that need to be verified.",
+      "difficulty": "simple",
+      "capability_tested": "console_log_output_to_test_assertion_conversion"
+    },
+    {
+      "prompt": "I need tests for a concept page that has intentional error examples - things like accessing properties on null and division by zero errors. How do I properly test that these throw the right exceptions?",
+      "difficulty": "medium",
+      "capability_tested": "error_case_testing_with_toThrow"
+    },
+    {
+      "prompt": "My JavaScript fundamentals page has floating point arithmetic examples showing precision issues like 0.1 + 0.2. I need tests that properly handle these floating point comparisons without false failures.",
+      "difficulty": "medium",
+      "capability_tested": "floating_point_comparison_testing"
+    },
+    {
+      "prompt": "I wrote a comprehensive concept page about JavaScript functions with examples covering closures, higher-order functions, arrow functions, and some DOM event handlers. I need a complete test suite that organizes tests by documentation sections and handles both regular and DOM examples properly.",
+      "difficulty": "complex",
+      "capability_tested": "comprehensive_multi_section_test_organization"
+    },
+    {
+      "prompt": "There's a concept page with setTimeout and Promise examples that demonstrate the event loop. Some examples are timing-dependent. How do I write reliable tests for these without making them flaky?",
+      "difficulty": "complex",
+      "capability_tested": "timing_dependent_code_testing"
+    },
+    {
+      "prompt": "I have a concept page about object-oriented programming with class examples, inheritance, and method calls. The examples show console.log outputs and return values. Generate the test file following the project's naming conventions.",
+      "difficulty": "simple",
+      "capability_tested": "object_oriented_code_example_testing"
+    },
+    {
+      "prompt": "My concept page covers advanced topics like strict mode behavior, closure state management, and array method chaining. There are also some browser-only API examples that can't run in Node. I need a complete test strategy that handles all these cases appropriately, including what to skip and why.",
+      "difficulty": "complex",
+      "capability_tested": "advanced_mixed_environment_test_strategy"
+    }
+  ],
+  "generated_at": "2026-01-11T18:36:23.737764Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 7443
+}

@@ -1,0 +1,9 @@
+{
+  "skill_name": "pr-creator",
+  "grade": "secure",
+  "issues": [],
+  "analysis": "This SKILL.md file is safe and poses no security risks. It defines a pull request creation workflow that only performs legitimate local operations: reading repository files (.github/pull_request_template.md), creating PR descriptions, and using the GitHub CLI (gh) to create pull requests. All file operations are limited to reading standard GitHub template files within the repository structure. The gh CLI command shown uses standard parameters (--title and --body) without any external data transmission beyond normal GitHub API usage. No external URLs, credential access, arbitrary file operations, code injection patterns, or suspicious dependencies were found.",
+  "analyzed_at": "2026-01-11T18:35:54.843314Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1137
+}

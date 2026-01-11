@@ -1,0 +1,46 @@
+{
+  "prompt": "Create a PDF named 'report.pdf' with 3 pages. Each page should display its page number: 'Page 1', 'Page 2', 'Page 3'.",
+  "tier": 1,
+  "baseline_verification": {
+    "skill_name": "docx_baseline",
+    "prompt": "Create a PDF named 'report.pdf' with 3 pages. Each page should display its page number: 'Page 1', 'Page 2', 'Page 3'.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 1,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 121,
+    "output_files_created": [
+      "report.pdf"
+    ],
+    "output_valid": true,
+    "output_properties": {
+      "report.pdf": {
+        "exists": true,
+        "pages": 3,
+        "valid_format": true
+      }
+    },
+    "verified_at": "2026-01-11T18:31:39.353860Z"
+  },
+  "skill_verification": {
+    "skill_name": "docx",
+    "prompt": "Create a PDF named 'report.pdf' with 3 pages. Each page should display its page number: 'Page 1', 'Page 2', 'Page 3'.",
+    "code_extracted": true,
+    "code_language": "bash",
+    "code_blocks_count": 2,
+    "executed": true,
+    "execution_success": false,
+    "execution_error": null,
+    "execution_time_ms": 8,
+    "output_files_created": [
+      "report.tex"
+    ],
+    "output_valid": false,
+    "output_properties": {},
+    "verified_at": "2026-01-11T18:31:39.362721Z"
+  },
+  "execution_verdict": "baseline",
+  "verdict_reasoning": "Baseline produced valid output, skill did not"
+}

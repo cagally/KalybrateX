@@ -1,0 +1,13 @@
+{
+  "prompt": "Can you help me open a PR? I added a new feature to the authentication module",
+  "baseline_response": "I'll help you open a Pull Request (PR). To do this effectively, I'll need some more information:\n\n1. What specific feature did you add to the authentication module?\n2. Which repository are you working in?\n3. Have you already committed your changes?\n4. What branch did you create for this feature?\n\nTypical steps to open a PR include:\n1. Commit your changes\n2. Push your branch to the remote repository\n3. Go to the repository on GitHub/GitLab\n4. Click \"Create Pull Request\"\n5. Write a clear description of your changes\n\nWould you like me to guide you through these steps with more specific details?",
+  "skill_response": "I'll help you create a Pull Request for the authentication module feature. I'll guide you through the process step by step.\n\n1. First, could you provide me with some more details about the feature:\n   - What specific functionality did you add?\n   - Are there any related issues this PR addresses?\n   - What problem does this feature solve?\n\n2. I'll also need to know:\n   - What are the main changes you made?\n   - Did you add any tests?\n   - Are there any breaking changes or backwards compatibility considerations?\n\nThe more details you can share, the better I can help you craft a comprehensive and clear Pull Request description that follows best practices.\n\nCould you share more information about the authentication module feature you implemented?",
+  "verdict": "baseline",
+  "reasoning": "Response B is more comprehensive and actionable. While both responses ask for clarifying details about the feature, Response B goes further by providing the actual steps needed to open a PR (commit, push, navigate to repository, create PR, write description). It also asks more practical questions about the current state (repository, branch, commit status) that are essential for creating a PR. Response A focuses mainly on gathering information for the PR description but doesn't address the technical steps of actually opening the PR, making it less complete and actionable for someone who needs help with the entire process.",
+  "baseline_tokens": 171,
+  "skill_tokens": 715,
+  "position_a": "skill",
+  "position_b": "baseline",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T18:33:10.618754Z"
+}

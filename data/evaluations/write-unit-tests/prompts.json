@@ -1,0 +1,58 @@
+{
+  "skill_name": "write-unit-tests",
+  "prompts": [
+    {
+      "prompt": "I need to write some basic unit tests for my Vec.ts file that has vector math functions like add, subtract, and normalize",
+      "difficulty": "simple",
+      "capability_tested": "basic_unit_test_creation"
+    },
+    {
+      "prompt": "Can you help me set up a test for my arrow shape tool? I want to test that clicking and dragging creates an arrow properly",
+      "difficulty": "medium",
+      "capability_tested": "shape_tool_integration_testing"
+    },
+    {
+      "prompt": "I'm getting a failing test and need to mock the getIsReadonly method to return true for my test case",
+      "difficulty": "simple",
+      "capability_tested": "basic_mocking_with_vitest"
+    },
+    {
+      "prompt": "I need to write an integration test that simulates a user selecting multiple shapes, then using keyboard shortcuts to align them, and verifies the final positions",
+      "difficulty": "complex",
+      "capability_tested": "multi_step_interaction_testing"
+    },
+    {
+      "prompt": "How do I test that my custom shape properly handles undo/redo operations when its properties are changed?",
+      "difficulty": "medium",
+      "capability_tested": "undo_redo_testing"
+    },
+    {
+      "prompt": "I want to test pointer interactions on my shape - specifically double-clicking to enter crop mode and then updating crop properties",
+      "difficulty": "medium",
+      "capability_tested": "pointer_event_simulation"
+    },
+    {
+      "prompt": "I need to create a comprehensive test suite for a new custom shape I built, including TypeScript type checking, geometry calculations, and all the standard shape operations",
+      "difficulty": "complex",
+      "capability_tested": "custom_shape_comprehensive_testing"
+    },
+    {
+      "prompt": "Can you show me how to write a test that checks if my animation works correctly? It needs fake timers and should verify the final state after the animation completes",
+      "difficulty": "medium",
+      "capability_tested": "animation_testing_with_fake_timers"
+    },
+    {
+      "prompt": "I want to test that my tool correctly handles different pointer targets like canvas, shape, and selection handles with the right event options",
+      "difficulty": "simple",
+      "capability_tested": "pointer_target_testing"
+    },
+    {
+      "prompt": "I need to write tests for a complex workflow involving side effects, event handlers, state machine transitions, and floating point precision comparisons all working together",
+      "difficulty": "complex",
+      "capability_tested": "advanced_integration_testing_multiple_systems"
+    }
+  ],
+  "generated_at": "2026-01-11T19:08:05.510369Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 4149
+}

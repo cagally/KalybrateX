@@ -1,0 +1,48 @@
+{
+  "prompt": "Create an Excel file named 'data.xlsx' with a sheet called 'Sales'. Add headers in row 1: Date, Amount, Product. Add one data row: 2024-01-15, 100.00, Widget.",
+  "tier": 1,
+  "baseline_verification": {
+    "skill_name": "xlsx_baseline",
+    "prompt": "Create an Excel file named 'data.xlsx' with a sheet called 'Sales'. Add headers in row 1: Date, Amount, Product. Add one data row: 2024-01-15, 100.00, Widget.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 1,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 680,
+    "output_files_created": [
+      "data.xlsx"
+    ],
+    "output_valid": true,
+    "output_properties": {
+      "data.xlsx": {
+        "exists": true,
+        "sheets": [
+          "Sales"
+        ],
+        "valid_format": true
+      }
+    },
+    "verified_at": "2026-01-11T18:26:31.165460Z"
+  },
+  "skill_verification": {
+    "skill_name": "xlsx",
+    "prompt": "Create an Excel file named 'data.xlsx' with a sheet called 'Sales'. Add headers in row 1: Date, Amount, Product. Add one data row: 2024-01-15, 100.00, Widget.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 1,
+    "executed": true,
+    "execution_success": false,
+    "execution_error": null,
+    "execution_time_ms": 244,
+    "output_files_created": [
+      "data.xlsx"
+    ],
+    "output_valid": false,
+    "output_properties": {},
+    "verified_at": "2026-01-11T18:26:31.412744Z"
+  },
+  "execution_verdict": "baseline",
+  "verdict_reasoning": "Baseline produced valid output, skill did not"
+}

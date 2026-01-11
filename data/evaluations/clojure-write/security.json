@@ -1,0 +1,9 @@
+{
+  "skill_name": "clojure-write",
+  "grade": "secure",
+  "issues": [],
+  "analysis": "This SKILL.md file appears to be safe and poses no security risks. It contains guidance for Clojure/ClojureScript development using REPL-driven workflow and best practices. The file references local MCP tools (clojure_eval, clojure_edit) and local shell commands (./bin/mage) which operate within the development environment. There are no external URLs, network requests, file system operations outside the normal development workflow, credential access attempts, dynamic code execution patterns, or suspicious dependencies. The content is purely instructional and focused on legitimate development practices.",
+  "analyzed_at": "2026-01-11T19:07:42.493683Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1434
+}

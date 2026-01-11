@@ -1,0 +1,58 @@
+{
+  "skill_name": "docx",
+  "prompts": [
+    {
+      "prompt": "Can you help me extract just the text content from this Word document so I can see what's written without all the formatting?",
+      "difficulty": "simple",
+      "capability_tested": "text_extraction"
+    },
+    {
+      "prompt": "I need to create a new Word document with a title, some paragraphs, and a bulleted list for my project proposal.",
+      "difficulty": "simple",
+      "capability_tested": "creating_new_document"
+    },
+    {
+      "prompt": "There's a Word document with comments in it - can you show me what comments people have added throughout the document?",
+      "difficulty": "simple",
+      "capability_tested": "reading_comments"
+    },
+    {
+      "prompt": "I have a contract that needs several changes made to it, but I want to track all my edits so the other party can see what I modified.",
+      "difficulty": "medium",
+      "capability_tested": "tracked_changes_editing"
+    },
+    {
+      "prompt": "Can you convert this Word document to images so I can see how each page looks visually?",
+      "difficulty": "medium",
+      "capability_tested": "document_to_images"
+    },
+    {
+      "prompt": "I need to update multiple dates and company names throughout this legal document, but preserve all the original formatting and show what changed.",
+      "difficulty": "medium",
+      "capability_tested": "batch_tracked_changes"
+    },
+    {
+      "prompt": "There's a Word document with tracked changes already in it - can you show me what the current version looks like with all changes accepted?",
+      "difficulty": "medium",
+      "capability_tested": "viewing_tracked_changes"
+    },
+    {
+      "prompt": "I need to create a professional report with headers, footers, formatted tables, and embedded images, then save it as a Word document.",
+      "difficulty": "complex",
+      "capability_tested": "complex_document_creation"
+    },
+    {
+      "prompt": "Can you help me review this contract by making tracked changes to fix legal terminology, update clauses, and add comments explaining the rationale for each change?",
+      "difficulty": "complex",
+      "capability_tested": "comprehensive_document_review"
+    },
+    {
+      "prompt": "I have a Word document that needs major restructuring - moving sections around, updating cross-references, changing formatting, and ensuring all changes are tracked for legal review.",
+      "difficulty": "complex",
+      "capability_tested": "complex_structural_editing"
+    }
+  ],
+  "generated_at": "2026-01-11T18:27:26.255801Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3755
+}

@@ -1,0 +1,16 @@
+{
+  "skill_name": "clojure-write",
+  "wins": 6,
+  "losses": 4,
+  "ties": 0,
+  "win_rate": 60.0,
+  "grade": "B",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 1717.2,
+  "cost_per_use_usd": 0.0021465000000000004,
+  "avg_baseline_tokens": 1033.5,
+  "baseline_cost_usd": 0.001291875,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T19:07:42.494608Z"
+}

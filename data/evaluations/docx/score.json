@@ -1,0 +1,16 @@
+{
+  "skill_name": "docx",
+  "wins": 5,
+  "losses": 5,
+  "ties": 0,
+  "win_rate": 50.0,
+  "grade": "C",
+  "security_grade": "secure",
+  "security_issues_count": 0,
+  "avg_tokens_per_use": 3442.6,
+  "cost_per_use_usd": 0.004303250000000001,
+  "avg_baseline_tokens": 250.3,
+  "baseline_cost_usd": 0.00031287500000000006,
+  "total_comparisons": 10,
+  "scored_at": "2026-01-11T18:32:13.043337Z"
+}

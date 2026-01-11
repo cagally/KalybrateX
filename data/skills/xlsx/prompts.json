@@ -1,0 +1,58 @@
+{
+  "skill_name": "xlsx",
+  "prompts": [
+    {
+      "prompt": "Can you help me create a simple Excel budget tracker? I need columns for income, expenses, and a running balance calculation.",
+      "difficulty": "simple",
+      "capability_tested": "basic_spreadsheet_creation_with_formulas"
+    },
+    {
+      "prompt": "I have a CSV file with sales data that I need to convert to Excel format and add some basic charts to visualize the trends.",
+      "difficulty": "simple",
+      "capability_tested": "csv_to_excel_conversion_and_visualization"
+    },
+    {
+      "prompt": "My Excel file has a bunch of #DIV/0! errors in the profit margin calculations. Can you fix these and make sure all formulas work properly?",
+      "difficulty": "simple",
+      "capability_tested": "formula_error_correction"
+    },
+    {
+      "prompt": "I need to analyze this customer data spreadsheet - can you tell me the average order value, top customers, and monthly trends?",
+      "difficulty": "medium",
+      "capability_tested": "data_analysis_and_statistics"
+    },
+    {
+      "prompt": "Can you create a financial model for my startup? I need 3-year projections with revenue growth assumptions, operating expenses, and cash flow calculations.",
+      "difficulty": "medium",
+      "capability_tested": "financial_modeling_with_assumptions"
+    },
+    {
+      "prompt": "I have an existing expense report template that needs updating. Can you add new categories, update the formulas, but keep the same formatting and colors?",
+      "difficulty": "medium",
+      "capability_tested": "template_modification_preserving_formatting"
+    },
+    {
+      "prompt": "I need to merge data from 3 different Excel files into one master spreadsheet, then create a dashboard with key metrics and charts.",
+      "difficulty": "medium",
+      "capability_tested": "multi_file_data_consolidation_and_dashboard"
+    },
+    {
+      "prompt": "Can you build a comprehensive DCF valuation model with sensitivity analysis? I need proper color coding for inputs vs formulas, and it should handle multiple scenarios.",
+      "difficulty": "complex",
+      "capability_tested": "advanced_financial_modeling_with_industry_standards"
+    },
+    {
+      "prompt": "I have a complex inventory management spreadsheet with broken formulas across multiple sheets. Can you fix all the errors, add data validation, and create summary reports?",
+      "difficulty": "complex",
+      "capability_tested": "complex_multi_sheet_debugging_and_enhancement"
+    },
+    {
+      "prompt": "Create a dynamic project management dashboard that pulls data from multiple sheets, calculates resource allocation, tracks milestones, and generates automated status reports with conditional formatting.",
+      "difficulty": "complex",
+      "capability_tested": "advanced_multi_sheet_dynamic_dashboard_creation"
+    }
+  ],
+  "generated_at": "2026-01-11T18:20:51.575148Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 4147
+}

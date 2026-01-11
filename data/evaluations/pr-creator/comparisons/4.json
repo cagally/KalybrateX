@@ -1,0 +1,13 @@
+{
+  "prompt": "I need to open a PR for my performance improvements but I see there are multiple PR templates in the .github folder - which one should I use?",
+  "baseline_response": "To determine which PR template to use, consider these guidelines:\n\n1. Look for a template specifically for performance improvements\n2. If no specific performance template exists, use the default \"pull_request_template.md\"\n3. When in doubt, check with your team or project maintainers about their preferred template\n\nTypical template sections might include:\n- Description of changes\n- Performance metrics/benchmarks\n- Testing approach\n- Potential side effects\n\nIf you're unsure, you can always open the templates and compare their structures to find the most appropriate one.",
+  "skill_response": "To determine the most appropriate PR template for performance improvements, I'll help you select the right one. Typically, performance-related changes might fall under one of these categories:\n\n1. I'll list out the templates I see and recommend the best match:\n```bash\nls .github/PULL_REQUEST_TEMPLATE/\n```\n\nCould you share the list of templates you're seeing? Based on common PR template structures, I'm looking for something like:\n- `performance.md`\n- `optimization.md`\n- `enhancement.md`\n- `feature.md`\n\nWithout seeing the exact templates, my general recommendation for performance improvements would be:\n- Use a template that covers technical changes\n- Emphasize the performance gains\n- Include benchmarks or measurements if possible\n\nSpecific details I'd want to highlight in the PR description:\n- What specific performance improvements were made\n- Quantitative measurements (e.g., \"Reduced load time by 50%\")\n- How the improvements were achieved\n- Any trade-offs or side effects\n\nCould you show me the exact templates you're seeing so I can give you the most precise guidance?",
+  "verdict": "skill",
+  "reasoning": "Response A is significantly more helpful and actionable. It provides a concrete command to list the available templates, asks for specific information to give targeted advice, and offers detailed guidance on what to include in performance-related PRs (benchmarks, measurements, trade-offs). Response A also anticipates common template names and provides a structured approach to selection. Response B is more generic and less actionable, offering only basic guidelines without specific steps or detailed recommendations for performance improvements.",
+  "baseline_tokens": 159,
+  "skill_tokens": 816,
+  "position_a": "skill",
+  "position_b": "baseline",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T18:34:04.155122Z"
+}

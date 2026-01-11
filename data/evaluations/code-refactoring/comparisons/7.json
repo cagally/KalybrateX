@@ -1,0 +1,13 @@
+{
+  "prompt": "Can you help me clean up this messy Go function? It's doing too many different things and is hard to understand.",
+  "baseline_response": "I'd be happy to help! Could you please share the specific Go function that you'd like me to review and refactor? Paste the code, and I'll help you improve its structure, readability, and potentially break it down into smaller, more focused functions.",
+  "skill_response": "I'll help you refactor the Go function. Could you share the specific function code? I'll analyze it and provide a step-by-step refactoring approach that:\n\n1. Reduces cyclomatic complexity\n2. Improves readability\n3. Separates concerns\n4. Increases testability\n\nPlease paste the function, and I'll suggest specific improvements using Go best practices.\n\nKey refactoring techniques I'll likely use:\n- Extract methods\n- Remove nested conditionals\n- Use early returns\n- Create small, focused functions\n- Improve error handling\n- Add clear type definitions if needed",
+  "verdict": "skill",
+  "reasoning": "Response A is significantly more helpful and comprehensive. While both responses appropriately ask for the specific code, Response A demonstrates expertise by outlining a clear refactoring methodology and specific techniques (extract methods, reduce cyclomatic complexity, early returns, etc.). It shows the assistant understands common Go refactoring patterns and provides a structured approach the user can expect. Response B is much more generic and doesn't demonstrate any specific knowledge about Go refactoring or code cleanup techniques. Response A is more actionable and educational even before seeing the actual code.",
+  "baseline_tokens": 90,
+  "skill_tokens": 631,
+  "position_a": "skill",
+  "position_b": "baseline",
+  "judge_model": "claude-sonnet-4-20250514",
+  "judged_at": "2026-01-11T18:48:19.475512Z"
+}

@@ -1,0 +1,22 @@
+{
+  "skill_name": "code-refactoring",
+  "grade": "warning",
+  "issues": [
+    {
+      "category": "code_injection",
+      "severity": "medium",
+      "description": "Dynamic command execution using string concatenation with user input could allow command injection if target_pkg or metrics_target contain shell metacharacters",
+      "evidence": "run(\"make \" + metrics_target)"
+    },
+    {
+      "category": "file_system_abuse",
+      "severity": "low",
+      "description": "Script execution with potential file system access, though appears to be legitimate metrics collection scripts",
+      "evidence": "scripts/{capture-*-metrics.sh,count-artifacts.sh}"
+    }
+  ],
+  "analysis": "This SKILL.md file describes a code refactoring protocol that is generally safe but has one notable security concern. The main issue is dynamic command execution using 'make' with user-provided input that could enable command injection if not properly sanitized. The file system operations appear legitimate for a refactoring tool, involving reading configuration files, running metrics scripts, and managing documentation. The skill requires validation that metrics_target is in a predefined catalogue, which provides some protection but may not be sufficient against all injection attacks. Overall, this appears to be a legitimate development tool with standard security considerations for any system that executes user-controlled commands.",
+  "analyzed_at": "2026-01-11T18:49:37.026829Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 1231
+}

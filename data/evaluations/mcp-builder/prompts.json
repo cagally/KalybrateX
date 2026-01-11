@@ -1,0 +1,58 @@
+{
+  "skill_name": "mcp-builder",
+  "prompts": [
+    {
+      "prompt": "I want to build an MCP server that connects to the GitHub API so I can create issues and manage repositories from my AI assistant. Can you help me get started?",
+      "difficulty": "simple",
+      "capability_tested": "basic_mcp_server_creation"
+    },
+    {
+      "prompt": "I'm trying to understand what tools I should create for my Slack MCP server. Should I make one tool per API endpoint or group related functionality together?",
+      "difficulty": "medium",
+      "capability_tested": "tool_design_strategy"
+    },
+    {
+      "prompt": "I need to add proper error handling to my MCP server tools so that when the external API fails, the AI gets helpful information about what went wrong and how to fix it.",
+      "difficulty": "medium",
+      "capability_tested": "error_handling_design"
+    },
+    {
+      "prompt": "Can you show me how to set up input validation for my MCP tools using TypeScript? I want to make sure the parameters are properly validated before calling the external API.",
+      "difficulty": "simple",
+      "capability_tested": "input_schema_validation"
+    },
+    {
+      "prompt": "I'm building an MCP server for a project management tool and I'm not sure whether to use streamable HTTP or stdio transport. What are the trade-offs?",
+      "difficulty": "medium",
+      "capability_tested": "transport_selection"
+    },
+    {
+      "prompt": "I have an MCP server working but I want to create comprehensive test questions to evaluate how well LLMs can actually use it. What's the best approach for creating realistic evaluation scenarios?",
+      "difficulty": "complex",
+      "capability_tested": "evaluation_creation"
+    },
+    {
+      "prompt": "My MCP tools are returning huge amounts of data and the AI seems to get overwhelmed. How should I handle pagination and data filtering in my tool responses?",
+      "difficulty": "medium",
+      "capability_tested": "context_management"
+    },
+    {
+      "prompt": "I want to build a Python MCP server using FastMCP that integrates with our company's REST API. What's the recommended project structure and setup?",
+      "difficulty": "simple",
+      "capability_tested": "python_project_setup"
+    },
+    {
+      "prompt": "I need to implement tool annotations like readOnlyHint and destructiveHint for my MCP server tools, but I'm not sure when to use each one and why they matter for AI agents.",
+      "difficulty": "simple",
+      "capability_tested": "tool_annotations"
+    },
+    {
+      "prompt": "I'm building a comprehensive MCP server for Jira that needs to handle authentication, multiple API endpoints, proper error recovery, structured responses, and I want to create a full evaluation suite to test complex multi-step workflows. Can you guide me through the entire development process?",
+      "difficulty": "complex",
+      "capability_tested": "complete_mcp_development_workflow"
+    }
+  ],
+  "generated_at": "2026-01-11T18:12:57.168090Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3344
+}

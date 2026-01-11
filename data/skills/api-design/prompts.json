@@ -1,0 +1,58 @@
+{
+  "skill_name": "api-design",
+  "prompts": [
+    {
+      "prompt": "I'm designing a new REST API for our user management system and I'm not sure how to organize all the different parameters like filters, pagination, and required fields. Can you help me create a consistent structure?",
+      "difficulty": "simple",
+      "capability_tested": "parameter categorization using 5-tier system"
+    },
+    {
+      "prompt": "We have an existing API with about 20 endpoints and the parameter naming is all over the place. Some use camelCase, others snake_case, and the organization is inconsistent. How can I clean this up without breaking our existing clients?",
+      "difficulty": "medium",
+      "capability_tested": "safe API refactoring via JSON property ordering"
+    },
+    {
+      "prompt": "I need to refactor our API documentation and endpoints for better consistency, but I'm worried about doing unnecessary work. Is there a systematic way to identify what actually needs to be changed versus what's already fine?",
+      "difficulty": "medium",
+      "capability_tested": "audit-first refactoring methodology"
+    },
+    {
+      "prompt": "Can you help me set up some kind of automated checking for our API design? I want to catch inconsistencies and quality issues before they get merged into our codebase.",
+      "difficulty": "complex",
+      "capability_tested": "automated validation and quality gates"
+    },
+    {
+      "prompt": "I'm building a new search API endpoint and I have parameters like 'query', 'limit', 'offset', 'category', 'min_price', 'max_price', and 'include_inactive'. How should I organize these?",
+      "difficulty": "simple",
+      "capability_tested": "deterministic parameter categorization"
+    },
+    {
+      "prompt": "Our team keeps writing API documentation that's hard to understand. Users complain they can't figure out how to use our endpoints properly. What's a better approach to make our docs more useful?",
+      "difficulty": "medium",
+      "capability_tested": "example-driven documentation patterns"
+    },
+    {
+      "prompt": "I need to evaluate whether our current API design methodology is actually working. We've been following some internal guidelines but I'm not sure if they're effective or if we're just creating overhead for no benefit.",
+      "difficulty": "complex",
+      "capability_tested": "API quality metrics and success measurement"
+    },
+    {
+      "prompt": "We're planning to version our API and need to handle breaking changes gracefully. What's the best way to evolve our API over time while keeping existing clients working?",
+      "difficulty": "medium",
+      "capability_tested": "API evolution and versioning strategies"
+    },
+    {
+      "prompt": "I want to create some pre-commit hooks that will automatically validate our API specifications before developers can push their changes. Can you help me set this up?",
+      "difficulty": "complex",
+      "capability_tested": "automated quality gates and git integration"
+    },
+    {
+      "prompt": "I'm working on a new product catalog API and need to decide where to put parameters like 'brand', 'category', 'in_stock', 'sort_by', and 'page_size'. What's the right way to classify these?",
+      "difficulty": "simple",
+      "capability_tested": "5-tier parameter decision tree application"
+    }
+  ],
+  "generated_at": "2026-01-11T18:50:02.319264Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3700
+}
