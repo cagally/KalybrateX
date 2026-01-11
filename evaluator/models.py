@@ -6,7 +6,7 @@ These models represent prompts, evaluations, and scoring data.
 
 from datetime import datetime
 from enum import Enum
-from typing import Literal
+from typing import Literal, Optional
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -113,3 +113,43 @@ class SecurityResult(BaseModel):
     analyzed_at: datetime = Field(description="When the analysis was performed")
     model_used: str = Field(description="The Claude model used for analysis")
     tokens_used: int = Field(description="Total tokens used (input + output)")
+
+
+# =============================================================================
+# Scorer Models
+# =============================================================================
+
+class SkillScore(BaseModel):
+    """Final score for a skill after evaluation."""
+    skill_name: str = Field(description="Name of the skill that was scored")
+
+    # Quality metrics
+    wins: int = Field(ge=0, description="Number of comparisons where skill beat baseline")
+    losses: int = Field(ge=0, description="Number of comparisons where baseline beat skill")
+    ties: int = Field(ge=0, description="Number of comparisons that were ties")
+    win_rate: Optional[float] = Field(
+        description="Win rate percentage (0-100), None if all ties"
+    )
+    grade: Literal["A", "B", "C", "D", "F"] = Field(
+        description="Letter grade based on win rate"
+    )
+
+    # Security
+    security_grade: SecurityGrade = Field(description="Security grade from security analysis")
+    security_issues_count: int = Field(
+        ge=0, description="Number of security issues identified"
+    )
+
+    # Cost
+    avg_tokens_per_use: float = Field(
+        ge=0, description="Average output tokens per use"
+    )
+    cost_per_use_usd: float = Field(
+        ge=0, description="Estimated cost per use in USD"
+    )
+
+    # Metadata
+    total_comparisons: int = Field(
+        ge=0, description="Total number of A/B comparisons performed"
+    )
+    scored_at: datetime = Field(description="When this score was calculated")
