@@ -1,0 +1,58 @@
+{
+  "skill_name": "pdf",
+  "prompts": [
+    {
+      "prompt": "I have a 50-page PDF report and I only need pages 10-15. How can I extract just those pages into a separate file?",
+      "difficulty": "simple",
+      "capability_tested": "pdf_splitting"
+    },
+    {
+      "prompt": "Can you help me extract all the text from this PDF so I can copy it into a Word document?",
+      "difficulty": "simple",
+      "capability_tested": "text_extraction"
+    },
+    {
+      "prompt": "I need to merge three different PDF contracts into one file for my client. They're called contract1.pdf, contract2.pdf, and contract3.pdf",
+      "difficulty": "simple",
+      "capability_tested": "pdf_merge"
+    },
+    {
+      "prompt": "There's a data table in this PDF financial report that I need to analyze in Excel. How can I get that table data out?",
+      "difficulty": "medium",
+      "capability_tested": "table_extraction"
+    },
+    {
+      "prompt": "I scanned some old documents but they're saved as PDFs and I can't select the text. Is there a way to convert the text so it's searchable?",
+      "difficulty": "medium",
+      "capability_tested": "ocr_text_extraction"
+    },
+    {
+      "prompt": "I want to create a professional-looking PDF invoice from scratch with my company logo, customer details, and an itemized table. Can you show me how?",
+      "difficulty": "medium",
+      "capability_tested": "pdf_creation"
+    },
+    {
+      "prompt": "Some pages in my PDF presentation are sideways and I need to rotate them to be right-side up before I send it to my boss",
+      "difficulty": "simple",
+      "capability_tested": "page_rotation"
+    },
+    {
+      "prompt": "I have a PDF with multiple data tables spread across different pages, and I need to extract all of them and combine them into a single Excel spreadsheet for analysis",
+      "difficulty": "complex",
+      "capability_tested": "advanced_table_extraction"
+    },
+    {
+      "prompt": "My company wants to add a watermark to all our PDF documents for branding purposes. I have about 100 PDFs that need this watermark applied",
+      "difficulty": "complex",
+      "capability_tested": "batch_watermarking"
+    },
+    {
+      "prompt": "I need to create a password-protected PDF that contains sensitive financial data, but I also want to extract some metadata from an existing PDF to see who created it and when",
+      "difficulty": "complex",
+      "capability_tested": "security_and_metadata"
+    }
+  ],
+  "generated_at": "2026-01-11T13:23:44.803774Z",
+  "model_used": "claude-sonnet-4-20250514",
+  "tokens_used": 3246
+}
