@@ -75,3 +75,41 @@ class ComparisonResult(BaseModel):
     )
     judge_model: str = Field(description="The Claude model used for judging")
     judged_at: datetime = Field(description="When the comparison was judged")
+
+
+# =============================================================================
+# Security Checker Models
+# =============================================================================
+
+class SecurityGrade(str, Enum):
+    """Security grade for a skill based on identified issues."""
+    SECURE = "secure"
+    WARNING = "warning"
+    FAIL = "fail"
+
+
+class SecurityIssue(BaseModel):
+    """A security issue identified in a skill."""
+    category: str = Field(
+        description="Issue category: data_exfiltration, file_system_abuse, credential_theft, code_injection, malicious_dependencies"
+    )
+    severity: str = Field(
+        description="Issue severity: low, medium, high"
+    )
+    description: str = Field(
+        description="Human-readable description of the security issue"
+    )
+    evidence: str = Field(
+        description="The problematic code/text from SKILL.md that triggered the issue"
+    )
+
+
+class SecurityResult(BaseModel):
+    """Result of security analysis for a skill."""
+    skill_name: str = Field(description="Name of the skill that was analyzed")
+    grade: SecurityGrade = Field(description="Overall security grade")
+    issues: list[SecurityIssue] = Field(description="List of identified security issues")
+    analysis: str = Field(description="Full analysis text from Sonnet")
+    analyzed_at: datetime = Field(description="When the analysis was performed")
+    model_used: str = Field(description="The Claude model used for analysis")
+    tokens_used: int = Field(description="Total tokens used (input + output)")
