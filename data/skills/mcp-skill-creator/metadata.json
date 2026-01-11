@@ -1,0 +1,28 @@
+{
+  "name": "mcp-skill-creator",
+  "slug": "mcp-skill-creator",
+  "source": "skillsmp",
+  "owner": "nemori-ai",
+  "repo_name": "skills",
+  "repository_url": "https://github.com/nemori-ai/skills",
+  "skill_path": "mcp-skill-creator",
+  "github_metadata": {
+    "stars": 11,
+    "description": "A skill for Claude that enables you to fork and iteratively improve existing skills based on your specific preferences and workflows.",
+    "default_branch": "main",
+    "pushed_at": "2025-11-11 08:39:06+00:00",
+    "created_at": "2025-10-21 10:30:32+00:00",
+    "language": "Python",
+    "license": null,
+    "open_issues": 0,
+    "forks": 0
+  },
+  "skill_md": {
+    "found": true,
+    "path": "mcp-skill-creator/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:35.313706+00:00",
+  "fetch_error": null
+}

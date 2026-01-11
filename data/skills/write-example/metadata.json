@@ -1,0 +1,28 @@
+{
+  "name": "write-example",
+  "slug": "write-example",
+  "source": "skillsmp_top",
+  "owner": "tldraw",
+  "repo_name": "tldraw",
+  "repository_url": "https://github.com/tldraw/tldraw",
+  "skill_path": ".claude/skills/write-example",
+  "github_metadata": {
+    "stars": 44522,
+    "description": "very good whiteboard infinite canvas SDK",
+    "default_branch": "main",
+    "pushed_at": "2026-01-10 14:48:37+00:00",
+    "created_at": "2021-05-09 11:48:37+00:00",
+    "language": "TypeScript",
+    "license": "NOASSERTION",
+    "open_issues": 335,
+    "forks": 2926
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/write-example/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:11.117845+00:00",
+  "fetch_error": null
+}

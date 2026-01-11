@@ -1,0 +1,28 @@
+{
+  "name": "electron-chromium-upgrade",
+  "slug": "electron-chromium-upgrade",
+  "source": "skillsmp_top",
+  "owner": "electron",
+  "repo_name": "electron",
+  "repository_url": "https://github.com/electron/electron",
+  "skill_path": ".claude/skills/electron-chromium-upgrade",
+  "github_metadata": {
+    "stars": 119701,
+    "description": ":electron: Build cross-platform desktop apps with JavaScript, HTML, and CSS",
+    "default_branch": "main",
+    "pushed_at": "2026-01-11 13:00:36+00:00",
+    "created_at": "2013-04-12 01:47:36+00:00",
+    "language": "C++",
+    "license": "MIT",
+    "open_issues": 910,
+    "forks": 16915
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/electron-chromium-upgrade/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:35:51.176746+00:00",
+  "fetch_error": null
+}

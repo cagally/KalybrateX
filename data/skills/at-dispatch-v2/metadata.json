@@ -1,0 +1,28 @@
+{
+  "name": "at-dispatch-v2",
+  "slug": "at-dispatch-v2",
+  "source": "skillsmp_top",
+  "owner": "pytorch",
+  "repo_name": "pytorch",
+  "repository_url": "https://github.com/pytorch/pytorch",
+  "skill_path": ".claude/skills/at-dispatch-v2",
+  "github_metadata": {
+    "stars": 96524,
+    "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+    "default_branch": "main",
+    "pushed_at": "2026-01-11 15:25:31+00:00",
+    "created_at": "2016-08-13 05:26:41+00:00",
+    "language": "Python",
+    "license": "NOASSERTION",
+    "open_issues": 17874,
+    "forks": 26484
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/at-dispatch-v2/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:35:52.283015+00:00",
+  "fetch_error": null
+}

@@ -283,7 +283,7 @@ def main() -> int:
 
     parser.add_argument(
         "--source",
-        choices=["skillsmp", "anthropic_official", "awesome_list", "github_search"],
+        choices=["skillsmp_top", "skillsmp", "anthropic_official", "awesome_list", "github_search"],
         action="append",
         help="Specific source(s) to check (can be repeated)"
     )

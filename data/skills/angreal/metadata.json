@@ -1,0 +1,28 @@
+{
+  "name": "angreal",
+  "slug": "angreal",
+  "source": "skillsmp",
+  "owner": "angreal",
+  "repo_name": "angreal",
+  "repository_url": "https://github.com/angreal/angreal",
+  "skill_path": "skill/skills/angreal",
+  "github_metadata": {
+    "stars": 10,
+    "description": "  Task automation and project templating tool. Define reusable commands in Python, scaffold projects from templates, and let tasks travel with your codebase. Rust core, Python API.",
+    "default_branch": "main",
+    "pushed_at": "2025-12-31 18:29:18+00:00",
+    "created_at": "2018-06-19 13:26:18+00:00",
+    "language": "Rust",
+    "license": null,
+    "open_issues": 1,
+    "forks": 4
+  },
+  "skill_md": {
+    "found": true,
+    "path": "skill/skills/angreal/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:35.779232+00:00",
+  "fetch_error": null
+}

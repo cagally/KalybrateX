@@ -293,7 +293,8 @@ class GitHubFetcher:
         self,
         owner: str,
         repo: str,
-        skill_path: Optional[str] = None
+        skill_path: Optional[str] = None,
+        branch: Optional[str] = None
     ) -> SkillMdInfo:
         """
         Fetch SKILL.md content, trying multiple paths and branches.
@@ -302,12 +303,16 @@ class GitHubFetcher:
             owner: Repository owner
             repo: Repository name
             skill_path: Optional path prefix for monorepos
+            branch: Optional specific branch to use (if None, tries BRANCHES)
 
         Returns:
             SkillMdInfo with found status and content
         """
+        # Use specified branch or try default branches
+        branches_to_try = [branch] if branch else BRANCHES
+
         with httpx.Client() as client:
-            for branch in BRANCHES:
+            for branch in branches_to_try:
                 for skill_md_path in SKILL_MD_PATHS:
                     # Build full path
                     if skill_path:
@@ -633,7 +638,8 @@ class GitHubFetcher:
     def discover_skillsmp_skills(
         self,
         limit: int = 25,
-        marketplace_only: bool = True
+        marketplace_only: bool = True,
+        source_name: SkillSource = SkillSource.SKILLSMP
     ) -> list[DiscoveredSkill]:
         """
         Discover skills from SkillsMP (skillsmp.com).
@@ -669,9 +675,10 @@ class GitHubFetcher:
                 # https://github.com/owner/repo/tree/branch/path/to/skill
                 github_url = smp_skill.github_url
 
-                # Extract owner and repo from GitHub URL
+                # Extract owner, repo, branch, and path from GitHub URL
+                # Format: https://github.com/owner/repo/tree/branch/path/to/skill
                 match = re.match(
-                    r"https://github\.com/([^/]+)/([^/]+)(?:/tree/[^/]+/(.+))?",
+                    r"https://github\.com/([^/]+)/([^/]+)(?:/tree/([^/]+)/(.+))?",
                     github_url
                 )
                 if not match:
@@ -680,7 +687,8 @@ class GitHubFetcher:
 
                 owner = match.group(1)
                 repo = match.group(2)
-                skill_path = match.group(3)  # Path within repo (optional)
+                branch = match.group(3)  # Branch name (e.g., "main", "canary")
+                skill_path = match.group(4)  # Path within repo (optional)
 
                 # Create unique key to avoid duplicates
                 # Use skill name + repo as key to dedupe multiple backup versions
@@ -706,8 +714,8 @@ class GitHubFetcher:
                         forks=0,
                     )
 
-                # Fetch SKILL.md content
-                skill_md = self.fetch_skill_md(owner, repo, skill_path)
+                # Fetch SKILL.md content (use branch from URL if available)
+                skill_md = self.fetch_skill_md(owner, repo, skill_path, branch=branch)
 
                 # Only include if SKILL.md exists
                 if not skill_md.found:
@@ -717,7 +725,7 @@ class GitHubFetcher:
                 skill = DiscoveredSkill(
                     name=smp_skill.name,
                     slug=generate_slug(smp_skill.name),
-                    source=SkillSource.SKILLSMP,
+                    source=source_name,
                     owner=owner,
                     repo_name=repo,
                     repository_url=f"https://github.com/{owner}/{repo}",
@@ -758,9 +766,23 @@ class GitHubFetcher:
         seen_repos = set()  # Track repos to avoid duplicates across sources
 
         if sources is None:
-            sources = ["skillsmp", "anthropic_official", "awesome_list", "github_search"]
+            sources = ["skillsmp_top", "skillsmp", "anthropic_official", "awesome_list", "github_search"]
 
         # Discover from each source
+        if "skillsmp_top" in sources:
+            sources_checked.append("skillsmp_top")
+            # Fetch top starred skills WITHOUT marketplace filter
+            top_skills = self.discover_skillsmp_skills(
+                limit=limit or 50,
+                marketplace_only=False,
+                source_name=SkillSource.SKILLSMP_TOP
+            )
+            for skill in top_skills:
+                repo_key = f"{skill.owner}/{skill.repo_name}:{skill.name}".lower()
+                if repo_key not in seen_repos:
+                    seen_repos.add(repo_key)
+                    all_skills.append(skill)
+
         if "skillsmp" in sources:
             sources_checked.append("skillsmp")
             skillsmp_skills = self.discover_skillsmp_skills(limit=limit or 25)

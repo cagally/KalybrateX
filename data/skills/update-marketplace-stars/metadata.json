@@ -1,0 +1,28 @@
+{
+  "name": "update-marketplace-stars",
+  "slug": "update-marketplace-stars",
+  "source": "skillsmp",
+  "owner": "NikiforovAll",
+  "repo_name": "lazyclaude",
+  "repository_url": "https://github.com/NikiforovAll/lazyclaude",
+  "skill_path": ".claude/skills/update-marketplace-stars",
+  "github_metadata": {
+    "stars": 17,
+    "description": " A lazygit-style TUI for visualizing Claude Code customizations.",
+    "default_branch": "main",
+    "pushed_at": "2026-01-01 15:45:13+00:00",
+    "created_at": "2025-12-06 20:40:15+00:00",
+    "language": "Python",
+    "license": "MIT",
+    "open_issues": 9,
+    "forks": 3
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/update-marketplace-stars/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:29.303216+00:00",
+  "fetch_error": null
+}

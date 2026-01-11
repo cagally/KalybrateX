@@ -1,0 +1,28 @@
+{
+  "name": "add-malli-schemas",
+  "slug": "add-malli-schemas",
+  "source": "skillsmp_top",
+  "owner": "metabase",
+  "repo_name": "metabase",
+  "repository_url": "https://github.com/metabase/metabase",
+  "skill_path": ".claude/skills/add-malli-schemas",
+  "github_metadata": {
+    "stars": 45538,
+    "description": "The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart:",
+    "default_branch": "master",
+    "pushed_at": "2026-01-11 13:53:34+00:00",
+    "created_at": "2015-02-02 19:25:47+00:00",
+    "language": "Clojure",
+    "license": "NOASSERTION",
+    "open_issues": 3883,
+    "forks": 6167
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/add-malli-schemas/SKILL.md",
+    "branch": "master",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:08.250075+00:00",
+  "fetch_error": null
+}

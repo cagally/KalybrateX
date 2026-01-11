@@ -1,0 +1,28 @@
+{
+  "name": "write-concept",
+  "slug": "write-concept",
+  "source": "skillsmp_top",
+  "owner": "leonardomso",
+  "repo_name": "33-js-concepts",
+  "repository_url": "https://github.com/leonardomso/33-js-concepts",
+  "skill_path": ".opencode/skill/write-concept",
+  "github_metadata": {
+    "stars": 66082,
+    "description": "\ud83d\udcdc 33 JavaScript concepts every developer should know.",
+    "default_branch": "master",
+    "pushed_at": "2026-01-07 12:51:15+00:00",
+    "created_at": "2018-09-04 13:27:04+00:00",
+    "language": "JavaScript",
+    "license": "MIT",
+    "open_issues": 0,
+    "forks": 9196
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".opencode/skill/write-concept/SKILL.md",
+    "branch": "master",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:35:56.905962+00:00",
+  "fetch_error": null
+}

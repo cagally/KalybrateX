@@ -1,0 +1,28 @@
+{
+  "name": "cache-components",
+  "slug": "cache-components",
+  "source": "skillsmp_top",
+  "owner": "vercel",
+  "repo_name": "next.js",
+  "repository_url": "https://github.com/vercel/next.js",
+  "skill_path": ".claude-plugin/plugins/cache-components/skills/cache-components",
+  "github_metadata": {
+    "stars": 137082,
+    "description": "The React Framework",
+    "default_branch": "canary",
+    "pushed_at": "2026-01-11 07:03:03+00:00",
+    "created_at": "2016-10-05 23:32:51+00:00",
+    "language": "JavaScript",
+    "license": "MIT",
+    "open_issues": 3218,
+    "forks": 30252
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude-plugin/plugins/cache-components/skills/cache-components/SKILL.md",
+    "branch": "canary",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:35:48.733405+00:00",
+  "fetch_error": null
+}

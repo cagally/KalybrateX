@@ -1,0 +1,28 @@
+{
+  "name": "pr-creator",
+  "slug": "pr-creator",
+  "source": "skillsmp_top",
+  "owner": "google-gemini",
+  "repo_name": "gemini-cli",
+  "repository_url": "https://github.com/google-gemini/gemini-cli",
+  "skill_path": ".gemini/skills/pr-creator",
+  "github_metadata": {
+    "stars": 90492,
+    "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+    "default_branch": "main",
+    "pushed_at": "2026-01-11 15:10:57+00:00",
+    "created_at": "2025-04-17 17:04:31+00:00",
+    "language": "TypeScript",
+    "license": "Apache-2.0",
+    "open_issues": 2517,
+    "forks": 10486
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".gemini/skills/pr-creator/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:35:53.698568+00:00",
+  "fetch_error": null
+}

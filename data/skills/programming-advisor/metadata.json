@@ -1,0 +1,28 @@
+{
+  "name": "programming-advisor",
+  "slug": "programming-advisor",
+  "source": "skillsmp",
+  "owner": "gaupoit",
+  "repo_name": "programming-advisor",
+  "repository_url": "https://github.com/gaupoit/programming-advisor",
+  "skill_path": "skills/programming-advisor",
+  "github_metadata": {
+    "stars": 10,
+    "description": "Claude Code skill: Build vs Buy advisor that searches for existing solutions before vibe coding",
+    "default_branch": "main",
+    "pushed_at": "2025-12-31 04:16:12+00:00",
+    "created_at": "2025-12-30 09:28:13+00:00",
+    "language": null,
+    "license": "MIT",
+    "open_issues": 0,
+    "forks": 3
+  },
+  "skill_md": {
+    "found": true,
+    "path": "skills/programming-advisor/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:36.098780+00:00",
+  "fetch_error": null
+}

@@ -1,0 +1,28 @@
+{
+  "name": "implementing-jsc-classes-cpp",
+  "slug": "implementing-jsc-classes-cpp",
+  "source": "skillsmp_top",
+  "owner": "oven-sh",
+  "repo_name": "bun",
+  "repository_url": "https://github.com/oven-sh/bun",
+  "skill_path": ".claude/skills/implementing-jsc-classes-cpp",
+  "github_metadata": {
+    "stars": 86188,
+    "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager \u2013 all in one",
+    "default_branch": "main",
+    "pushed_at": "2026-01-11 15:11:23+00:00",
+    "created_at": "2021-04-14 00:48:17+00:00",
+    "language": "Zig",
+    "license": "NOASSERTION",
+    "open_issues": 5614,
+    "forks": 3913
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/implementing-jsc-classes-cpp/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:35:54.961792+00:00",
+  "fetch_error": null
+}

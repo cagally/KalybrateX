@@ -1,0 +1,28 @@
+{
+  "name": "retrospective-validation",
+  "slug": "retrospective-validation",
+  "source": "skillsmp",
+  "owner": "yaleh",
+  "repo_name": "meta-cc",
+  "repository_url": "https://github.com/yaleh/meta-cc",
+  "skill_path": ".claude/skills/retrospective-validation",
+  "github_metadata": {
+    "stars": 15,
+    "description": "Meta-Cognition tool for Claude Code - analyze session history for workflow optimization.",
+    "default_branch": "main",
+    "pushed_at": "2025-12-13 10:31:07+00:00",
+    "created_at": "2025-10-08 01:58:30+00:00",
+    "language": "Go",
+    "license": "MIT",
+    "open_issues": 0,
+    "forks": 1
+  },
+  "skill_md": {
+    "found": true,
+    "path": ".claude/skills/retrospective-validation/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:33.870834+00:00",
+  "fetch_error": null
+}

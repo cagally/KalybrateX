@@ -16,6 +16,7 @@ class SkillSource(str, Enum):
     AWESOME_LIST = "awesome_list"
     GITHUB_SEARCH = "github_search"
     SKILLSMP = "skillsmp"
+    SKILLSMP_TOP = "skillsmp_top"  # Top starred skills without marketplace filter
 
 
 class GitHubMetadata(BaseModel):

@@ -1,0 +1,28 @@
+{
+  "name": "toolscript",
+  "slug": "toolscript",
+  "source": "skillsmp",
+  "owner": "mKeRix",
+  "repo_name": "toolscript",
+  "repository_url": "https://github.com/mKeRix/toolscript",
+  "skill_path": "plugins/toolscript/skills/toolscript",
+  "github_metadata": {
+    "stars": 19,
+    "description": "Efficient MCP tool calling in code mode for Claude Code",
+    "default_branch": "main",
+    "pushed_at": "2025-12-12 09:46:22+00:00",
+    "created_at": "2025-11-23 15:12:35+00:00",
+    "language": "TypeScript",
+    "license": null,
+    "open_issues": 0,
+    "forks": 0
+  },
+  "skill_md": {
+    "found": true,
+    "path": "plugins/toolscript/skills/toolscript/SKILL.md",
+    "branch": "main",
+    "content": null
+  },
+  "discovered_at": "2026-01-11 15:36:29.032870+00:00",
+  "fetch_error": null
+}
