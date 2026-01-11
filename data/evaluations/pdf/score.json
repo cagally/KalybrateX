@@ -7,8 +7,8 @@
   "grade": "A",
   "security_grade": "secure",
   "security_issues_count": 0,
-  "avg_tokens_per_use": 3381.8,
-  "cost_per_use_usd": 0.004227250000000001,
+  "avg_tokens_per_use": 3462.0,
+  "cost_per_use_usd": 0.004327500000000001,
   "total_comparisons": 10,
-  "scored_at": "2026-01-11T16:29:37.784476Z"
+  "scored_at": "2026-01-11T16:46:25.147761Z"
 }

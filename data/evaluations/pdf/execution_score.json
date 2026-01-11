@@ -1,0 +1,18 @@
+{
+  "skill_name": "pdf",
+  "category": "file_artifact",
+  "prompts_tested": 5,
+  "code_extracted_count": 5,
+  "executions_attempted": 5,
+  "executions_succeeded": 5,
+  "outputs_valid": 5,
+  "execution_wins": 1,
+  "execution_losses": 0,
+  "execution_ties": 4,
+  "extraction_rate": 100.0,
+  "execution_success_rate": 100.0,
+  "validation_rate": 100.0,
+  "execution_win_rate": 100.0,
+  "execution_grade": "A",
+  "scored_at": "2026-01-11T16:46:18.029598Z"
+}

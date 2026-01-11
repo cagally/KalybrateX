@@ -238,6 +238,10 @@ def evaluate_skill(
                     skill_valid = "✓" if exec_comp.skill_verification.output_valid else "✗"
                     print(f"        [{i+1}/{len(exec_comparisons)}] {verdict_symbol} skill:{skill_valid} - {exec_comp.verdict_reasoning[:40]}...")
 
+                # Save execution comparisons
+                for i, exec_comp in enumerate(exec_comparisons):
+                    logger.save_execution_comparison(skill_name, i, exec_comp)
+
                 if execution_score:
                     print(f"        Execution Grade: {execution_score.execution_grade} ({execution_score.execution_win_rate}% win rate)")
             except Exception as e:
@@ -280,13 +284,18 @@ def evaluate_skill(
         logger.save_score(skill_name, score)
         print(f"        Quality Grade: {score.grade} ({score.win_rate}% win rate)")
         if execution_score and execution_score.execution_win_rate is not None:
+            logger.save_execution_score(skill_name, execution_score)
+            logger.save_combined_score(skill_name, combined_score)
             print(f"        Execution Grade: {execution_score.execution_grade} ({execution_score.execution_win_rate}% win rate)")
             print(f"        Combined Grade: {combined_score.final_grade} ({combined_score.combined_score}% combined)")
         step_num += 1
 
         # Save summary
         print(f"  [{step_num}/{total_steps}] Saving summary...")
-        logger.save_summary(skill_name, score, prompts_result, comparisons, security_result)
+        logger.save_summary(
+            skill_name, score, prompts_result, comparisons, security_result,
+            execution_score=execution_score, combined_score=combined_score
+        )
         print(f"        Saved to data/evaluations/{skill_name}/")
 
         # Print summary
@@ -317,13 +326,18 @@ def evaluate_skill(
 def update_leaderboard(
     scores: List["SkillScore"],
     leaderboard_path: Path = LEADERBOARD_FILE,
+    evaluations_dir: Path = DEFAULT_EVALUATIONS_DIR,
 ) -> None:
     """
     Update the leaderboard with new scores.
 
+    Reads combined_score.json and execution_score.json if available
+    to include execution verification results.
+
     Args:
         scores: List of SkillScore objects
         leaderboard_path: Path to leaderboard.json
+        evaluations_dir: Directory containing evaluation results
     """
     from evaluator.models import SkillScore
 
@@ -339,10 +353,10 @@ def update_leaderboard(
 
     # Update with new scores
     for score in scores:
-        existing_ratings[score.skill_name] = {
+        rating = {
             "skill_name": score.skill_name,
-            "grade": score.grade,
-            "win_rate": score.win_rate,
+            "quality_grade": score.grade,
+            "quality_win_rate": score.win_rate,
             "wins": score.wins,
             "losses": score.losses,
             "ties": score.ties,
@@ -353,6 +367,36 @@ def update_leaderboard(
             "total_comparisons": score.total_comparisons,
             "scored_at": score.scored_at.isoformat(),
         }
+
+        # Try to load execution and combined scores
+        combined_file = evaluations_dir / score.skill_name / "combined_score.json"
+        execution_file = evaluations_dir / score.skill_name / "execution_score.json"
+
+        if combined_file.exists():
+            try:
+                combined_data = json.loads(combined_file.read_text(encoding="utf-8"))
+                rating["execution_grade"] = combined_data.get("execution_grade")
+                rating["execution_win_rate"] = combined_data.get("execution_win_rate")
+                rating["combined_score"] = combined_data.get("combined_score")
+                rating["final_grade"] = combined_data.get("final_grade")
+                rating["category"] = combined_data.get("category")
+            except (json.JSONDecodeError, KeyError):
+                pass
+
+        if execution_file.exists():
+            try:
+                exec_data = json.loads(execution_file.read_text(encoding="utf-8"))
+                rating["execution_wins"] = exec_data.get("execution_wins")
+                rating["execution_losses"] = exec_data.get("execution_losses")
+                rating["execution_ties"] = exec_data.get("execution_ties")
+            except (json.JSONDecodeError, KeyError):
+                pass
+
+        # Set final grade and win_rate for sorting (prefer combined if available)
+        rating["grade"] = rating.get("final_grade") or rating["quality_grade"]
+        rating["win_rate"] = rating.get("combined_score") or rating["quality_win_rate"]
+
+        existing_ratings[score.skill_name] = rating
 
     # Sort by win_rate descending (None values at end)
     ratings = list(existing_ratings.values())

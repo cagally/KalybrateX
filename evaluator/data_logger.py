@@ -28,7 +28,10 @@ from pathlib import Path
 from typing import Optional, List
 
 from evaluator.models import (
+    CombinedScore,
     ComparisonResult,
+    ExecutionComparisonResult,
+    ExecutionScore,
     PromptGenerationResult,
     SecurityResult,
     SkillScore,
@@ -152,6 +155,68 @@ class DataLogger:
             encoding="utf-8"
         )
 
+    def _ensure_execution_dir(self, skill_name: str) -> Path:
+        """
+        Ensure the execution comparisons directory exists and return its path.
+
+        Args:
+            skill_name: Name of the skill
+
+        Returns:
+            Path to the skill's execution comparisons directory
+        """
+        execution_dir = self._ensure_skill_dir(skill_name) / "execution"
+        execution_dir.mkdir(parents=True, exist_ok=True)
+        return execution_dir
+
+    def save_execution_comparison(
+        self, skill_name: str, index: int, result: ExecutionComparisonResult
+    ) -> None:
+        """
+        Save an execution comparison result.
+
+        Args:
+            skill_name: Name of the skill
+            index: Index/number of the comparison (0-based)
+            result: ExecutionComparisonResult with full execution evidence
+        """
+        execution_dir = self._ensure_execution_dir(skill_name)
+        comparison_file = execution_dir / f"{index}.json"
+        comparison_file.write_text(
+            result.model_dump_json(indent=2),
+            encoding="utf-8"
+        )
+
+    def save_execution_score(self, skill_name: str, score: ExecutionScore) -> None:
+        """
+        Save execution verification score for a skill.
+
+        Args:
+            skill_name: Name of the skill
+            score: ExecutionScore with all execution metrics
+        """
+        skill_dir = self._ensure_skill_dir(skill_name)
+        execution_score_file = skill_dir / "execution_score.json"
+        execution_score_file.write_text(
+            score.model_dump_json(indent=2),
+            encoding="utf-8"
+        )
+
+    def save_combined_score(self, skill_name: str, combined: CombinedScore) -> None:
+        """
+        Save combined quality + execution score for a skill.
+
+        Args:
+            skill_name: Name of the skill
+            combined: CombinedScore with all combined metrics
+        """
+        skill_dir = self._ensure_skill_dir(skill_name)
+        combined_file = skill_dir / "combined_score.json"
+        combined_file.write_text(
+            combined.model_dump_json(indent=2),
+            encoding="utf-8"
+        )
+
     def save_score(self, skill_name: str, score: SkillScore) -> None:
         """
         Save final score for a skill.
@@ -174,6 +239,8 @@ class DataLogger:
         prompts: PromptGenerationResult,
         comparisons: List[ComparisonResult],
         security_result: SecurityResult,
+        execution_score: Optional[ExecutionScore] = None,
+        combined_score: Optional[CombinedScore] = None,
     ) -> None:
         """
         Save aggregated summary of the evaluation.
@@ -184,6 +251,8 @@ class DataLogger:
             prompts: PromptGenerationResult with generated prompts
             comparisons: List of ComparisonResults
             security_result: SecurityResult with security analysis
+            execution_score: Optional ExecutionScore with execution metrics
+            combined_score: Optional CombinedScore with combined metrics
         """
         skill_dir = self._ensure_skill_dir(skill_name)
         summary_file = skill_dir / "summary.json"
@@ -197,8 +266,8 @@ class DataLogger:
 
         summary = {
             "skill_name": skill_name,
-            "grade": score.grade,
-            "win_rate": score.win_rate,
+            "quality_grade": score.grade,
+            "quality_win_rate": score.win_rate,
             "security_grade": score.security_grade.value,
             "security_issues_count": score.security_issues_count,
             "total_comparisons": score.total_comparisons,
@@ -212,6 +281,27 @@ class DataLogger:
                 "security_analysis": security_result.model_used,
             },
         }
+
+        # Add execution results if available
+        if execution_score and execution_score.execution_win_rate is not None:
+            summary["execution_grade"] = execution_score.execution_grade
+            summary["execution_win_rate"] = execution_score.execution_win_rate
+            summary["execution_prompts_tested"] = execution_score.prompts_tested
+            summary["execution_breakdown"] = {
+                "wins": execution_score.execution_wins,
+                "losses": execution_score.execution_losses,
+                "ties": execution_score.execution_ties,
+            }
+
+        # Add combined score if available
+        if combined_score:
+            summary["final_grade"] = combined_score.final_grade
+            summary["combined_score"] = combined_score.combined_score
+            summary["category"] = combined_score.category.value
+
+        # For backwards compatibility, keep "grade" as the final grade
+        summary["grade"] = combined_score.final_grade if combined_score else score.grade
+        summary["win_rate"] = combined_score.combined_score if combined_score else score.win_rate
 
         summary_file.write_text(
             json.dumps(summary, indent=2),

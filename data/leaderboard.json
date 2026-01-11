@@ -1,20 +1,30 @@
 {
-  "generated_at": "2026-01-11T16:29:37.785329+00:00",
+  "generated_at": "2026-01-11T16:46:25.149478+00:00",
   "total_skills": 1,
   "ratings": [
     {
       "skill_name": "pdf",
-      "grade": "A",
-      "win_rate": 100.0,
+      "quality_grade": "A",
+      "quality_win_rate": 100.0,
       "wins": 10,
       "losses": 0,
       "ties": 0,
       "security_grade": "secure",
       "security_issues_count": 0,
-      "avg_tokens_per_use": 3381.8,
-      "cost_per_use_usd": 0.004227250000000001,
+      "avg_tokens_per_use": 3462.0,
+      "cost_per_use_usd": 0.004327500000000001,
       "total_comparisons": 10,
-      "scored_at": "2026-01-11T16:29:37.784476+00:00"
+      "scored_at": "2026-01-11T16:46:25.147761+00:00",
+      "execution_grade": "A",
+      "execution_win_rate": 100.0,
+      "combined_score": 100.0,
+      "final_grade": "A",
+      "category": "file_artifact",
+      "execution_wins": 1,
+      "execution_losses": 0,
+      "execution_ties": 4,
+      "grade": "A",
+      "win_rate": 100.0
     }
   ]
 }

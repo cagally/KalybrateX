@@ -1,0 +1,52 @@
+{
+  "prompt": "Create a single-page PDF named 'simple.pdf' containing the text 'This is a test document' centered on the page.",
+  "tier": 1,
+  "baseline_verification": {
+    "skill_name": "pdf_baseline",
+    "prompt": "Create a single-page PDF named 'simple.pdf' containing the text 'This is a test document' centered on the page.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 1,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 89,
+    "output_files_created": [
+      "simple.pdf"
+    ],
+    "output_valid": true,
+    "output_properties": {
+      "simple.pdf": {
+        "exists": true,
+        "pages": 1,
+        "valid_format": true
+      }
+    },
+    "verified_at": "2026-01-11T16:45:37.333938Z"
+  },
+  "skill_verification": {
+    "skill_name": "pdf",
+    "prompt": "Create a single-page PDF named 'simple.pdf' containing the text 'This is a test document' centered on the page.",
+    "code_extracted": true,
+    "code_language": "python",
+    "code_blocks_count": 1,
+    "executed": true,
+    "execution_success": true,
+    "execution_error": null,
+    "execution_time_ms": 126,
+    "output_files_created": [
+      "simple.pdf"
+    ],
+    "output_valid": true,
+    "output_properties": {
+      "simple.pdf": {
+        "exists": true,
+        "pages": 1,
+        "valid_format": true
+      }
+    },
+    "verified_at": "2026-01-11T16:45:37.462696Z"
+  },
+  "execution_verdict": "tie",
+  "verdict_reasoning": "Both produced valid output"
+}
